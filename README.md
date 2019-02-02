@@ -1,5 +1,5 @@
 # JavaSpringTraining
-Getting started with Java Spring Framkework 5
+Getting started with Java Spring Framework 5
 
 # Spring MVC Request Processing Workflow
 
