@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- beans fue agregado desde el web-inf -> new -> spring bean configuration
+<!-- beans [namespaces] fue agregado desde el web-inf -> new -> spring bean configuration
 	file -> bean context y mvc -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,8 +10,11 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
 	<!-- Agregado para el dispatcher server: manualmente -->
-	<context:component-scan base-package="com.eduardocode.app.controler"></context:component-scan>
+	<!-- En la carpeta source/main/java se crea el paquete controller y dentro los controladores -->
+	<context:component-scan base-package="com.eduardocode.app.controller"></context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- el dispatcher accede a web-inf views para resolver las peticiones del
+	servidor -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
