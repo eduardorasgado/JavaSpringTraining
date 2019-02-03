@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.eduardocode</groupId>
+  <artifactId>SpringMvcTemplate</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- Agregamos manualmente la dependencia para poder usar spring
+  framework, si no esta en el local de maven, este lo descarga -->
+  <dependencies>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<!-- Usamos mas estrictamente el paquete webmvc -->
+  		<artifactId>spring-webmvc</artifactId>
+  		<!-- la version puede cambiar y actualizarse segun el proyecto
+  		la version actual del framework la podemos ver en: 
+  		https://spring.io/projects/spring-framework -->
+  		<version>5.1.4.RELEASE</version>
+  	</dependency>
+  </dependencies>
+</project>

@@ -4,17 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-// las directivas @ son agregadas de forma manual para
-// poder usar la clase actual como un controlador
 @Controller
 public class HomeController {
-	
+
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String index()
 	{
-		// retorna una vista en forma de string
-		// se puede ver en el server de la sig manera:
-		// http://localhost:8080/anotherMavenProj/home.html
+		// retornamos la vista en un string
+		// esta vista se accede como home.html
 		return "home";
 	}
 }
