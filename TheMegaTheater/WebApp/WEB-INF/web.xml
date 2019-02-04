@@ -10,6 +10,8 @@
   
   <servlet-mapping>
   	<servlet-name>springmvc</servlet-name>
-  	<url-pattern>*.html</url-pattern>
+  	<!-- Respodiendo a todas las peticiones sin importar
+  	cual sea la terminacion -->
+  	<url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>
