@@ -40,8 +40,10 @@
 				 <tr>
 				 	<th>Id</th>
 				 	<th>Titulo</th>
+				 	<th>Duración</th>
 				 	<th>Clasificación</th>
 				 	<th>Género</th>
+				 	<th>Fecha de estreno</th>
 				 </tr>
 			</thead>
 			<tbody>
