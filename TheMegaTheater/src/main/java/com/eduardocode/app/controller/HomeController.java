@@ -23,13 +23,9 @@ public class HomeController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String showMain(Model model) {
-		
-		// devolviendo una lista al frontend
 		// sintaxis java 10
-		List<Pelicula> peliculas = new LinkedList<>();
-		
 		// llenando la lista con el modelo
-		peliculas = this.getMovieList();
+		var peliculas = this.getMovieList();
 		
 		// mandando la lista al frontend
 		model.addAttribute("peliculas", peliculas);
@@ -65,8 +61,12 @@ public class HomeController {
 		// en caso de que falle la creacion no hayan fugas de memoria?
 		List<Pelicula> listaPeliculas = null;
 		try {
+			// generando una lista de peliculas
 			listaPeliculas = new LinkedList<>();
 			
+			/*
+			 * Por el momento lo agregamos por fuerza bruta, 
+			 * */
 			var p1 = new Pelicula();
 			p1 = this.setDatatoPelicula(p1, 1, "El viaje de Chihiro", 124, "A",
 					"Anime Aventura", formatter.parse("02-05-2017"));

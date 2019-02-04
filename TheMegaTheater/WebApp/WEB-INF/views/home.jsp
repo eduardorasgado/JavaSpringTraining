@@ -10,6 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Bienvenido</title>
+<style>
+	body {
+		width: 90vw;
+		margin:auto;
+	}
+</style>
 </head>
 <body>
 	
@@ -26,6 +32,31 @@
 				<li>${ pelicula.titulo }</li>
 			</c:forEach>
 		</ul>
+	</div>
+	<div>
+		<h2>Detalles de la cartelera actual</h2>
+		<table border="1"style ="border-collapse: collapse; width: 100%">
+			<thead>
+				 <tr>
+				 	<th>Id</th>
+				 	<th>Titulo</th>
+				 	<th>Clasificación</th>
+				 	<th>Género</th>
+				 </tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ peliculas }" var="pelicula">
+					<tr>
+						<td>${ pelicula.id }</td>
+						<td>${ pelicula.titulo }</td>
+						<td>${ pelicula.duracion } min</td>
+						<td>${ pelicula.clasificacion }</td>
+						<td>${ pelicula.genero }</td>
+						<td>${ pelicula.fechaEstreno }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
