@@ -23,7 +23,7 @@
 		<ul>
 			<!--  desplegando la lista del backend haciendo uso de JSTL -->
 			<c:forEach items="${ peliculas }" var="pelicula">
-				<li>${ pelicula }</li>
+				<li>${ pelicula.titulo }</li>
 			</c:forEach>
 		</ul>
 	</div>

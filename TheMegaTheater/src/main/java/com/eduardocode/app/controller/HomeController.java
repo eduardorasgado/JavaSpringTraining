@@ -1,11 +1,17 @@
 package com.eduardocode.app.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.eduardocode.app.model.Pelicula;
 
 @Controller
 public class HomeController {
@@ -20,12 +26,10 @@ public class HomeController {
 		
 		// devolviendo una lista al frontend
 		// sintaxis java 10
-		var peliculas = new LinkedList<String>();
+		List<Pelicula> peliculas = new LinkedList<>();
 		
-		peliculas.add("El jardín de las palabras");
-		peliculas.add("El viaje de Chihiro");
-		peliculas.add("En este rincón del mundo");
-		peliculas.add("El quinto elemento");
+		// llenando la lista con el modelo
+		peliculas = this.getMovieList();
 		
 		// mandando la lista al frontend
 		model.addAttribute("peliculas", peliculas);
@@ -51,5 +55,56 @@ public class HomeController {
 		model.addAttribute("descripcion", desc);
 		
 		return "detail";
+	}
+	
+	// metodo para generar la lista de peliculas que existirian en la db
+	private List<Pelicula> getMovieList(){
+		// formateador de fechas
+		var formatter = new SimpleDateFormat("dd-MM-yyyy");
+		
+		// en caso de que falle la creacion no hayan fugas de memoria?
+		List<Pelicula> listaPeliculas = null;
+		try {
+			listaPeliculas = new LinkedList<>();
+			
+			var p1 = new Pelicula();
+			p1 = this.setDatatoPelicula(p1, 1, "El viaje de Chihiro", 124, "A",
+					"Anime Aventura", formatter.parse("02-05-2017"));
+			
+			
+			var p2 = new Pelicula();
+			p2 = this.setDatatoPelicula(p2, 2, "La tumba de las luciernagas", 132, "B",
+					"Anime Drama", formatter.parse("20-05-2017"));
+			
+			
+			Pelicula p3 = new Pelicula();
+			p3 = this.setDatatoPelicula(p3, 3, "Se eleva el viento", 106, "A", "Anime Fantasia",
+					formatter.parse("28-03-2016"));
+			
+			// agregando los objetos a la lista
+			listaPeliculas.add(p1);
+			listaPeliculas.add(p2);
+			listaPeliculas.add(p3);
+			
+		} catch(ParseException e) {
+			// en caso de que exista un error en  el formato de fecha
+			System.out.println("Error: "+e.getMessage());
+			return null;
+		}
+		// en caso de salir todo bien
+		return listaPeliculas;
+	}
+	
+	private Pelicula setDatatoPelicula(Pelicula p, int id,
+			String title, int length, String classification,
+			String genre, Date premiere) {
+		p.setId(id);
+		p.setTitulo(title);
+		p.setDuracion(length);
+		p.setClasificacion(classification);
+		p.setGenero(genre);
+		p.setFechaEstreno(premiere);
+		
+		return p;
 	}
 }
