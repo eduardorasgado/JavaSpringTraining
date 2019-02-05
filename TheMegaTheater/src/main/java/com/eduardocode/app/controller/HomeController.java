@@ -69,22 +69,28 @@ public class HomeController {
 			 * */
 			var p1 = new Pelicula();
 			p1 = this.setDatatoPelicula(p1, 1, "El viaje de Chihiro", 124, "A",
-					"Anime Aventura", formatter.parse("02-05-2017"));
+					"Anime Aventura", formatter.parse("02-05-2017"), "chihiro.png",
+					"Activa");
 			
 			
 			var p2 = new Pelicula();
 			p2 = this.setDatatoPelicula(p2, 2, "La tumba de las luciernagas", 132, "B",
-					"Anime Drama", formatter.parse("20-05-2017"));
+					"Anime Drama", formatter.parse("20-05-2017"), "tumba.png", "Activa");
 			
 			
-			Pelicula p3 = new Pelicula();
+			var p3 = new Pelicula();
 			p3 = this.setDatatoPelicula(p3, 3, "Se eleva el viento", 106, "A", "Anime Fantasia",
-					formatter.parse("28-03-2016"));
+					formatter.parse("28-03-2016"), "rises.png", "Activa");
+			
+			var p4 = new Pelicula();
+			p4 = this.setDatatoPelicula(p4, 4, "Your name", 154, "A", " Anime Romance Fantasia",
+					formatter.parse("06-06-2017"), "kimi-no-nawa.png", "Inactiva");
 			
 			// agregando los objetos a la lista
 			listaPeliculas.add(p1);
 			listaPeliculas.add(p2);
 			listaPeliculas.add(p3);
+			listaPeliculas.add(p4);
 			
 		} catch(ParseException e) {
 			// en caso de que exista un error en  el formato de fecha
@@ -97,13 +103,15 @@ public class HomeController {
 	
 	private Pelicula setDatatoPelicula(Pelicula p, int id,
 			String title, int length, String classification,
-			String genre, Date premiere) {
+			String genre, Date premiere, String image, String status) {
 		p.setId(id);
 		p.setTitulo(title);
 		p.setDuracion(length);
 		p.setClasificacion(classification);
 		p.setGenero(genre);
 		p.setFechaEstreno(premiere);
+		p.setImagen(image);
+		p.setStatus(status);
 		
 		return p;
 	}
