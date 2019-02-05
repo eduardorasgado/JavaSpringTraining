@@ -4,6 +4,8 @@
 <!-- Para usar JSTL en cada vista debemos de importar jstl en el jsp.
  Importamos el core de JSTL-->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- Para poder aplicar formatos: i18n -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!-- Para poder ocupar los recursos(resources) a traves de los tags de spring -->
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
@@ -79,8 +81,23 @@ a traves de un tag de spring -->
 						src="${ urlPublic }/images/${ pelicula.imagen }"
 						width="80">
 						</td>
-						<td>${ pelicula.fechaEstreno }</td>
-						<td>${ pelicula.status }</td>
+						<td><fmt:formatDate value="${ pelicula.fechaEstreno }"
+						pattern="dd/MM/yyyy"/></td>
+						<td>
+							<!-- Condicionales en jstl -->
+							<c:choose>
+								<c:when test="${ pelicula.status == 'Activa' }">
+									<span class="badge badge-success">
+										${ pelicula.status }
+									</span>
+								</c:when>
+								<c:otherwise>
+									<span class="badge badge-danger">
+										${ pelicula.status }
+									</span>
+								</c:otherwise>
+							</c:choose>
+						</td>
 						
 					</tr>
 				</c:forEach>
