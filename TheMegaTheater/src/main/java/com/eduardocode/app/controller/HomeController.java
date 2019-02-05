@@ -69,22 +69,22 @@ public class HomeController {
 			 * */
 			var p1 = new Pelicula();
 			p1 = this.setDatatoPelicula(p1, 1, "El viaje de Chihiro", 124, "A",
-					"Anime Aventura", formatter.parse("02-05-2017"), "chihiro.png",
+					"Anime Aventura", formatter.parse("02-05-2017"), "cinema.png",
 					"Activa");
 			
 			
 			var p2 = new Pelicula();
 			p2 = this.setDatatoPelicula(p2, 2, "La tumba de las luciernagas", 132, "B",
-					"Anime Drama", formatter.parse("20-05-2017"), "tumba.png", "Activa");
+					"Anime Drama", formatter.parse("20-05-2017"), "bella.png", "Activa");
 			
 			
 			var p3 = new Pelicula();
 			p3 = this.setDatatoPelicula(p3, 3, "Se eleva el viento", 106, "A", "Anime Fantasia",
-					formatter.parse("28-03-2016"), "rises.png", "Activa");
+					formatter.parse("28-03-2016"), "contratiempo.png", "Activa");
 			
 			var p4 = new Pelicula();
 			p4 = this.setDatatoPelicula(p4, 4, "Your name", 154, "A", " Anime Romance Fantasia",
-					formatter.parse("06-06-2017"), "kimi-no-nawa.png", "Inactiva");
+					formatter.parse("06-06-2017"), "kong.png", "Inactiva");
 			
 			// agregando los objetos a la lista
 			listaPeliculas.add(p1);

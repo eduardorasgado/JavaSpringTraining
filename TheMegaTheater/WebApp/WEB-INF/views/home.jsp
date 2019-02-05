@@ -4,6 +4,8 @@
 <!-- Para usar JSTL en cada vista debemos de importar jstl en el jsp.
  Importamos el core de JSTL-->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- Para poder ocupar los recursos(resources) a traves de los tags de spring -->
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +13,11 @@
 <meta charset="UTF-8">
 <title>Bienvenido</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<!-- Incluyendo la carpeta resources de archivos estaticos
+a traves de un tag de spring -->
+<spring:url value="/resources" var="urlPublic"></spring:url>
+
 <style>
 	body {
 		padding-top: 20px;
@@ -67,7 +74,11 @@
 						<td>${ pelicula.duracion } min</td>
 						<td>${ pelicula.clasificacion }</td>
 						<td>${ pelicula.genero }</td>
-						<td>${ pelicula.imagen }</td>
+						<td>
+						<img alt="${ pelicula.imagen }" 
+						src="${ urlPublic }/images/${ pelicula.imagen }"
+						width="80">
+						</td>
 						<td>${ pelicula.fechaEstreno }</td>
 						<td>${ pelicula.status }</td>
 						
