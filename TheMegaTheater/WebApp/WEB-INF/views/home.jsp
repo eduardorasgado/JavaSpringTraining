@@ -14,12 +14,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Bienvenido</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
 <!-- Incluyendo la carpeta resources de archivos estaticos
 a traves de un tag de spring -->
 <spring:url value="/resources" var="urlPublic"></spring:url>
 
+<link rel="stylesheet" href="${ urlPublic }/bootstrap/css/bootstrap.min.css">
 <style>
 	body {
 		padding-top: 20px;
