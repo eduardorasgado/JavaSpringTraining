@@ -86,11 +86,16 @@ public class HomeController {
 			p4 = this.setDatatoPelicula(p4, 4, "Kong", 154, "A", "Accion",
 					formatter.parse("06-06-2017"), "kong.png", "Inactiva");
 			
+			var p5 = new Pelicula();
+			p5 = this.setDatatoPelicula(p5, 5, "Life: Vida Inteligente", 122, "B", "Terror",
+					formatter.parse("01-02-2016"), "estreno5.png", "Activa");
+			
 			// agregando los objetos a la lista
 			listaPeliculas.add(p1);
 			listaPeliculas.add(p2);
 			listaPeliculas.add(p3);
 			listaPeliculas.add(p4);
+			listaPeliculas.add(p5);
 			
 		} catch(ParseException e) {
 			// en caso de que exista un error en  el formato de fecha
