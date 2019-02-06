@@ -74,16 +74,16 @@ public class HomeController {
 			
 			
 			var p2 = new Pelicula();
-			p2 = this.setDatatoPelicula(p2, 2, "La tumba de las luciernagas", 132, "B",
-					"Anime Drama", formatter.parse("20-05-2017"), "bella.png", "Activa");
+			p2 = this.setDatatoPelicula(p2, 2, "La bella y la bestia", 132, "B",
+					"Drama", formatter.parse("20-05-2017"), "bella.png", "Activa");
 			
 			
 			var p3 = new Pelicula();
-			p3 = this.setDatatoPelicula(p3, 3, "Se eleva el viento", 106, "A", "Anime Fantasia",
+			p3 = this.setDatatoPelicula(p3, 3, "Contratiempo", 106, "A", "Accion",
 					formatter.parse("28-03-2016"), "contratiempo.png", "Activa");
 			
 			var p4 = new Pelicula();
-			p4 = this.setDatatoPelicula(p4, 4, "Your name", 154, "A", " Anime Romance Fantasia",
+			p4 = this.setDatatoPelicula(p4, 4, "Kong", 154, "A", "Accion",
 					formatter.parse("06-06-2017"), "kong.png", "Inactiva");
 			
 			// agregando los objetos a la lista

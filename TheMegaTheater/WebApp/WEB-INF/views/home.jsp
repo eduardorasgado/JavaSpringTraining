@@ -57,7 +57,8 @@
   </div>
 </nav>
 
-    <div class="container theme-showcase" role="main">
+	<br/>
+    <div class="container" role="main">
 
 	
       <!-- Carousel
@@ -120,49 +121,18 @@
 
         <div class="row">
 
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="rounded" src="${ urlPublic }/images/estreno1.png" alt="Generic placeholder image" width="150" height="200">
-            <h5>En este Rincón del Mundo</h5>
+          <c:forEach items="${ peliculas }" var="pelicula">
+          	<div class="col-xs-12 col-sm-6 col-md-3">
+            <img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
+            <h5>${ pelicula.titulo }</h5>
             <h5>
-              <span class="badge badge-secondary">A</span>
-              <span class="badge badge-secondary">130 min</span>
-              <span class="badge badge-secondary">Drama</span>
+              <span class="badge badge-secondary">${ pelicula.clasificacion }</span>
+              <span class="badge badge-secondary">${ pelicula.duracion }</span>
+              <span class="badge badge-secondary">${ pelicula.genero }</span>
             </h5>         
             <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
           </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="rounded" src="${ urlPublic }/images/estreno2.png" alt="Generic placeholder image" width="150" height="200">
-            <h5>Logan: Wolverine</h5>
-            <h5>
-              <span class="badge badge-secondary">C</span>
-              <span class="badge badge-secondary">135 min</span>
-              <span class="badge badge-secondary">Acción</span>
-            </h5>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="rounded" src="${ urlPublic }/images/estreno3.png" alt="Generic placeholder image" width="150" height="200">
-            <h5>Fragmentado</h5>
-            <h5>
-              <span class="badge badge-secondary">B15</span>
-              <span class="badge badge-secondary">118 min</span>
-              <span class="badge badge-secondary">Thriller</span>
-            </h5>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="rounded" src="${ urlPublic }/images/estreno4.png" alt="Generic placeholder image" width="150" height="200">
-            <h5>Kong La Isla Calavera</h5>
-            <h5>
-              <span class="badge badge-secondary">B</span>
-              <span class="badge badge-secondary">118 min</span>
-              <span class="badge badge-secondary">Acción y aventura</span>
-            </h5>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
+          </c:forEach>
 
         </div>
 
