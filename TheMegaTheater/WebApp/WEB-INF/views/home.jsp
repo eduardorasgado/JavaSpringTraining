@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <!-- Para usar JSTL en cada vista debemos de importar jstl en el jsp.
  Importamos el core de JSTL-->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -10,103 +11,209 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Bienvenido</title>
-<!-- Incluyendo la carpeta resources de archivos estaticos
-a traves de un tag de spring -->
-<spring:url value="/resources" var="urlPublic"></spring:url>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>TheMegaTheater | Bienvenido</title>
+    
+	    
+	<!-- Incluyendo la carpeta resources de archivos estaticos
+	a traves de un tag de spring -->
+	<spring:url value="/resources" var="urlPublic"></spring:url>
+	
+	<link rel="stylesheet" href="${ urlPublic }/bootstrap/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="${ urlPublic }/bootstrap/css/bootstrap.min.css">
-<style>
-	body {
-		padding-top: 20px;
-		width: 90vw;
-		margin:auto;
-	}
-	li {
-		/*Rmover el punto de las listas no ordenadas*/
-		list-style-type: none;
-	}
-</style>
-</head>
-<body>
-	<div class="jumbotron">
-		<div id="header">
-			<h1>The Great Theater</h1>
-		</div>
-		<div>
-			<h2>Cartelera</h2>
-			<p>Peliculas que tenemos en cartelera:</p>
-		
-			<ul>
-				<!--  desplegando la lista del backend haciendo uso de JSTL -->
-				<c:forEach items="${ peliculas }" var="pelicula">
-					<li><i class="fas fa-film"></i> ${ pelicula.titulo }</li>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
-	<div>
-		<div class="card">
-			<div class="card-header">
-				<h2>Detalles de la cartelera actual</h2>
-			</div>
-			<div class="card-body">
-				<table class="table table-striped table-hover">
-			<thead class="table-dark">
-				 <tr>
-				 	<th scope="col">Id</th>
-				 	<th scope="col">Titulo</th>
-				 	<th scope="col">Duración</th>
-				 	<th scope="col">Clasificación</th>
-				 	<th scope="col">Género</th>
-				 	<th scope="col">Imagen</th>
-				 	<th scope="col">Fecha de estreno</th>
-				 	<th scope="col">Status</th>
-				 </tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${ peliculas }" var="pelicula">
-					<tr>
-						<td>${ pelicula.id }</td>
-						<td>${ pelicula.titulo }</td>
-						<td>${ pelicula.duracion } min</td>
-						<td>${ pelicula.clasificacion }</td>
-						<td>${ pelicula.genero }</td>
-						<td>
-						<img alt="${ pelicula.imagen }" 
-						src="${ urlPublic }/images/${ pelicula.imagen }"
-						width="80">
-						</td>
-						<td><fmt:formatDate value="${ pelicula.fechaEstreno }"
-						pattern="dd/MM/yyyy"/></td>
-						<td>
-							<!-- Condicionales en jstl -->
-							<c:choose>
-								<c:when test="${ pelicula.status == 'Activa' }">
-									<span class="badge badge-success">
-										${ pelicula.status }
-									</span>
-								</c:when>
-								<c:otherwise>
-									<span class="badge badge-danger">
-										${ pelicula.status }
-									</span>
-								</c:otherwise>
-							</c:choose>
-						</td>
-						
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-			</div>
-		</div>
-		
-		
-	</div>
-	<script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
-</body>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">TheMegaTheater</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample07">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Acerca de</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+
+    <div class="container theme-showcase" role="main">
+
+	
+      <!-- Carousel
+    ================================================== -->
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>         
+          <li data-target="#myCarousel" data-slide-to="3"></li>	
+        </ol>
+        <!-- Image Size 1140 x 250 -->
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">         
+            <img src="${ urlPublic }/images/slide1.jpg" alt="Slide" title="Some text" >
+          </div>
+          <div class="carousel-item">         
+            <img src="${ urlPublic }/images/slide2.jpg" alt="Slide" title="Some text" >
+          </div>
+          <div class="carousel-item">         
+            <img src="${ urlPublic }/images/slide3.jpg" alt="Slide" title="Some text" >
+          </div>
+          <div class="carousel-item">         
+            <img src="${ urlPublic }/images/slide4.jpg" alt="Slide" title="Some text" >
+          </div>
+        </div>
+        <a class="left carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div><!-- /.carousel -->
+
+      <div class="row pb-2 mt-4 mb-2 border-bottom">          
+        <div class="col-md-12">         
+          <h2 class="text text-center"><span class="badge badge-success">EN CARTELERA</span></h2>
+                    
+          <form class="form-inline" action="#" method="post">
+            <div class="form-group mx-sm-3 mb-2">
+              <label class="" for="fecha">Fecha: </label>
+              <select id="fecha" name="fecha" class="form-control">
+                <option value="01-05-2017">01-05-2017</option>
+                <option value="02-05-2017">02-05-2017</option>
+                <option value="03-05-2017">03-05-2017</option>
+                <option value="04-05-2017">04-05-2017</option>                
+              </select>
+            </div>            
+            <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+          </form>
+          
+        </div>
+      </div>
+
+      <!-- Marketing messaging -->
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <img class="rounded" src="${ urlPublic }/images/estreno1.png" alt="Generic placeholder image" width="150" height="200">
+            <h5>En este Rincón del Mundo</h5>
+            <h5>
+              <span class="badge badge-secondary">A</span>
+              <span class="badge badge-secondary">130 min</span>
+              <span class="badge badge-secondary">Drama</span>
+            </h5>         
+            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <img class="rounded" src="${ urlPublic }/images/estreno2.png" alt="Generic placeholder image" width="150" height="200">
+            <h5>Logan: Wolverine</h5>
+            <h5>
+              <span class="badge badge-secondary">C</span>
+              <span class="badge badge-secondary">135 min</span>
+              <span class="badge badge-secondary">Acción</span>
+            </h5>         
+            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <img class="rounded" src="${ urlPublic }/images/estreno3.png" alt="Generic placeholder image" width="150" height="200">
+            <h5>Fragmentado</h5>
+            <h5>
+              <span class="badge badge-secondary">B15</span>
+              <span class="badge badge-secondary">118 min</span>
+              <span class="badge badge-secondary">Thriller</span>
+            </h5>         
+            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <img class="rounded" src="${ urlPublic }/images/estreno4.png" alt="Generic placeholder image" width="150" height="200">
+            <h5>Kong La Isla Calavera</h5>
+            <h5>
+              <span class="badge badge-secondary">B</span>
+              <span class="badge badge-secondary">118 min</span>
+              <span class="badge badge-secondary">Acción y aventura</span>
+            </h5>         
+            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
+          </div>
+
+        </div>
+
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+          <h2 class="text text-center"><span class="badge badge-success">Noticias y novedades</span></h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-12 blog-main">
+
+            <div class="blog-post">              
+              <h3 class="blog-post-title">Julia Roberts protagonizará The Bookseller</h3>
+
+              <p class="blog-post-meta"><span class="badge badge-danger">Publicado: 16-06-2017</span></p>             
+              <p>La novela de Cynthia Swanson <span style="color: #0000ff;"><strong>The Bookseller</strong></span> ser&aacute; llevada al cine con <span style="color: #0000ff;">Julia Roberts (Los Pitufos: La aldea Escondida)</span> como protagonista.<br /><br />La historia est&aacute; ambientada en los sesenta y su protagonista es una mujer soltera, Kitty Miller, que lleva una librer&iacute;a. Sue&ntilde;a con una vida alternativa en la que ha encontrado el amor y est&aacute; casada y con hijos, pero la l&iacute;nea que separa realidad y ficci&oacute;n comienza a estar demasiado dispersa para que la distinga.<br /><br />Seg&uacute;n informa <span style="color: #ff0000;"><strong>Moviehole</strong></span> Roberts tambi&eacute;n producir&aacute; la pel&iacute;cula junto a Lisa Gillan y Marisa Yeres Hill.</p>
+
+              <hr class="featurette-divider">
+            </div>
+
+            <div class="blog-post">              
+              <h3 class="blog-post-title">Bob Esponja: tercera película y temporada 12</h3>
+              <p class="blog-post-meta"><span class="badge badge-danger">Publicado: 15-06-2017</span></p>              
+
+              <p><strong><span style="color: #ff0000;">Nickelodeon y productor de SpongeBob Square Pants confirman temporada 12 de 52 episodios y tercera pel&iacute;cula pr&oacute;ximamente. </span></strong></p>
+              <p><strong>&iexcl;Calamardo est&aacute; enojado!Bob Esponja: tercera pel&iacute;cula y temporada 12</strong></p>
+              <p>Nickelodeon y productor de SpongeBob Square Pants confirman temporada 12 de 52 episodios y tercera pel&iacute;cula pr&oacute;ximamente. &iexcl;Calamardo est&aacute; enojado!.</p>
+              <p>A lado de cierta Pi&ntilde;a (debajo del mar), Calamardo debe estar de muy mal humor, pues hay Bob Esponja para rato... &iexcl;y por partida doble!. Por un lado, Vincent Waller (The Ren &amp; Stimpy Show), artista, productor, escritor y supervisor creativo de SpongeBob Squarepants anunci&oacute; con un divertido dibujo desde su cuenta de Twitter que, antes de que se estrene siquiera la temporada 11 de la serie animada, se ha confirmado ya la n&uacute;mero 12, &iexcl;que constar&aacute; de 52 episodios (recuerden que cada emisi&oacute;n consta de 2 aventuras)!</p>
+
+              <hr class="featurette-divider">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer mt-auto py-3">        
+        <div class="container text-center">
+        	<p class=""><a href="#">Ir arriba</a></p>
+        <p>&copy; 2019 , TheMegaTheater S.A. de C.V. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Términos</a></p>
+        </div>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src="${ urlPublic }/bootstrap/js/bootstrap.min.js"></script> 
+  </body>
 </html>
