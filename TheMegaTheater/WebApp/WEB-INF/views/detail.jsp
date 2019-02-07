@@ -11,6 +11,7 @@
 		<h1>Pelicula: ${ titulo }</h1>
 		<h2>Duración: ${ duracion }</h2>
 		<h3>Precio: ${ precio }</h3>
+		<p>Id: ${ id }</p>
 		<p>Sintesis: ${ descripcion }</p>
 	</div>
 </body>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,8 +34,8 @@ public class HomeController {
 		return "home";		
 	}
 	
-	@RequestMapping(value="/detail", method=RequestMethod.GET)
-	public String showDetail(Model model) {
+	@RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
+	public String showDetail(Model model, @PathVariable("id") int idPelicula) {
 		
 		String tituloPelicula = "El Imaginario del Dr Parnasus";
 		int duracion = 135;
@@ -49,6 +50,7 @@ public class HomeController {
 		model.addAttribute("duracion", duracion);
 		model.addAttribute("precio", precioEntrada);
 		model.addAttribute("descripcion", desc);
+		model.addAttribute("id", idPelicula);
 		
 		return "detail";
 	}
