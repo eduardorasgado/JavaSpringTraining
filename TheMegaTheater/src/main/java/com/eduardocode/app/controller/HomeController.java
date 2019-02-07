@@ -17,6 +17,8 @@ import com.eduardocode.app.model.Pelicula;
 @Controller
 public class HomeController {
 	
+	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
+	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String index() {
 		return "home";
@@ -30,27 +32,38 @@ public class HomeController {
 		
 		// mandando la lista al frontend
 		model.addAttribute("peliculas", peliculas);
-		
+		// mandando la fecha actual al frontend
+		model.addAttribute("fechaBusqueda", homeDateFormatter.format(new Date()));
 		return "home";		
 	}
 	
-	@RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
-	public String showDetail(Model model, @PathVariable("id") int idPelicula) {
+	@RequestMapping(value="/detail/{id}/{fecha}", 
+			method=RequestMethod.GET)
+	public String showDetail(Model model,
+			@PathVariable("id") int idPelicula,
+			@PathVariable("fecha") String fechaBusqueda) {
 		
-		String tituloPelicula = "El Imaginario del Dr Parnasus";
-		int duracion = 135;
-		double precioEntrada = 120;
-		String desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-				+ "Ut pellentesque libero id vehicula facilisis. Nullam blandit et "
-				+ "felis in interdum. Mauris cursus eros quis nibh faucibus condimentum. ";
+		var listaPeliculas = this.getMovieList();
 		
+		boolean found = false;
 		
-		// pasando datos al frontend
-		model.addAttribute("titulo", tituloPelicula);
-		model.addAttribute("duracion", duracion);
-		model.addAttribute("precio", precioEntrada);
-		model.addAttribute("descripcion", desc);
-		model.addAttribute("id", idPelicula);
+		for(var pelicula : listaPeliculas) {
+			if(pelicula.getId() == idPelicula) {
+				// pasando datos al frontend
+				model.addAttribute("titulo", pelicula.getTitulo());
+				model.addAttribute("duracion", pelicula.getDuracion());
+				model.addAttribute("clasificacion", pelicula.getClasificacion());
+				model.addAttribute("id", idPelicula);
+				//model.addAttribute("fechaBusqueda", homeDateFormatter.format(fechaBusqueda));
+				model.addAttribute("fecha", fechaBusqueda);
+				model.addAttribute("precio", 50);
+				found = true;
+			}
+		}
+		if(!found) {
+			// en caso de no existir el id
+			model.addAttribute("Error", true);
+		}
 		
 		return "detail";
 	}

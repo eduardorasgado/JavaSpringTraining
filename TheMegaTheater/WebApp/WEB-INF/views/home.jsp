@@ -103,10 +103,10 @@
             <h5>${ pelicula.titulo }</h5>
             <h5>
               <span class="badge badge-secondary">${ pelicula.clasificacion }</span>
-              <span class="badge badge-secondary">${ pelicula.duracion }</span>
+              <span class="badge badge-secondary">${ pelicula.duracion } min</span>
               <span class="badge badge-secondary">${ pelicula.genero }</span>
             </h5>         
-            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }" role="button">Consulta Horarios &raquo;</a></p>
+            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
           </div>
           </c:forEach>
 
