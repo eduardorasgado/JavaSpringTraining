@@ -22,32 +22,29 @@ public class HomeController {
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String index() {
-		return "home";
+	public String index(Model model) {
+		return this.showMain(model);
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)
-	public String buscar(@RequestParam("fecha") String fecha) {
+	public String searchByDate(Model model,
+			@RequestParam("fecha") String fecha) {
 		//
 		System.out.println("buscando en la fecha: " + fecha);
+		model = this.getMoviesAboutDate(model, fecha);
 		
 		return "home";
+	}
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	// Manejando la peticion get de /search
+	public String searchByDate(Model model) {
+		return this.showMain(model);
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String showMain(Model model) {
-		// sintaxis java 10
-		// llenando la lista con el modelo
-		var peliculas = this.getMovieList();
-		
-		// creando la lista de 5 dias a partir de ahorita
-		var siguientesDias = Utility.generateNextDays(4);
-		
-		// mandando la lista al frontend
-		model.addAttribute("peliculas", peliculas);
-		// mandando la fecha actual al frontend y los sig 4 dias
-		model.addAttribute("fechaBusqueda", homeDateFormatter.format(new Date()));
-		model.addAttribute("listaFechas", siguientesDias);
+		var fechaBusqueda = homeDateFormatter.format(new Date());
+		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		
 		return "home";		
 	}
@@ -150,5 +147,23 @@ public class HomeController {
 		p.setStatus(status);
 		
 		return p;
+	}
+	
+	private Model getMoviesAboutDate(Model model, 
+			String fechaBusqueda) {
+		// sintaxis java 10
+		// llenando la lista con el modelo
+		var peliculas = this.getMovieList();
+		
+		// creando la lista de 5 dias a partir de ahorita
+		var siguientesDias = Utility.generateNextDays(4);
+		
+		// mandando la lista al frontend
+		model.addAttribute("peliculas", peliculas);
+		// mandando la fecha actual al frontend y los sig 4 dias
+		model.addAttribute("fechaBusqueda", fechaBusqueda);
+		model.addAttribute("listaFechas", siguientesDias);
+		
+		return model;
 	}
 }
