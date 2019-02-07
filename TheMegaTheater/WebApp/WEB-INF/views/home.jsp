@@ -24,6 +24,7 @@
 	<!-- Incluyendo la carpeta resources de archivos estaticos
 	a traves de un tag de spring -->
 	<spring:url value="/resources" var="urlPublic"></spring:url>
+	<spring:url value="/" var="urlRoot"></spring:url>
 	
 	<link rel="stylesheet" href="${ urlPublic }/bootstrap/css/bootstrap.min.css">
 
@@ -76,14 +77,13 @@
         <div class="col-md-12">         
           <h2 class="text text-center"><span class="badge badge-success">EN CARTELERA</span></h2>
                     
-          <form class="form-inline" action="#" method="post">
+          <form class="form-inline" action="${ urlRoot }search" method="post">
             <div class="form-group mx-sm-3 mb-2">
               <label class="" for="fecha">Fecha: </label>
               <select id="fecha" name="fecha" class="form-control">
-                <option value="01-05-2017">01-05-2017</option>
-                <option value="02-05-2017">02-05-2017</option>
-                <option value="03-05-2017">03-05-2017</option>
-                <option value="04-05-2017">04-05-2017</option>                
+                <c:forEach items="${ listaFechas }" var="fecha">
+                	<option value="${ fecha }">${ fecha }</option>
+                </c:forEach>                
               </select>
             </div>            
             <button type="submit" class="btn btn-primary mb-2">Filtrar</button>

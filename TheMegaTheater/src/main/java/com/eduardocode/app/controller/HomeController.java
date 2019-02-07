@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eduardocode.app.model.Pelicula;
+import com.eduardocode.app.utils.Utility;
 
 @Controller
 public class HomeController {
@@ -25,16 +26,29 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	public String buscar(@RequestParam("fecha") String fecha) {
+		//
+		System.out.println("buscando en la fecha: " + fecha);
+		
+		return "home";
+	}
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String showMain(Model model) {
 		// sintaxis java 10
 		// llenando la lista con el modelo
 		var peliculas = this.getMovieList();
 		
+		// creando la lista de 5 dias a partir de ahorita
+		var siguientesDias = Utility.generateNextDays(4);
+		
 		// mandando la lista al frontend
 		model.addAttribute("peliculas", peliculas);
-		// mandando la fecha actual al frontend
+		// mandando la fecha actual al frontend y los sig 4 dias
 		model.addAttribute("fechaBusqueda", homeDateFormatter.format(new Date()));
+		model.addAttribute("listaFechas", siguientesDias);
+		
 		return "home";		
 	}
 	
