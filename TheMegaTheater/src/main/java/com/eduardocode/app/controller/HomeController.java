@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eduardocode.app.model.Pelicula;
 
@@ -37,24 +38,25 @@ public class HomeController {
 		return "home";		
 	}
 	
-	@RequestMapping(value="/detail/{id}/{fecha}", 
+	//@RequestMapping(value="/detail/{id}/{fecha}",
+	@RequestMapping(value="/detail", 
 			method=RequestMethod.GET)
 	public String showDetail(Model model,
-			@PathVariable("id") int idPelicula,
-			@PathVariable("fecha") String fechaBusqueda) {
+			//@PathVariable("id") int idPelicula
+			@RequestParam("idMovie") int idPelicula,
+			@RequestParam("fechaBusqueda") String fechaBusqueda) {
 		
 		var listaPeliculas = this.getMovieList();
 		
+		// TODO: Buscar en la base de datos el horario y la pelicula
 		boolean found = false;
 		
 		for(var pelicula : listaPeliculas) {
 			if(pelicula.getId() == idPelicula) {
-				// pasando datos al frontend
 				model.addAttribute("titulo", pelicula.getTitulo());
 				model.addAttribute("duracion", pelicula.getDuracion());
 				model.addAttribute("clasificacion", pelicula.getClasificacion());
 				model.addAttribute("id", idPelicula);
-				//model.addAttribute("fechaBusqueda", homeDateFormatter.format(fechaBusqueda));
 				model.addAttribute("fecha", fechaBusqueda);
 				model.addAttribute("precio", 50);
 				found = true;
