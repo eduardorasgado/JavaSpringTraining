@@ -2,7 +2,9 @@ package com.eduardocode.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // esta clase es un controlador
 @Controller
@@ -17,6 +19,17 @@ public class NoticiasController {
 	@GetMapping("/create")
 	public String create() {
 		// creacion de una nueva noticia
+		return "noticias/formNoticia";
+	}
+	
+	@PostMapping("/save")
+	public String save(
+			@RequestParam("titulo") String titulo,
+			@RequestParam("status") String status,
+			@RequestParam("detalle") String detalle) {
+		// se guarda el form en un post
+		System.out.println("Titulo: "+titulo +", status: "+status+", detalle: "+detalle);
+		
 		return "noticias/formNoticia";
 	}
 }

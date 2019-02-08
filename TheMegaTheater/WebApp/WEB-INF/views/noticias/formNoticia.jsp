@@ -23,6 +23,7 @@
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/" var="urlRoot"></spring:url>
     <spring:url value="/views" var="urlViews"></spring:url>
+    <spring:url value="/noticias/save" var="urlNoticiasForm"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">   
 	
@@ -37,7 +38,7 @@
     <div class="container" role="main">
       <h3 class="blog-title"><span class="badge badge-success">Datos de la Noticia</span></h3>
 
-      <form>
+      <form method="post" action="${ urlNoticiasForm }">
         <div class="row">         
           <div class="col-sm-6">
             <div class="form-group">
@@ -48,7 +49,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="status">Status</label>             
-              <select id="status" name="estatus" class="form-control">
+              <select id="status" name="status" class="form-control">
                 <option value="Activa">Activa</option>
                 <option value="Inactiva">Inactiva</option>                
               </select>  
