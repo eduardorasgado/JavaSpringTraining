@@ -82,7 +82,13 @@
               <label class="" for="fecha">Fecha: </label>
               <select id="fecha" name="fecha" class="form-control">
                 <c:forEach items="${ listaFechas }" var="fecha">
-                	<option value="${ fecha }">${ fecha }</option>
+                	<option value="${ fecha }"
+                	<c:choose>
+                		<c:when test="${ fecha == fechaBusqueda }">
+                			selected
+                		</c:when>
+                	</c:choose>
+                	>${ fecha }</option>
                 </c:forEach>                
               </select>
             </div>            

@@ -8,7 +8,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,27 +23,31 @@ public class HomeController {
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
 	
-	@RequestMapping(value="/home", method=RequestMethod.GET)
+	//@RequestMapping(value="/home", method=RequestMethod.GET)
+	@GetMapping("/home")
 	public String index(Model model) {
 		return this.showMain(model);
 	}
 	
-	@RequestMapping(value="/search", method=RequestMethod.POST)
+	//@RequestMapping(value="/search", method=RequestMethod.POST)
+	@PostMapping("/search")
 	public String searchByDate(Model model,
 			@RequestParam("fecha") String fecha) {
 		//
 		System.out.println("buscando en la fecha: " + fecha);
+		// ahora la fecha actual va a ser la fecha pasada en el search
 		model = this.getMoviesAboutDate(model, fecha);
 		
 		return "home";
 	}
-	@RequestMapping(value="/search", method=RequestMethod.GET)
+
+	@GetMapping("/search")
 	// Manejando la peticion get de /search
 	public String searchByDate(Model model) {
 		return this.showMain(model);
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@GetMapping("/")
 	public String showMain(Model model) {
 		var fechaBusqueda = homeDateFormatter.format(new Date());
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
@@ -50,8 +56,7 @@ public class HomeController {
 	}
 	
 	//@RequestMapping(value="/detail/{id}/{fecha}",
-	@RequestMapping(value="/detail", 
-			method=RequestMethod.GET)
+	@GetMapping("/detail")
 	public String showDetail(Model model,
 			//@PathVariable("id") int idPelicula
 			@RequestParam("idMovie") int idPelicula,
