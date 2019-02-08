@@ -33,8 +33,7 @@ public class HomeController {
 	@PostMapping("/search")
 	public String searchByDate(Model model,
 			@RequestParam("fecha") String fecha) {
-		//
-		System.out.println("buscando en la fecha: " + fecha);
+
 		// ahora la fecha actual va a ser la fecha pasada en el search
 		model = this.getMoviesAboutDate(model, fecha);
 		
