@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.eduardocode.app.model.Noticia;
+
 // esta clase es un controlador
 @Controller
 /* especificamos la ruta del controller con requestmapping a nivel
@@ -28,7 +30,14 @@ public class NoticiasController {
 			@RequestParam("status") String status,
 			@RequestParam("detalle") String detalle) {
 		// se guarda el form en un post
-		System.out.println("Titulo: "+titulo +", status: "+status+", detalle: "+detalle);
+		
+		// creando una nueva noticia
+		var noticia = new Noticia();
+		noticia.setTitulo(titulo);
+		noticia.setStatus(status);
+		noticia.setDetalle(detalle);
+		
+		System.out.println(noticia);
 		
 		return "noticias/formNoticia";
 	}
