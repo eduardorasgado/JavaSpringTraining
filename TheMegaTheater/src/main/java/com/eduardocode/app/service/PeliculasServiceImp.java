@@ -6,14 +6,22 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.eduardocode.app.model.Pelicula;
 
 // Implementacion del metodo abstracto en IPeliculasService
+
+/* Notacion service: permite la autoinclusion de una instancia de
+ * Esta clase de servicio en un controller en forma de inyeccion
+ *  de dependencia*/
+@Service
 public class PeliculasServiceImp implements IPeliculasService{
 	
 	private List<Pelicula> listaPeliculas = null;
 	
 	PeliculasServiceImp(){
+		System.out.println("INSTANCIA DE SERVICIO DE PELICULAS CREADA");
 		// constructor
 		// formateador de fechas
 		var formatter = new SimpleDateFormat("dd-MM-yyyy");

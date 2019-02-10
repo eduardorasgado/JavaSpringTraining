@@ -6,20 +6,28 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.eduardocode.app.model.Pelicula;
+//import com.eduardocode.app.model.Pelicula;
+import com.eduardocode.app.service.IPeliculasService;
 import com.eduardocode.app.utils.Utility;
 
 @Controller
 public class HomeController {
+	/* instanciando una clase del servicio peliculas usando autowire
+	 * que permite la inyeccion de dependencias
+	 *  Aqui vemos como en ningun momento usamos el operador new para instanciar
+	 *  porque spring lo hace por si solo para optimizar procesos*/
+	@Autowired
+	private IPeliculasService servicePeliculas;
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
 	
@@ -61,7 +69,7 @@ public class HomeController {
 			@RequestParam("idMovie") int idPelicula,
 			@RequestParam("fechaBusqueda") String fechaBusqueda) {
 		
-		var listaPeliculas = this.getMovieList();
+		var listaPeliculas = servicePeliculas.buscarTodas();
 		
 		// TODO: Buscar en la base de datos el horario y la pelicula
 		boolean found = false;
@@ -85,17 +93,11 @@ public class HomeController {
 		return "detail";
 	}
 	
-	// metodo para generar la lista de peliculas que existirian en la db
-	private List<Pelicula> getMovieList(){
-		//
-		return null;
-	}
-	
 	private Model getMoviesAboutDate(Model model, 
 			String fechaBusqueda) {
 		// sintaxis java 10
 		// llenando la lista con el modelo
-		var peliculas = this.getMovieList();
+		var peliculas = servicePeliculas.buscarTodas();
 		
 		// creando la lista de 5 dias a partir de ahorita
 		var siguientesDias = Utility.generateNextDays(4);
