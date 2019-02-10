@@ -112,7 +112,7 @@
               <span class="badge badge-secondary">${ pelicula.duracion } min</span>
               <span class="badge badge-secondary">${ pelicula.genero }</span>
             </h5>         
-            <p><a class="btn btn-sm btn-primary" href="detail?idMovie=${ pelicula.id }&fechaBusqueda=${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
+            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
           </div>
           </c:forEach>
 

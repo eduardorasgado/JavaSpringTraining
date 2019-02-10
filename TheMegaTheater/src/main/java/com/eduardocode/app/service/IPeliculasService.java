@@ -5,5 +5,8 @@ import java.util.List;
 import com.eduardocode.app.model.Pelicula;
 
 public interface IPeliculasService {
-	List<Pelicula> buscarTodas();
+	
+	List<Pelicula> getAll();
+	
+	Pelicula searchById(int idMovie);
 }

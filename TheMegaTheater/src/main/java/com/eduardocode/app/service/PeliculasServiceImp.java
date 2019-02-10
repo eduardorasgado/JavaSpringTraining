@@ -21,7 +21,7 @@ public class PeliculasServiceImp implements IPeliculasService{
 	private List<Pelicula> listaPeliculas = null;
 	
 	PeliculasServiceImp(){
-		System.out.println("INSTANCIA DE SERVICIO DE PELICULAS CREADA");
+		System.out.println("INSTANCIA DE SERVICIO DE PELICULAS CREADA(SINGLETON)");
 		// constructor
 		// formateador de fechas
 		var formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -70,10 +70,24 @@ public class PeliculasServiceImp implements IPeliculasService{
 	}
 
 	@Override
-	public List<Pelicula> buscarTodas() {
+	public List<Pelicula> getAll() {
 		// Auto-generated method stub
 		// regresa una lista de objectos de tipo Pelicula
 		return listaPeliculas;
+	}
+	
+	@Override
+	public Pelicula searchById(int idMovie) {
+		// Auto-generated method stub
+		
+		for(var pelicula : listaPeliculas) {
+			if(pelicula.getId() == idMovie) {
+				// si encuentra la pelicula con el id deseado
+				return pelicula;
+			}
+		}
+		// si no se encontro la pelicula
+		return null;
 	}
 	
 	private Pelicula setDatatoPelicula(Pelicula p, int id,

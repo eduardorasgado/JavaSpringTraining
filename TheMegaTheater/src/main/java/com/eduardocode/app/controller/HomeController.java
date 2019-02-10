@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //import com.eduardocode.app.model.Pelicula;
@@ -62,34 +62,25 @@ public class HomeController {
 		return "home";		
 	}
 	
-	//@RequestMapping(value="/detail/{id}/{fecha}",
-	@GetMapping("/detail")
+	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
 	public String showDetail(Model model,
-			//@PathVariable("id") int idPelicula
-			@RequestParam("idMovie") int idPelicula,
-			@RequestParam("fechaBusqueda") String fechaBusqueda) {
+			@PathVariable("id") int idPelicula,
+			@PathVariable("fecha") String fechaBusqueda) {
 		
-		var listaPeliculas = servicePeliculas.buscarTodas();
+		// llamando a un metodo del servicio de peliculas
+		var pelicula = servicePeliculas.searchById(idPelicula);
 		
-		// TODO: Buscar en la base de datos el horario y la pelicula
-		boolean found = false;
-		
-		for(var pelicula : listaPeliculas) {
-			if(pelicula.getId() == idPelicula) {
-				model.addAttribute("titulo", pelicula.getTitulo());
-				model.addAttribute("duracion", pelicula.getDuracion());
-				model.addAttribute("clasificacion", pelicula.getClasificacion());
-				model.addAttribute("id", idPelicula);
-				model.addAttribute("fecha", fechaBusqueda);
-				model.addAttribute("precio", 50);
-				found = true;
-			}
-		}
-		if(!found) {
+		if(pelicula == null) {
 			// en caso de no existir el id
 			model.addAttribute("Error", true);
+		} else {
+			model.addAttribute("titulo", pelicula.getTitulo());
+			model.addAttribute("duracion", pelicula.getDuracion());
+			model.addAttribute("clasificacion", pelicula.getClasificacion());
+			model.addAttribute("id", idPelicula);
+			model.addAttribute("fecha", fechaBusqueda);
+			model.addAttribute("precio", 50);
 		}
-		
 		return "detail";
 	}
 	
@@ -97,7 +88,7 @@ public class HomeController {
 			String fechaBusqueda) {
 		// sintaxis java 10
 		// llenando la lista con el modelo
-		var peliculas = servicePeliculas.buscarTodas();
+		var peliculas = servicePeliculas.getAll();
 		
 		// creando la lista de 5 dias a partir de ahorita
 		var siguientesDias = Utility.generateNextDays(4);
