@@ -20,7 +20,7 @@
     <meta name="author" content="">
     <title>TheMegaTheater | Bienvenido</title>
     
-	    
+	
 	<!-- Incluyendo la carpeta resources de archivos estaticos
 	a traves de un tag de spring -->
 	<spring:url value="/resources" var="urlPublic"></spring:url>

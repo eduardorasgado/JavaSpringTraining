@@ -77,8 +77,11 @@ public class HomeController {
 			model.addAttribute("titulo", pelicula.getTitulo());
 			model.addAttribute("duracion", pelicula.getDuracion());
 			model.addAttribute("clasificacion", pelicula.getClasificacion());
+			model.addAttribute("imagen", pelicula.getImagen());
+			model.addAttribute("genero", pelicula.getGenero());
+			model.addAttribute("fechaEstreno", pelicula.getFechaEstreno());
 			model.addAttribute("id", idPelicula);
-			model.addAttribute("fecha", fechaBusqueda);
+			model.addAttribute("fechaBusqueda", fechaBusqueda);
 			model.addAttribute("precio", 50);
 		}
 		return "detail";
