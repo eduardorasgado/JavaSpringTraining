@@ -32,7 +32,7 @@
 		<jsp:include page="includes/menu.jsp"></jsp:include>		
 
 		<div class="container" role="main">
-
+			<br/>
 			<!-- Marketing messaging -->
 			<div class="container">
 
@@ -46,15 +46,15 @@
 						</p>
 					</div>
 					<div class="col-sm-9">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">DETALLES</h3>
+						<div class="card card-secondary">
+							<div class="card-header">
+								<h3 class="card-title">DETALLES</h3>
 							</div>
-							<div class="panel-body">                           
+							<div class="card-body">                           
 								<p>
 									Título Original : Split <br>
-									Actores : James McAvoy, Anya Taylor Joy, Betty Buckley, Brad William Henke <br>
-									Director: Night Shyamalan <br>                  
+									Actores : <br>
+									Director: <br>                  
 									Clasificación: ${ clasificacion } <br>
 									Duración: ${ duracion } minutos <br>
 									Género: ${ genero } <br>                  
@@ -66,11 +66,11 @@
 					</div>
 				</div>
 
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title"><span class="label label-success">${ fechaBusqueda }</span></h3>
+				<div class="card card-secondary">
+					<div class="card-header">
+						<h3 class="card-title"><span class="badge badge-success">${ fechaBusqueda }</span></h3>
 					</div>
-					<div class="panel-body">
+					<div class="card-body">
 						<table class="table table-striped">
 							<thead>
 								<tr>                  
@@ -123,11 +123,11 @@
 
 				<div class="row">
 					<div class="col-sm-7">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">Trailer</h3>
+						<div class="card card-secondary">
+							<div class="card-header">
+								<h3 class="card-title">Trailer</h3>
 							</div>
-							<div class="panel-body">
+							<div class="card-body">
 								<iframe width="100%" height="315" 
 												src="https://www.youtube.com/embed/HwDr7ff5GD4" >                          
 								</iframe>
@@ -135,11 +135,11 @@
 						</div>           
 					</div> 
 					<div class="col-sm-5">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">SINOPSIS</h3>
+						<div class="card card-secondary">
+							<div class="card-header">
+								<h3 class="card-title">SINOPSIS</h3>
 							</div>
-							<div class="panel-body">
+							<div class="card-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
 							</div>
 						</div>                          
