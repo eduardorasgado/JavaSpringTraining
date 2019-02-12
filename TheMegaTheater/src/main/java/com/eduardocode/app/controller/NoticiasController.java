@@ -1,5 +1,6 @@
 package com.eduardocode.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eduardocode.app.model.Noticia;
+import com.eduardocode.app.service.NoticiasServiceImp;
 
 // esta clase es un controlador
 @Controller
@@ -16,6 +18,10 @@ import com.eduardocode.app.model.Noticia;
  **/ 
 @RequestMapping("/noticias")
 public class NoticiasController {
+	
+	// Dependency injection del servicio de Noticias
+	@Autowired
+	private NoticiasServiceImp noticiasService;
 
 	// mapping a nivel de metodo con get y post mapping
 	@GetMapping("/create")
@@ -37,7 +43,8 @@ public class NoticiasController {
 		noticia.setStatus(status);
 		noticia.setDetalle(detalle);
 		
-		System.out.println(noticia);
+		//System.out.println(noticia);
+		noticiasService.guardar(noticia);
 		
 		return "noticias/formNoticia";
 	}
