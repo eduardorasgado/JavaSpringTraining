@@ -9,7 +9,7 @@ public class NoticiasServiceImp implements INoticiasService {
 
 	@Override
 	public void guardar(Noticia noticia) {
-		System.out.println(noticia);		
+		System.out.println(noticia);
 	}
 
 }

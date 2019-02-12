@@ -32,20 +32,16 @@ public class NoticiasController {
 	
 	@PostMapping("/save")
 	public String save(
-			@RequestParam("titulo") String titulo,
-			@RequestParam("status") String status,
-			@RequestParam("detalle") String detalle) {
+			Noticia noticia) {
 		// se guarda el form en un post
-		
-		// creando una nueva noticia
-		var noticia = new Noticia();
-		noticia.setTitulo(titulo);
-		noticia.setStatus(status);
-		noticia.setDetalle(detalle);
-		
-		//System.out.println(noticia);
 		noticiasService.guardar(noticia);
 		
+		return "noticias/formNoticia";
+	}
+	
+	// manejando un intento de recargar usando get
+	@GetMapping("/save")
+	public String save() {
 		return "noticias/formNoticia";
 	}
 }

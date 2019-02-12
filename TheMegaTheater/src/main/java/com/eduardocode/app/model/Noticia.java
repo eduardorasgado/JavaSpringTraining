@@ -10,6 +10,8 @@ public class Noticia {
 	private String status;
 	
 	public Noticia() {
+		System.out.println("[NUEVA NOTICIA CREADA]");
+		// el atributo de fecha se crea de forma automatica
 		this.fechaPublicacion = new Date();
 		this.status = "Activa";
 	}
@@ -27,6 +29,7 @@ public class Noticia {
 	}
 
 	public void setTitulo(String titulo) {
+		System.out.println("Set titulo");
 		this.titulo = titulo;
 	}
 
@@ -43,6 +46,7 @@ public class Noticia {
 	}
 
 	public void setDetalle(String detalle) {
+		System.out.println("Set detalle");
 		this.detalle = detalle;
 	}
 
@@ -51,6 +55,7 @@ public class Noticia {
 	}
 
 	public void setStatus(String status) {
+		System.out.println("Set status");
 		this.status = status;
 	}
 

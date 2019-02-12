@@ -22,7 +22,6 @@
     
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/" var="urlRoot"></spring:url>
-    <spring:url value="/views" var="urlViews"></spring:url>
     <spring:url value="/noticias/save" var="urlNoticiasForm"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">   
