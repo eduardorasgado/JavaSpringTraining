@@ -15,6 +15,7 @@
     
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/" var="urlRoot"></spring:url>
+    <spring:url value="/peliculas/save" var="urlPeliculaForm"></spring:url>
 
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -32,7 +33,7 @@
 	<h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
       </div>
 
-      <form>
+      <form action="${ urlPeliculaForm }" method="post">
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">
@@ -43,7 +44,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="duracion">Duracion</label>
-              <input type="text" class="form-control" name="duracion" id="duracion" required="required" />
+              <input type="number" class="form-control" name="duracion" id="duracion" required="required" />
             </div>  
           </div>
           <div class="col-sm-3">
@@ -78,7 +79,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="status" class="control-label">Status</label>              
-              <select id="genero" name="status" class="form-control">
+              <select id="status" name="status" class="form-control">
                 <option value="Activa">Activa</option>
                 <option value="Inactiva">Inactiva</option>               
               </select>             
@@ -94,7 +95,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="imagen">Imagen</label>
-              <input type="file" id="archivoImagen" name="archivoImagen" />
+              <input type="file" id="imagen" name="imagen" />
               <p class="help-block">Imagen de la pelicula</p>
             </div> 
           </div>
@@ -151,7 +152,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <script src="bootstrap/js/bootstrap.min.js"></script> 
+    <script src="${ urlPublic }/bootstrap/js/bootstrap.min.js"></script> 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
       $(function () {
