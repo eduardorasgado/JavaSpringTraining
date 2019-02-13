@@ -33,6 +33,22 @@
 	<h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
       </div>
 
+	  <!-- Podemos mostrar los errores del binding en el frotend con la ayuda de el tag
+	  hasBindErrors -->
+	  <spring:hasBindErrors name="pelicula">
+	  	<!-- aqui va el contenido de lo que debe mostrarse, se puede iterar en el error -->
+	  	<div class="alert alert-danger" role="alert">
+	  		<p>Se han encontrado los siguientes errores:</p>
+	  		<ul>
+	  			<c:forEach items="${ errors.allErrors }" var="error">
+	  				<li>
+	  					<spring:message message="${ error }"></spring:message>
+	  				</li>
+	  			</c:forEach>
+	  		</ul>
+	  	</div>
+	  </spring:hasBindErrors>
+	  
       <form action="${ urlPeliculaForm }" method="post">
         <div class="row">
           <div class="col-sm-3">

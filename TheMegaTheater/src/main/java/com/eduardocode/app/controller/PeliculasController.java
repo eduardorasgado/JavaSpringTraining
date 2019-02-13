@@ -1,8 +1,14 @@
 package com.eduardocode.app.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,4 +43,18 @@ public class PeliculasController {
 		
 		return "peliculas/formPelicula";
 	}
+	
+	// uitilidades
+	
+	// anotacion init binder -> personalizar data binding
+	// dada la anotacion initbinder esta sera autodetectada una vez creada 
+	// la funcion y anotada
+	@InitBinder
+	private void peliculaInitBinder(WebDataBinder binder) {
+		var dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		// ultimo false no permitira fechas vacias
+		binder.registerCustomEditor(Date.class,
+				new CustomDateEditor(dateFormatter, false)); 
+	}
+	
 }
