@@ -9,4 +9,6 @@ public interface IPeliculasService {
 	List<Pelicula> getAll();
 	
 	Pelicula searchById(int idMovie);
+	
+	void insert(Pelicula pelicula);
 }

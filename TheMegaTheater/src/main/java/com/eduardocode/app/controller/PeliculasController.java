@@ -3,6 +3,7 @@ package com.eduardocode.app.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.eduardocode.app.model.Pelicula;
+import com.eduardocode.app.service.IPeliculasService;
 
 @Controller
 @RequestMapping("/peliculas")
 public class PeliculasController {
 
+	@Autowired
+	private IPeliculasService peliculasService;
+	
 	@GetMapping("/create")
 	public String create() {
 		return "peliculas/formPelicula";
@@ -38,6 +43,11 @@ public class PeliculasController {
 			}
 			return "peliculas/formPelicula";
 		}
+		
+		//- despues de validar
+		
+		peliculasService.insert(pelicula);
+		
 		System.out.println("Una pelicula se ha guardado:");
 		System.out.println(pelicula);
 		

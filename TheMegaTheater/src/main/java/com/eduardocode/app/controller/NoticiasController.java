@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eduardocode.app.model.Noticia;
-import com.eduardocode.app.service.NoticiasServiceImp;
+import com.eduardocode.app.service.INoticiasService;
 
 // esta clase es un controlador
 @Controller
@@ -21,7 +21,7 @@ public class NoticiasController {
 	
 	// Dependency injection del servicio de Noticias
 	@Autowired
-	private NoticiasServiceImp noticiasService;
+	private INoticiasService noticiasService;
 
 	// mapping a nivel de metodo con get y post mapping
 	@GetMapping("/create")

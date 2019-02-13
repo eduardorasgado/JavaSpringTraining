@@ -105,4 +105,10 @@ public class PeliculasServiceImp implements IPeliculasService{
 		return p;
 	}
 
+	@Override
+	public void insert(Pelicula pelicula) {
+		// TODO Auto-generated method stub
+		listaPeliculas.add(pelicula);
+	}
+
 }
