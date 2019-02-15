@@ -2,10 +2,12 @@ package com.eduardocode.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,15 @@ public class PeliculasController {
 
 	@Autowired
 	private IPeliculasService peliculasService;
+	
+	@GetMapping("/index")
+	public String showIndex(Model model) {
+		List<Pelicula> listaPeliculas = peliculasService.getAll();
+		
+		model.addAttribute("peliculas", listaPeliculas);
+		
+		return "peliculas/listPeliculas";
+	}
 	
 	@GetMapping("/create")
 	public String create() {
