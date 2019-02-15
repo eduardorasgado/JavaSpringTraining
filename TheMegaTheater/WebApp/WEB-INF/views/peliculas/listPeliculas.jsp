@@ -15,6 +15,7 @@
     
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/" var="urlRoot"></spring:url>
+    <spring:url value="/peliculas/create" var="urlCreatePelicula"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -29,7 +30,7 @@
     	<br>
       <h3>Listado de Peliculas</h3>
       
-      <a href="#" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
+      <a href="${ urlCreatePelicula }" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
@@ -39,17 +40,26 @@
                 <th>Clasificacion</th>
                 <th>Duracion</th>
                 <th>Fecha Estreno</th>
-                <th>Estatus</th>
+                <th>Status</th>
                 <th>Opciones</th>
             </tr>
             <c:forEach items="${ peliculas }" var="pelicula">
             	<tr>
 	                <td>${ pelicula.titulo }</td>
-	                <td>genero</td>
-	                <td>clasificacion</td>
-	                <td>duracion</td>
-	                <td>2017-05-05</td>
-	                <td><span class="badge badge-success">status</span></td>
+	                <td>${ pelicula.genero }</td>
+	                <td>${ pelicula.clasificacion }</td>
+	                <td>${ pelicula.duracion }</td>
+	                <td><fmt:formatDate value="${ pelicula.fechaEstreno }"/></td>
+	                <td><span class="badge badge-success">
+	                <c:choose>
+	                	<c:when test="${ pelicula.status eq 'Activa'}">
+	                		Activa
+	                	</c:when>
+	                	<c:otherwise>
+	                		Inactiva
+	                	</c:otherwise>
+	                </c:choose>
+	                </span></td>
 	                <td>
 	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
 	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
