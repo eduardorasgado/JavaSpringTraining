@@ -50,16 +50,16 @@
 	                <td>${ pelicula.clasificacion }</td>
 	                <td>${ pelicula.duracion }</td>
 	                <td><fmt:formatDate value="${ pelicula.fechaEstreno }"/></td>
-	                <td><span class="badge badge-success">
-	                <c:choose>
-	                	<c:when test="${ pelicula.status eq 'Activa'}">
-	                		Activa
-	                	</c:when>
-	                	<c:otherwise>
-	                		Inactiva
-	                	</c:otherwise>
-	                </c:choose>
-	                </span></td>
+	                <td><span class="badge
+		                <c:choose>
+		                	<c:when test="${ pelicula.status eq 'Activa'}">
+		                		badge-success
+		                	</c:when>
+		                	<c:otherwise>
+		                		badge-danger
+		                	</c:otherwise>
+		                </c:choose>
+	                ">${ pelicula.status }</span></td>
 	                <td>
 	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
 	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
