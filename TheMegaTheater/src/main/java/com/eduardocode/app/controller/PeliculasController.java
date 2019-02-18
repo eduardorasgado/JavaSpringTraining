@@ -52,6 +52,7 @@ public class PeliculasController {
 				// imprimiendo cada uno de los posibles errores
 				System.out.println(error.getDefaultMessage());
 			}
+			// si todo sale bien se redirige al user al listado
 			return "peliculas/formPelicula";
 		}
 		
