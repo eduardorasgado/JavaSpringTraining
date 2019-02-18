@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IPeliculasService;
@@ -41,6 +42,9 @@ public class PeliculasController {
 	
 	@PostMapping("/save")
 	public String save(Pelicula pelicula,
+			// flash attributes que permiten mandar datos
+			// a una redireccion
+			RedirectAttributes attributes,
 			// con BindingResult podemos obtener posibles errores en el
 			// data binding
 			BindingResult result) {
@@ -61,6 +65,8 @@ public class PeliculasController {
 		
 		System.out.println("Una pelicula se ha guardado:");
 		System.out.println(pelicula);
+		
+		attributes.addFlashAttribute("message", "La película ha sido guardada con éxito");
 		
 		// si todo sale bien se redirige al user al listado
 		return "redirect:/peliculas/index";
