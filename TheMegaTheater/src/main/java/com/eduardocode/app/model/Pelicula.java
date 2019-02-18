@@ -12,7 +12,7 @@ public class Pelicula {
 	private int duracion;
 	private String clasificacion;
 	private String genero;
-	private String imagen= "cinema.png"; // valor por default
+	private String imagen = "cinema.png"; // valor por default
 	private Date fechaEstreno;
 	private String status = "Activa";
 	
@@ -51,7 +51,9 @@ public class Pelicula {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
-		this.imagen = imagen;
+		if(!imagen.isEmpty()) {
+			this.imagen = imagen;
+		}
 	}
 	public Date getFechaEstreno() {
 		return fechaEstreno;

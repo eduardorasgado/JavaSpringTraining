@@ -52,7 +52,6 @@ public class PeliculasController {
 				// imprimiendo cada uno de los posibles errores
 				System.out.println(error.getDefaultMessage());
 			}
-			// si todo sale bien se redirige al user al listado
 			return "peliculas/formPelicula";
 		}
 		
@@ -63,7 +62,13 @@ public class PeliculasController {
 		System.out.println("Una pelicula se ha guardado:");
 		System.out.println(pelicula);
 		
-		return "peliculas/formPelicula";
+		// si todo sale bien se redirige al user al listado
+		return "redirect:/peliculas/index";
+	}
+	
+	@GetMapping("save")
+	public String save() {
+		return "redirect:/peliculas/create";
 	}
 	
 	// uitilidades
