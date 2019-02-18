@@ -32,12 +32,10 @@
       
       <a href="${ urlCreatePelicula }" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
       
-      <c:choose>
-      	<c:when test="${ message != null }">
-      		<span class="alert alert-success">${ message }</span>
-      		<br/><br/>
-      	</c:when>
-      </c:choose>
+      <c:if test="${ message != null }">
+      	<span class="alert alert-success">${ message }</span>
+      	<br/><br/>
+      </c:if>
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">

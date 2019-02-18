@@ -16,6 +16,16 @@
   		<param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
   	</init-param>
   	<load-on-startup>1</load-on-startup>
+  	
+  	<!-- La siguiente configuracion permite tener un directorio
+  		para la imagen -->
+  	<multipart-config>
+  		<!-- La direccion de alojamiento va a depender del sistema
+  			operativo del server: c:\tmp (windows), /tmp (linux) que es una carpeta en el
+  			root del sistema operativo-->
+  		<location>/tmp</location>
+  	</multipart-config>
+  	
   </servlet>
   
   <servlet-mapping>

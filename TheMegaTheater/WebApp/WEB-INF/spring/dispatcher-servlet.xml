@@ -23,4 +23,10 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+	
+	<!-- El bean lo buscamos con ayuda del helper de sts al poner
+		StandardServlet y picar en tab -->
+	<bean id="multipartResolver" 
+	class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean>
 </beans>
