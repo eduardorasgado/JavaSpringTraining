@@ -29,7 +29,7 @@
     <div class="container" role="main">
 
 	<br/>
-      <div class="page-header">
+      <div class="row pb-2 mt-4 mb-2 border-bottom">
 	<h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
       </div>
 
@@ -49,7 +49,7 @@
 	  	</div>
 	  </spring:hasBindErrors>
 	  
-      <form action="${ urlPeliculaForm }" method="post">
+      <form action="${ urlPeliculaForm }" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">
@@ -111,7 +111,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="imagen">Imagen</label>
-              <input type="file" id="imagen" name="imagen" />
+              <input class="form-control-file" type="file" id="imagen" name="imagen" />
               <p class="help-block">Imagen de la pelicula</p>
             </div> 
           </div>
