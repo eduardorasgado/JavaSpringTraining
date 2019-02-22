@@ -23,12 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
-import org.springframework.web.multipart.support.StringMultipartFileEditor;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IPeliculasService;
+import com.eduardocode.app.utils.Utility;
 
 @Controller
 @RequestMapping("/peliculas")
@@ -58,7 +57,7 @@ public class PeliculasController {
 			// a una redireccion
 			RedirectAttributes attributes,
 			// permite tomar una imagen de un formulario
-			@RequestPart("imagen") MultipartFile multiPart,
+			@RequestParam("imagenArchivo") MultipartFile multiPart,
 			// para recuperar la ruta absoluta del directorio images
 			HttpServletRequest request,
 			// con BindingResult podemos obtener posibles errores en el
@@ -77,9 +76,9 @@ public class PeliculasController {
 		
 		//- despues de validar guardamos la imagen 
 		if(!multiPart.isEmpty()) {
-			var nombreImagen = guardarImagen(multiPart, request);
-			// sobreescribimos lo que Pelicula haya guardado en un inicio
-			// por el nombre de la imagen
+			var nombreImagen = Utility.guardarImagen(multiPart, request);
+			// ahora si guardamos el nombre de la imagen, una vez esta es
+			// obtenida
 			pelicula.setImagen(nombreImagen);
 		}
 		peliculasService.insert(pelicula);
@@ -105,45 +104,5 @@ public class PeliculasController {
 		// ultimo false no permitira fechas vacias
 		binder.registerCustomEditor(Date.class,
 				new CustomDateEditor(dateFormatter, false));
-		
-		// to actually be able to convert Multipart instance to a String
-        // we have to register a custom editor
-		// Es necesario en el proyecto ya que al momento de que la funcion 
-		// saveMovie toma la imagen y la intenta guardar en Pelicula pelicula
-		// esta se guarda en bytes, en ese caso genera un error y tiene que
-		// convertirse la imagen a string, para guardarse, lineas mas abajo en dicha
-		// funcion, el nombre real de la imagen es guardado con un setImagen
-		b2.registerCustomEditor(String.class, new StringMultipartFileEditor());
-		
-		// to actually be able to convert Multipart instance to byte[]
-        // we have to register a custom editor
-		// por default el multipart parsea con esta funcion y no es necesario
-		// incluirla en el codigo
-		//b2.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
-		// now Spring knows how to handle multipart object and convert them
 	}
-	
-	private String guardarImagen(MultipartFile multiPart,
-			HttpServletRequest request) {
-		// Obtener el nombre original del archivo
-		var nombreOriginal = multiPart.getOriginalFilename();
-		// Obtener la ruta absoluta del directorio images
-		// apache-tomcat/webapps/cineapp/resources/images/
-		var rutaFinal = request.getServletContext()
-				.getRealPath("/resources/images/");
-		try {
-			System.out.println("ruta completa: "+ rutaFinal + nombreOriginal);
-			
-			// Formamos el nombre del archivo para guardarlo en el disco
-			// duro
-			var imageFile = new File(rutaFinal + nombreOriginal);
-			// Aqui se guarda fisicamente el archivo en el disco duro
-			multiPart.transferTo(imageFile);
-			return nombreOriginal;
-		} catch(IOException e) {
-			System.out.println("Error: "+e.getMessage());
-			return null;
-		}
-	}
-	
 }

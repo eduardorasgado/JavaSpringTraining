@@ -1,11 +1,17 @@
 package com.eduardocode.app.utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class Utility {
 	/*
@@ -43,5 +49,33 @@ public class Utility {
 		}
 		
 		return fechas;
+	}
+	
+	public static String guardarImagen(MultipartFile multiPart,
+			HttpServletRequest request) {
+		// Obtener el nombre original del archivo
+		var nombreOriginal = multiPart.getOriginalFilename();
+		
+		// quitando espacios del nombre del archivo imagen
+		nombreOriginal = nombreOriginal.replace(" ", "-");
+		
+		// Obtener la ruta absoluta del directorio images
+		// apache-tomcat/webapps/cineapp/resources/images/
+		var rutaFinal = request.getServletContext()
+				.getRealPath("/resources/images/");
+		try {
+			// Formamos el nombre del archivo para guardarlo en el disco
+			// duro
+			var imageFile = new File(rutaFinal + nombreOriginal);
+			
+			System.out.println("ruta completa: "+ imageFile.getAbsolutePath());
+			
+			// Aqui se guarda fisicamente el archivo en el disco duro
+			multiPart.transferTo(imageFile);
+			return nombreOriginal;
+		} catch(IOException e) {
+			System.out.println("Error: "+e.getMessage());
+			return null;
+		}
 	}
 }
