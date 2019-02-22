@@ -59,6 +59,16 @@ public class Utility {
 		// quitando espacios del nombre del archivo imagen
 		nombreOriginal = nombreOriginal.replace(" ", "-");
 		
+		// el argumento de split es un reges por lo que a el punto lo
+		// tomamos como caracter especial en vez de regex al ponerle \\
+		String[] nombreArray = nombreOriginal.split("\\.");
+		String extension = nombreArray[nombreArray.length-1];
+		
+		// reemplazando el nombre y agregando caracteres extra para evitar repeticion
+		// de nombre de imagenes
+		var diffCharacters = randomCharGenerator(5);
+		nombreOriginal = nombreOriginal.replace("."+extension, diffCharacters+"."+extension);
+		
 		// Obtener la ruta absoluta del directorio images
 		// apache-tomcat/webapps/cineapp/resources/images/
 		var rutaFinal = request.getServletContext()
@@ -77,5 +87,18 @@ public class Utility {
 			System.out.println("Error: "+e.getMessage());
 			return null;
 		}
+	}
+	
+	public static String randomCharGenerator(int count) {
+		// genera una cadena de caracteres alfanumericos que se usa
+		// para evitar imagenes con nombres duplicados
+		String CARACTERES  = "ABCDEFGHIJKLMNOPQRSTUWVXYZ0123456789";
+		StringBuilder builder = new StringBuilder();
+		while(count-- != 0) {
+			// tomar aleatoriamente un caracter y agregarlo al builder
+			int character = (int) (Math.random() * CARACTERES.length());
+			builder.append(CARACTERES.charAt(character));
+		}
+		return builder.toString();
 	}
 }
