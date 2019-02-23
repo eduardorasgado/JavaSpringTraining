@@ -1,15 +1,31 @@
 package com.eduardocode.app.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.eduardocode.app.model.Banner;
+import com.eduardocode.app.service.IBannersService;
 
 @Controller
 @RequestMapping("/banners")
 public class BannerController {
+	@Autowired
+	private IBannersService bannersService;
+	
 	// metodo para desplegar el listado de los banners
 	@GetMapping("/index")
-	public String index() {
+	public String index(Model model) {
+		// retorna la lista con los datos de cada banner
+		// llamamos a todos los banners disponibles
+		List<Banner> listaBanners = bannersService.getAll();
+		
+		model.addAttribute(listaBanners);
+		
 		return "banners/listBanners";
 	}
 	
