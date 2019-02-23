@@ -3,6 +3,7 @@ package com.eduardocode.app.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,13 +15,17 @@ import com.eduardocode.app.model.Banner;
 public class BannersServiceImp implements IBannersService {
 
 	private List<Banner> listaBanners = null;
+	private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	public BannersServiceImp() {
 		// constructor
 		// formateo de fechas
-		var formatter = new SimpleDateFormat("dd-MM-yyyy");
+		
 		
 		try {
+			// definimos la lista
+			listaBanners = new LinkedList<>();
+			
 			// creamos instancias de Banner con los banners con los que
 			// ya se cuentan en resources/images
 			var b1 = new Banner();
