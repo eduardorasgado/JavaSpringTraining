@@ -61,12 +61,14 @@ public class Utility {
 		
 		// el argumento de split es un reges por lo que a el punto lo
 		// tomamos como caracter especial en vez de regex al ponerle \\
+		// como se puede ver aqui:
+		// https://www.journaldev.com/634/regular-expression-in-java-regex-example
 		String[] nombreArray = nombreOriginal.split("\\.");
 		String extension = nombreArray[nombreArray.length-1];
 		
 		// reemplazando el nombre y agregando caracteres extra para evitar repeticion
 		// de nombre de imagenes
-		var diffCharacters = randomCharGenerator(5);
+		var diffCharacters = randomCharGenerator(8);
 		nombreOriginal = nombreOriginal.replace("."+extension, diffCharacters+"."+extension);
 		
 		// Obtener la ruta absoluta del directorio images
