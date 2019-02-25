@@ -17,7 +17,7 @@ pageEncoding="UTF-8" %>
     
     <spring:url value="/" var="urlRoot"></spring:url>
     <spring:url value="/resources" var="urlPublic"></spring:url>
-    
+    <spring:url value="/banners/create" var="urlFormNewBanner"></spring:url>
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
   </head>
@@ -27,11 +27,12 @@ pageEncoding="UTF-8" %>
     <!-- Fixed navbar -->
     <jsp:include page="../includes/menu.jsp"></jsp:include>
 
-    <div class="container theme-showcase" role="main">
+	<br>
+    <div class="container" role="main">
 
       <h3>Listado de imagenes del Banner</h3>
       
-      <a href="#" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
+      <a href="${urlFormNewBanner}" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
 
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
@@ -45,14 +46,14 @@ pageEncoding="UTF-8" %>
             </tr>
             <c:forEach items="${ listaBanners }" var="banner">
             	<tr>
-	                <td>1</td>
-	                <td>Slide 1</td>
-	                 <td>07-07-2017</td>    
-	                <td>slide1.jpg</td>                         
-	                <td><span class="label label-success">estatus</span></td>
+	                <td>${ banner.id }</td>
+	                <td>${ banner.titulo }</td>
+	                 <td><fmt:formatDate value="${ banner.fechaPub }"/> </td>    
+	                <td>${ banner.nombreArchivo }</td>                         
+	                <td><span class="label label-success">${ banner.status }</span></td>
 	                <td>
-	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
 	                </td>
 	            </tr>	
             </c:forEach>
@@ -62,10 +63,7 @@ pageEncoding="UTF-8" %>
       <hr class="featurette-divider">
 
       <!-- FOOTER -->
-      <footer>        
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 My CineSite, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+      <jsp:include page="../includes/footer.jsp"></jsp:include>
 
     </div> <!-- /container -->
 
