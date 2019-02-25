@@ -28,7 +28,7 @@ pageEncoding="UTF-8" %>
 
          <h3 class="blog-title"><span class="label label-success">Datos de la imagen</span></h3>
 
-         <form action="" method="POST" enctype="multipart/form-data">
+         <form action="${saveBanner}" method="post" enctype="multipart/form-data">
             <div class="row">         
                <div class="col-sm-6">
                   <div class="form-group">

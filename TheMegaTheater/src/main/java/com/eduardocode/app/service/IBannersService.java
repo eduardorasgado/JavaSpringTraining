@@ -6,4 +6,6 @@ import com.eduardocode.app.model.Banner;
 
 public interface IBannersService {
 	List<Banner> getAll();
+	
+	void insert(Banner banner);
 }

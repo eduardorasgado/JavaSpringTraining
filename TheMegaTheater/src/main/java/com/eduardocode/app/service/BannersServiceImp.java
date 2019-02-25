@@ -70,6 +70,12 @@ public class BannersServiceImp implements IBannersService {
 		return listaBanners;
 	}
 	
+	@Override
+	public void insert(Banner banner) {
+		// TODO Auto-generated method stub
+		listaBanners.add(banner);
+	}
+	
 	private Banner setDataToBanner(Banner b, int id, String titulo, 
 			String archivo, String estado, Date fechaPub) {
 		// solamente inserta los datos pasados en el objeto banner

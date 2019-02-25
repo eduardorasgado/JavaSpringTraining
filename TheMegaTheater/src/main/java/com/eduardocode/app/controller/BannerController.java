@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
 import com.eduardocode.app.service.IBannersService;
+import com.eduardocode.app.utils.Utility;
 
 @Controller
 @RequestMapping("/banners")
@@ -47,7 +48,28 @@ public class BannerController {
 	public String save(Banner banner, RedirectAttributes attribute,
 			@RequestParam("archivoImagen") MultipartFile imagen,
 			HttpServletRequest request, BindingResult result) {
-		//
-		return null;
+		// manejo de errores
+		if(result.hasErrors()) {
+			for(var error : result.getAllErrors()) {
+				System.out.println(error.getDefaultMessage());
+			}
+			// retornar a la misma vista del form
+			// TODO: Retornar con un mensaje de error
+			return "banners/formBanner";
+		}
+		
+		// procesar la imagen
+		if(!imagen.isEmpty()) {
+			// obtener el nombre de la imagen al mismo tiempo que
+			// guardamos la imagen y procesamos su nombre y ruta completa
+			var nombreImagen = Utility.guardarImagen(imagen, request);
+			banner.setNombreArchivo(nombreImagen);
+		}
+		
+		// insertando el objeto banner en la base de datos
+		bannersService.insert(banner);
+		
+		// redireccionar la pagina con un mensaje de exito
+		return "redirect:/banners/index";
 	}
 }
