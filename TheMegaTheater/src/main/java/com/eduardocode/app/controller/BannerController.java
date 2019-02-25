@@ -2,11 +2,18 @@ package com.eduardocode.app.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
 import com.eduardocode.app.service.IBannersService;
@@ -33,5 +40,14 @@ public class BannerController {
 	@GetMapping("/create")
 	public String create() {
 		return "banners/formBanner";
+	}
+	
+	@PostMapping("/save")
+	// explicacion de los parametros en el controlador de peliculas
+	public String save(Banner banner, RedirectAttributes attribute,
+			@RequestParam("archivoImagen") MultipartFile imagen,
+			HttpServletRequest request, BindingResult result) {
+		//
+		return null;
 	}
 }
