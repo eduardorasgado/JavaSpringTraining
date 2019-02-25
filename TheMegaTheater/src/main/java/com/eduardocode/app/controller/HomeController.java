@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.eduardocode.app.service.IBannersService;
 //import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IPeliculasService;
 import com.eduardocode.app.utils.Utility;
@@ -25,6 +26,9 @@ public class HomeController {
 	 *  porque spring lo hace por si solo para optimizar procesos*/
 	@Autowired
 	private IPeliculasService servicePeliculas;
+	
+	@Autowired
+	private IBannersService bannerService;
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
 	
@@ -55,6 +59,18 @@ public class HomeController {
 	public String showMain(Model model) {
 		var fechaBusqueda = homeDateFormatter.format(new Date());
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
+		
+		// agregando banners al modelo
+		var listaBanners = bannerService.getAll();
+		
+		model.addAttribute("listaBanners", listaBanners);
+		
+		// counter para el slider
+		int[] sliderCount = new int[listaBanners.size()];
+		for(int i = 1; i <= listaBanners.size();i++) {
+			sliderCount[i-1] = i;
+		}
+		model.addAttribute("sliderCounter", sliderCount);
 		
 		return "home";		
 	}
