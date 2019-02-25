@@ -6,6 +6,10 @@ import com.eduardocode.app.model.Noticia;
 
 @Service
 public class NoticiasServiceImp implements INoticiasService {
+	
+	public NoticiasServiceImp() {
+		System.out.println("INSTANCIA DE SERVICIO DE NOTICIAS CREADA(SINGLETON)");
+	}
 
 	@Override
 	public void guardar(Noticia noticia) {

@@ -34,6 +34,12 @@ pageEncoding="UTF-8" %>
       
       <a href="${urlFormNewBanner}" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
 
+	  <c:if test="${ message != null }">
+	  	<span class="alert alert-success">
+	  		${message}
+	  	</span><br/><br/>
+	  </c:if>
+	  
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
             <tr>

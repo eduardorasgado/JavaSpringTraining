@@ -54,7 +54,7 @@ public class BannerController {
 				System.out.println(error.getDefaultMessage());
 			}
 			// retornar a la misma vista del form
-			// TODO: Retornar con un mensaje de error
+			// si hay errores los mensajes de eror se manda  automaticamente
 			return "banners/formBanner";
 		}
 		
@@ -70,6 +70,7 @@ public class BannerController {
 		bannersService.insert(banner);
 		
 		// redireccionar la pagina con un mensaje de exito
+		attribute.addFlashAttribute("message", "El banner se ha guardado con éxito");
 		return "redirect:/banners/index";
 	}
 }

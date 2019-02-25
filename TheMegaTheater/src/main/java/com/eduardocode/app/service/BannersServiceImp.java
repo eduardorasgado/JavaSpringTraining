@@ -18,6 +18,8 @@ public class BannersServiceImp implements IBannersService {
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	public BannersServiceImp() {
+		System.out.println("INSTANCIA DE SERVICIO DE BANNERS CREADA(SINGLETON)");
+		
 		// constructor
 		// formateo de fechas
 		

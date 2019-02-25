@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <!DOCTYPE html>
@@ -27,6 +28,21 @@ pageEncoding="UTF-8" %>
       <div class="container" role="main">
 
          <h3 class="blog-title"><span class="label label-success">Datos de la imagen</span></h3>
+         
+         <!-- name es el nombre del objeto en el request al que se analizaran
+         sus mensajes -->
+         <spring:hasBindErrors name="banner">
+         	<div class="alert alert-danger" role="alert">
+         		<p>Los siguientes errores se han encontrado:</p>
+         		<ul>
+         			<c:forEach items="${ errors.allErrors }" var="error">
+         				<li>
+         					<spring:message message="${ error }"></spring:message>
+         				</li>
+         			</c:forEach>
+         		</ul>
+         	</div>
+         </spring:hasBindErrors>
 
          <form action="${saveBanner}" method="post" enctype="multipart/form-data">
             <div class="row">         
