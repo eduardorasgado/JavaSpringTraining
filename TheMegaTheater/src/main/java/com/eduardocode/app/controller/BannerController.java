@@ -19,12 +19,12 @@ public class BannerController {
 	
 	// metodo para desplegar el listado de los banners
 	@GetMapping("/index")
-	public String index(Model model) {
+	public String showindex(Model model) {
 		// retorna la lista con los datos de cada banner
 		// llamamos a todos los banners disponibles
 		List<Banner> listaBanners = bannersService.getAll();
 		
-		model.addAttribute(listaBanners);
+		model.addAttribute("listaBanners", listaBanners);
 		
 		return "banners/listBanners";
 	}

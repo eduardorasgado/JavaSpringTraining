@@ -1,3 +1,9 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" 
+pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,35 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <meta name="description" content="">
     <meta name="author" content="">
+    
     <title>Listado de imagenes del banner</title>
     
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/theme.css" rel="stylesheet">
+    <spring:url value="/" var="urlRoot"></spring:url>
+    <spring:url value="/resources" var="urlPublic"></spring:url>
+    
+    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">My CineSite</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Acerca</a></li>
-            <li><a href="#">Login</a></li>            
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <jsp:include page="../includes/menu.jsp"></jsp:include>
 
     <div class="container theme-showcase" role="main">
 
@@ -52,39 +43,20 @@
                 <th>Estatus</th>
                 <th>Opciones</th>              
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Slide 1</td>
-                 <td>07-07-2017</td>    
-                <td>slide1.jpg</td>                         
-                <td><span class="label label-success">estatus</span></td>
-                <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Slide 2</td>                
-                <td>08-07-2017</td>              
-                <td>slide2.jpg</td>
-                <td><span class="label label-success">estatus</span></td>
-                <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Slide 3</td>
-                <td>10-07-2017</td>              
-                <td>slide3.jpg</td>              
-                <td><span class="label label-success">estatus</span></td>
-                <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
-            </tr>         
+            <c:forEach items="${ listaBanners }" var="banner">
+            	<tr>
+	                <td>1</td>
+	                <td>Slide 1</td>
+	                 <td>07-07-2017</td>    
+	                <td>slide1.jpg</td>                         
+	                <td><span class="label label-success">estatus</span></td>
+	                <td>
+	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+	                </td>
+	            </tr>	
+            </c:forEach>
+                     
         </table>
       </div>  
       <hr class="featurette-divider">
@@ -101,6 +73,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <script src="bootstrap/js/bootstrap.min.js"></script>     
+    <script src="${ urlPublic }/bootstrap/js/bootstrap.min.js"></script>     
   </body>
 </html>

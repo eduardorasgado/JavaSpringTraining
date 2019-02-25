@@ -17,6 +17,9 @@
           <a class="nav-link" href="${ urlRoot }peliculas/index">Peliculas</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="${ urlRoot }banners/index">Banners</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">Acerca de</a>
         </li>
         <li class="nav-item">
