@@ -1,2 +1,5 @@
 *.css linguist-vendored
 TheMegaTheater/WebApp/resources/bootstrap/* linguist-vendored
+TheMegaTheater/WebApp/resources/tinymce/* linguist-vendored
+SimpleWebApp/WebContent/resources/bootstrap/* linguist-vendored
+SimpleWebApp/WebContent/resources/tinymmce/* linguist-vendored
