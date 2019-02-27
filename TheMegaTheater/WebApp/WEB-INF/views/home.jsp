@@ -46,7 +46,7 @@
         <ol class="carousel-indicators">
         	<c:forEach items="${ sliderCounter }" var="counter">
         		<li data-target="#myCarousel" data-slide-to="${ counter }" 
-        			<c:if test="${ counter == 1 }">
+        			<c:if test="${ counter == 0 }">
         				class="active"
         			</c:if>
         		>
@@ -58,7 +58,7 @@
         <div class="carousel-inner" role="listbox">
           <c:forEach items="${ listaBanners }" var="banner">
           	<c:choose>
-          		<c:when test="${ banner.id eq 1 }">
+          		<c:when test="${ banner.id-1 eq 0 }">
           			<div class="carousel-item active">
           				<img src="${ urlPublic }/images/${ banner.nombreArchivo }" 
            	  			alt="${ banner.nombreArchivo }" title="${ banner.titulo }" >

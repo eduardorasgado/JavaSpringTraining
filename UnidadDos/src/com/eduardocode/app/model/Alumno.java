@@ -3,7 +3,7 @@ package com.eduardocode.app.model;
 import java.util.Date;
 
 public class Alumno extends Persona{
-	private String control;
+	private int control;
 	private Date fechaIngreso;
 	
 	public Alumno(String nombre, int edad) {
@@ -13,11 +13,11 @@ public class Alumno extends Persona{
 		this.fechaIngreso = new Date();
 	}
 
-	public String getControl() {
+	public int getControl() {
 		return control;
 	}
 
-	public void setControl(String control) {
+	public void setControl(int control) {
 		this.control = control;
 	}
 

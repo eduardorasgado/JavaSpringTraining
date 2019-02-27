@@ -45,6 +45,8 @@ public class HomeController {
 
 		// ahora la fecha actual va a ser la fecha pasada en el search
 		model = this.getMoviesAboutDate(model, fecha);
+
+		model = this.getBanners(model);
 		
 		return "home";
 	}
@@ -61,16 +63,7 @@ public class HomeController {
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		
 		// agregando banners al modelo
-		var listaBanners = bannerService.getAll();
-		
-		model.addAttribute("listaBanners", listaBanners);
-		
-		// counter para el slider
-		int[] sliderCount = new int[listaBanners.size()];
-		for(int i = 1; i <= listaBanners.size();i++) {
-			sliderCount[i-1] = i;
-		}
-		model.addAttribute("sliderCounter", sliderCount);
+		model = this.getBanners(model);
 		
 		return "home";		
 	}
@@ -100,6 +93,8 @@ public class HomeController {
 		return "detail";
 	}
 	
+	// utilidades
+	
 	private Model getMoviesAboutDate(Model model, 
 			String fechaBusqueda) {
 		// sintaxis java 10
@@ -114,6 +109,22 @@ public class HomeController {
 		// mandando la fecha actual al frontend y los sig 4 dias
 		model.addAttribute("fechaBusqueda", fechaBusqueda);
 		model.addAttribute("listaFechas", siguientesDias);
+		
+		return model;
+	}
+	
+	private Model getBanners(Model model) {
+		// agregando banners al modelo
+		var listaBanners = bannerService.getAll();
+						
+		model.addAttribute("listaBanners", listaBanners);
+		
+		// counter para el slider
+		int[] sliderCount = new int[listaBanners.size()];
+		for(int i = 0; i < listaBanners.size();i++) {
+			sliderCount[i] = i;
+		}
+		model.addAttribute("sliderCounter", sliderCount);
 		
 		return model;
 	}
