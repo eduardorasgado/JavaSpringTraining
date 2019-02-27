@@ -58,7 +58,7 @@
         <div class="carousel-inner" role="listbox">
           <c:forEach items="${ listaBanners }" var="banner">
           	<c:choose>
-          		<c:when test="${ banner.id-1 eq 0 }">
+          		<c:when test="${ banner.id eq bannerinit }">
           			<div class="carousel-item active">
           				<img src="${ urlPublic }/images/${ banner.nombreArchivo }" 
            	  			alt="${ banner.nombreArchivo }" title="${ banner.titulo }" >

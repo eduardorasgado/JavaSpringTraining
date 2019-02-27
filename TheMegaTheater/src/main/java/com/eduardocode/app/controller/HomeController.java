@@ -119,13 +119,20 @@ public class HomeController {
 						
 		model.addAttribute("listaBanners", listaBanners);
 		
-		// counter para el slider
-		int[] sliderCount = new int[listaBanners.size()];
-		for(int i = 0; i < listaBanners.size();i++) {
-			sliderCount[i] = i;
+		// tomar el id del primer elemento como punto de inicio o cero
+		if(listaBanners.size() > 0) {
+			var initPoint = listaBanners.get(0).getId();
+			
+			// counter para el slider
+			int[] sliderCount = new int[listaBanners.size()];
+			for(int i = 0; i < listaBanners.size();i++) {
+				sliderCount[i] = i;
+			}
+			model.addAttribute("sliderCounter", sliderCount);
+			// para mostrar los sliders en orden aun cuando no inicien con un id de
+			// cero, crear las condiciones para que se considere cero
+			model.addAttribute("bannerinit", initPoint);
 		}
-		model.addAttribute("sliderCounter", sliderCount);
-		
 		return model;
 	}
 }
