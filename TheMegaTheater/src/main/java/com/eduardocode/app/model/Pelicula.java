@@ -16,12 +16,15 @@ public class Pelicula {
 	private Date fechaEstreno;
 	private String status = "Activa";
 	
+	// atributos de la clase compuesta
+	private Detalle detalle;
+	
 	public Pelicula() {
 		// default constructor
 		System.out.println("Se ha creado una pelicula");
 	}
 	
-	// acceso a atibutos
+	// acceso a atributos
 	public int getId() {
 		return id;
 	}
@@ -72,12 +75,18 @@ public class Pelicula {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	public Detalle getDetalle() {
+		return detalle;
+	}
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
+	}
+
 	// formato del despliegue actual del objeto
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
 				+ clasificacion + ", genero=" + genero + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
-				+ ", status=" + status + "]";
-	}	
+				+ ", status=" + status + ", detalle=" + detalle + "]";
+	}
 }
