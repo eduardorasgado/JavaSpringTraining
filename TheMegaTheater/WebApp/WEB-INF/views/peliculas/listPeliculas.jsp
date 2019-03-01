@@ -45,6 +45,7 @@
                 <th>Clasificacion</th>
                 <th>Duracion</th>
                 <th>Fecha Estreno</th>
+                <th>Detalle</th>
                 <th>Status</th>
                 <th>Opciones</th>
             </tr>
@@ -55,6 +56,7 @@
 	                <td>${ pelicula.clasificacion }</td>
 	                <td>${ pelicula.duracion }</td>
 	                <td><fmt:formatDate value="${ pelicula.fechaEstreno }"/></td>
+	                <td><span style="font-size: 12px">${ pelicula.detalle }</span></td>
 	                <td><span class="badge
 		                <c:choose>
 		                	<c:when test="${ pelicula.status eq 'Activa'}">

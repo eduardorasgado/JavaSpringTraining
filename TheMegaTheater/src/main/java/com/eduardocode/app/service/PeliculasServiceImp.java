@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.eduardocode.app.model.Detalle;
 import com.eduardocode.app.model.Pelicula;
 
 // Implementacion del metodo abstracto en IPeliculasService
@@ -36,24 +37,33 @@ public class PeliculasServiceImp implements IPeliculasService{
 			p1 = this.setDatatoPelicula(p1, 1, "El viaje de Chihiro", 124, "A",
 					"Anime Aventura", formatter.parse("02-05-2017"), "cinema.png",
 					"Activa");
+			p1 = this.setDetalle(p1, 1, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
+					"https://www.youtube.com/watch?v=bILE5BEyhdo");
 			
 			
 			var p2 = new Pelicula();
 			p2 = this.setDatatoPelicula(p2, 2, "La bella y la bestia", 132, "B",
 					"Drama", formatter.parse("20-05-2017"), "bella.png", "Activa");
-			
+			p2 = this.setDetalle(p2, 2, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
+					"https://www.youtube.com/watch?v=bILE5BEyhdo");
 			
 			var p3 = new Pelicula();
 			p3 = this.setDatatoPelicula(p3, 3, "Contratiempo", 106, "A", "Accion",
 					formatter.parse("28-03-2016"), "contratiempo.png", "Activa");
+			p3 = this.setDetalle(p3, 3, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
+					"https://www.youtube.com/watch?v=bILE5BEyhdo");
 			
 			var p4 = new Pelicula();
 			p4 = this.setDatatoPelicula(p4, 4, "Kong", 154, "A", "Accion",
 					formatter.parse("06-06-2017"), "kong.png", "Inactiva");
+			p4 = this.setDetalle(p4, 4, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
+					"https://www.youtube.com/watch?v=bILE5BEyhdo");
 			
 			var p5 = new Pelicula();
 			p5 = this.setDatatoPelicula(p5, 5, "Life: Vida Inteligente", 122, "B", "Terror",
 					formatter.parse("01-02-2016"), "estreno5.png", "Activa");
+			p5 = this.setDetalle(p5, 5, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
+					"https://www.youtube.com/watch?v=bILE5BEyhdo");
 			
 			// agregando los objetos a la lista
 			listaPeliculas.add(p1);
@@ -109,6 +119,20 @@ public class PeliculasServiceImp implements IPeliculasService{
 	public void insert(Pelicula pelicula) {
 		// TODO Auto-generated method stub
 		listaPeliculas.add(pelicula);
+	}
+	
+	private Pelicula setDetalle(Pelicula p, int id, String director,
+			String actores, String sinopsis, String trailer) {
+		var detalle = new Detalle();
+		
+		detalle.setId(id);
+		detalle.setDirector(director);
+		detalle.setActores(actores);
+		detalle.setSinopsis(sinopsis);
+		detalle.setTrailer(trailer);
+		
+		p.setDetalle(detalle);
+		return p;
 	}
 
 }
