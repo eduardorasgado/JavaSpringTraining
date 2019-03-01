@@ -80,13 +80,7 @@ public class HomeController {
 			// en caso de no existir el id
 			model.addAttribute("Error", true);
 		} else {
-			model.addAttribute("titulo", pelicula.getTitulo());
-			model.addAttribute("duracion", pelicula.getDuracion());
-			model.addAttribute("clasificacion", pelicula.getClasificacion());
-			model.addAttribute("imagen", pelicula.getImagen());
-			model.addAttribute("genero", pelicula.getGenero());
-			model.addAttribute("fechaEstreno", pelicula.getFechaEstreno());
-			model.addAttribute("id", idPelicula);
+			model.addAttribute("pelicula", pelicula);
 			model.addAttribute("fechaBusqueda", fechaBusqueda);
 			model.addAttribute("precio", 50);
 		}

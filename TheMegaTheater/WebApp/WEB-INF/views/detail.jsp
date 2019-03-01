@@ -37,12 +37,12 @@
 			<div class="container">
 
 				<div class="row pb-2 mt-4 mb-2 border-bottom">
-					<h2>${ titulo }</h2>
+					<h2>${ pelicula.titulo }</h2>
 				</div>
 				<div class="row">
 					<div class="col-sm-3">
 						<p class="text-center">
-							<img class="rounded" src="${ urlPublic}/images/${ imagen }" alt="Generic placeholder image" width="155" height="220">            
+							<img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="155" height="220">            
 						</p>
 					</div>
 					<div class="col-sm-9">
@@ -52,13 +52,13 @@
 							</div>
 							<div class="card-body">                           
 								<p>
-									Título Original : Split <br>
-									Actores : <br>
-									Director: <br>                  
-									Clasificación: ${ clasificacion } <br>
-									Duración: ${ duracion } minutos <br>
-									Género: ${ genero } <br>                  
-									Fecha Estreno: <fmt:formatDate value="${ fechaEstreno }"/>                  
+									Título Original : ${pelicula.titulo} <br>
+									Actores : ${ pelicula.detalle.actores } <br>
+									Director: ${ pelicula.detalle.director }<br>                  
+									Clasificación: ${ pelicula.clasificacion } <br>
+									Duración: ${ pelicula.duracion } minutos <br>
+									Género: ${ pelicula.genero } <br>                  
+									Fecha Estreno: <fmt:formatDate value="${ pelicula.fechaEstreno }"/>                  
 								</p> 
 
 							</div>
@@ -83,7 +83,7 @@
 								<tr>                 
 									<td>16:00</td>
 									<td>Sala 1</td>  
-									<td>$10</td>  
+									<td>$${ precio }</td>  
 								</tr>              
 								<tr>                 
 									<td>18:00</td>
@@ -129,7 +129,7 @@
 							</div>
 							<div class="card-body">
 								<iframe width="100%" height="315" 
-												src="https://www.youtube.com/embed/HwDr7ff5GD4" >                          
+												src="${ pelicula.detalle.trailer }" >                          
 								</iframe>
 							</div>
 						</div>           
@@ -140,7 +140,7 @@
 								<h3 class="card-title">SINOPSIS</h3>
 							</div>
 							<div class="card-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+								<p>${ pelicula.detalle.sinopsis }</p>
 							</div>
 						</div>                          
 					</div>
