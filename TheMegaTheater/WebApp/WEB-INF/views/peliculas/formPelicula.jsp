@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,45 +49,46 @@
 	  		</ul>
 	  	</div>
 	  </spring:hasBindErrors>
-	  
-      <form action="${ urlPeliculaForm }" method="post" enctype="multipart/form-data">
-        <div class="row">
+      
+      <!-- form tag library de spring: cambiamos name por path -->
+      <form:form action="${ urlPeliculaForm }" method="post" enctype="multipart/form-data" modelAttribute="pelicula">
+      	<div class="row">
           <div class="col-sm-3">
             <div class="form-group">
               <label for="titulo">Título</label>
-              <input type="text" class="form-control" name="titulo" id="titulo" required="required" />
+              <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
             </div>  
           </div>
           <div class="col-sm-3">
             <div class="form-group">
               <label for="duracion">Duracion</label>
-              <input type="number" class="form-control" name="duracion" id="duracion" required="required" />
+              <form:input type="number" class="form-control" path="duracion" id="duracion" required="required" />
             </div>  
           </div>
           <div class="col-sm-3">
             <div class="form-group">
               <label for="clasificacion" class="control-label">Clasificacion</label>              
-              <select id="clasificacion" name="clasificacion" class="form-control">
-                <option value="A">Clasificacion A</option>
-                <option value="B">Clasificacion B</option>
-                <option value="C">Clasificacion C</option>                  
-              </select>             
+              <form:select id="clasificacion" path="clasificacion" class="form-control">
+                <form:option value="A">Clasificacion A</form:option>
+                <form:option value="B">Clasificacion B</form:option>
+                <form:option value="C">Clasificacion C</form:option>                  
+              </form:select>             
             </div> 
           </div>
           <div class="col-sm-3">
             <div class="form-group">
               <label for="genero" class="control-label">Genero</label>              
-              <select id="genero" name="genero" class="form-control">
-                <option value="Accion">Accion</option>
-                <option value="Aventura">Aventura </option>
-                <option value="Clasicas">Clasicas</option>                  
-                <option value="Comedia Romantica">Comedia Romantica</option>                  
-                <option value="Drama">Drama</option>                  
-                <option value="Terror">Terror</option>                  
-                <option value="Infantil">Infantil</option>                  
-                <option value="Accion y Aventura">Accion y Aventura</option>                  
-                <option value="Romantica">Romantica</option>                  
-              </select>             
+              <form:select id="genero" path="genero" class="form-control">
+                <form:option value="Accion">Accion</form:option>
+                <form:option value="Aventura">Aventura </form:option>
+                <form:option value="Clasicas">Clasicas</form:option>                  
+                <form:option value="Comedia Romantica">Comedia Romantica</form:option>                  
+                <form:option value="Drama">Drama</form:option>                  
+                <form:option value="Terror">Terror</form:option>                  
+                <form:option value="Infantil">Infantil</form:option>                  
+                <form:option value="Accion y Aventura">Accion y Aventura</form:option>                  
+                <form:option value="Romantica">Romantica</form:option>                  
+              </form:select>             
             </div> 
           </div>         
         </div>
@@ -95,19 +97,21 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="status" class="control-label">Status</label>              
-              <select id="status" name="status" class="form-control">
-                <option value="Activa">Activa</option>
-                <option value="Inactiva">Inactiva</option>               
-              </select>             
+              <form:select id="status" path="status" class="form-control">
+                <form:option value="Activa">Activa</form:option>
+                <form:option value="Inactiva">Inactiva</form:option>               
+              </form:select>             
             </div> 
           </div>     
           <div class="col-sm-3">
             <div class="form-group">
               <label for="fechaEstreno">Fecha Estreno</label>             
-              <input type="text" class="form-control" name="fechaEstreno" id="fechaEstreno" required="required" />
+              <form:input type="text" class="form-control" path="fechaEstreno" id="fechaEstreno" required="required" />
             </div>  
           </div>
 
+		  <!-- No se le agrega porque no se quiere agregar directamente al modelo
+		  debido a que se maneja desde el controller como multipart -->
           <div class="col-sm-3">
             <div class="form-group">
               <label for="imagenArchivo">Imagen</label>
@@ -155,7 +159,8 @@
         -->
         
         <button type="submit" class="btn btn-danger" >Guardar</button>
-      </form> 
+      </form:form>
+      
 
       <hr class="featurette-divider">
 

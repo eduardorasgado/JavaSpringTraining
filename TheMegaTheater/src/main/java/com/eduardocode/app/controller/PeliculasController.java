@@ -15,6 +15,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,13 +43,19 @@ public class PeliculasController {
 	}
 	
 	@GetMapping("/create")
-	public String create() {
+	public String create(@ModelAttribute Pelicula pelicula) {
+		// el metodo create debe tener un modelo de clase pelicula
+		// ya que en la vista que regresa este metodo se usa
+		// un form con for tag library de spring
 		return "peliculas/formPelicula";
 	}
 	
 	@PostMapping("/save")
 	public String saveMovie(
-			Pelicula pelicula,
+			// si hay un metodo get que regresa una vista con form tag library
+			// su metodo post tambien debe de manejar la clase dada con el model
+			// attribute
+			@ModelAttribute Pelicula pelicula,
 			// flash attributes que permiten mandar datos
 			// a una redireccion
 			RedirectAttributes attributes,
