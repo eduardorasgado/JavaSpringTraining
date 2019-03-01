@@ -43,10 +43,13 @@ public class PeliculasController {
 	}
 	
 	@GetMapping("/create")
-	public String create(@ModelAttribute Pelicula pelicula) {
+	public String create(@ModelAttribute Pelicula pelicula, Model model) {
 		// el metodo create debe tener un modelo de clase pelicula
 		// ya que en la vista que regresa este metodo se usa
 		// un form con for tag library de spring
+		var generos = peliculasService.searchGenres();
+		
+		model.addAttribute("generos", generos);
 		return "peliculas/formPelicula";
 	}
 	

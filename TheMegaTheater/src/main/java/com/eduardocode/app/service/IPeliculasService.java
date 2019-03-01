@@ -11,4 +11,6 @@ public interface IPeliculasService {
 	Pelicula searchById(int idMovie);
 	
 	void insert(Pelicula pelicula);
+	
+	List<String> searchGenres();
 }

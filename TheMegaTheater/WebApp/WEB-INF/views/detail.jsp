@@ -129,7 +129,7 @@
 							</div>
 							<div class="card-body">
 								<iframe width="100%" height="315" 
-												src="${ pelicula.detalle.trailer }" >                          
+												src="${pelicula.detalle.trailer}" >                          
 								</iframe>
 							</div>
 						</div>           

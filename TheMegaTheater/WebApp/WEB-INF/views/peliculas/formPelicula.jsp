@@ -58,6 +58,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="titulo">Título</label>
+              <form:hidden path="id"/>
               <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
             </div>  
           </div>
@@ -80,17 +81,9 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="genero" class="control-label">Genero</label>              
-              <form:select id="genero" path="genero" class="form-control">
-                <form:option value="Accion">Accion</form:option>
-                <form:option value="Aventura">Aventura </form:option>
-                <form:option value="Clasicas">Clasicas</form:option>                  
-                <form:option value="Comedia Romantica">Comedia Romantica</form:option>                  
-                <form:option value="Drama">Drama</form:option>                  
-                <form:option value="Terror">Terror</form:option>                  
-                <form:option value="Infantil">Infantil</form:option>                  
-                <form:option value="Accion y Aventura">Accion y Aventura</form:option>                  
-                <form:option value="Romantica">Romantica</form:option>                  
-              </form:select>             
+              <!-- cargando los elementos de un select desde el controller dinamicamente -->
+              <form:select class="form-control" path="genero" id="genero" items="${ generos }" />
+              
             </div> 
           </div>         
         </div>
@@ -117,6 +110,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="imagenArchivo">Imagen</label>
+              <form:hidden path="imagen"/>
               <input class="form-control-file" type="file" id="imagenArchivo" name="imagenArchivo" />
               <p class="help-block">Imagen de la pelicula</p>
             </div> 
@@ -143,8 +137,8 @@
 
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="trailer">URL del Trailer (Youtube)</label>
-              <form:input type="text" class="form-control" path="detalle.trailer" id="trailer" placeholder="URL completa del video de YOUTUBE" required="required" />
+              <label for="trailer">URL del Trailer (enlace tipo <\insertar\> o embed de Youtube)</label>
+              <form:input type="text" class="form-control" path="detalle.trailer" id="trailer" placeholder="URL completa del video de YOUTUBE" />
             </div>  
           </div> 
         </div> 
