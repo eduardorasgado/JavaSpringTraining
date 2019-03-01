@@ -9,12 +9,17 @@ public class Pelicula {
 	// accesadas con setters / getters
 	private int id;
 	private String titulo;
-	private int duracion;
-	private String clasificacion;
+	private int duracion = 100;
+	private String clasificacion = "B";
 	private String genero;
 	private String imagen = "cinema.png"; // valor por default
 	private Date fechaEstreno;
 	private String status = "Activa";
+	
+	public Pelicula() {
+		// default constructor
+		System.out.println("Se ha creado una pelicula");
+	}
 	
 	// acceso a atibutos
 	public int getId() {

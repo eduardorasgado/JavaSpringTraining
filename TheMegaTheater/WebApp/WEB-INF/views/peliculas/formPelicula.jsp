@@ -50,6 +50,8 @@
 	  	</div>
 	  </spring:hasBindErrors>
       
+      <!-- ${ pelicula } -->
+      
       <!-- form tag library de spring: cambiamos name por path -->
       <form:form action="${ urlPeliculaForm }" method="post" enctype="multipart/form-data" modelAttribute="pelicula">
       	<div class="row">
