@@ -30,34 +30,24 @@
 
          <h3 class="blog-title text-center"><span class="badge badge-success">Contacto</span></h3><br>  
 
-         <form class="form-horizontal" action="${ saveContacto }" method="post">
+         <form:form class="form-horizontal" action="${ saveContacto }" method="post" modelAttribute="instanciaContacto">
             <div class="form-group">
                <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required">
+                  <form:input type="text" class="form-control" id="nombre" path="nombre" placeholder="Nombre" required="required"/>
                </div>
             </div>
             <div class="form-group">
                <label for="email" class="col-sm-2 control-label">Email</label>
                <div class="col-sm-10">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required">
+                  <form:input type="email" class="form-control" path="email" id="email" placeholder="Email" required="required"/>
                </div>
             </div>
 
             <div class="form-group">
                <label for="genero" class="col-sm-2 control-label">Géneros Favoritos</label>
                <div class="col-sm-10">
-                  <select id="genero" name="generos" multiple="multiple" class="form-control">
-                     <option value="Accion">Accion</option>
-                     <option value="Aventura">Aventura </option>
-                     <option value="Clasicas">Clasicas</option>                  
-                     <option value="Comedia Romantica">Comedia Romantica</option>                  
-                     <option value="Drama">Drama</option>                  
-                     <option value="Terror">Terror</option>                  
-                     <option value="Infantil">Infantil</option>                  
-                     <option value="Accion y Aventura">Accion y Aventura</option>                  
-                     <option value="Romantica">Romantica</option>                  
-                  </select> 
+                  <form:select id="genero" path="generos" multiple="multiple" class="form-control" items="${ generosPelicula }" />
                </div>
             </div>
 
@@ -66,23 +56,23 @@
                <div class="col-sm-10">
                   <div class="form-check-inline">
                   	<label class="form-check-label">
-                  	<input class="form-check-input" type="radio" name="rating" value="1">Muy Mala</label>
+                  	<form:radiobutton class="form-check-input" path="rating" value="1" />Muy Mala</label>
                   </div>
                   <div class="form-check-inline">
                   	<label class="form-check-label">
-                  	<input class="form-check-input" type="radio" name="rating" value="2">Mala</label>
+                  	<form:radiobutton class="form-check-input" path="rating" value="2" />Mala</label>
                   </div>
                   <div class="form-check-inline">
                   	<label class="form-check-label">
-                  	<input class="form-check-input" type="radio" name="rating" value="3">Regular</label>
+                  	<form:radiobutton class="form-check-input" path="rating" value="3" />Regular</label>
                   </div>
                   <div class="form-check-inline">
                   	<label class="form-check-label">
-                  	<input class="form-check-input" type="radio" name="rating" value="4">Buena</label>
+                  	<form:radiobutton class="form-check-input" path="rating" value="4" />Buena</label>
                   </div>
                   <div class="form-check-inline">
                   	<label class="form-check-label">
-                  	<input class="form-check-input" type="radio" name="rating" value="5">Muy Buena</label>
+                  	<form:radiobutton class="form-check-input" path="rating" value="5" />Muy Buena</label>
                   </div>
                </div>
             </div>
@@ -97,10 +87,6 @@
                	  <div class="form-check-inline">
                	  	<label class="form-check-label">
                	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Promociones">Promociones</label>
-               	  </div>
-               	  <div class="form-check-inline">
-               	  	<label class="form-check-label">
-               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Noticias" >Noticias</label>
                	  </div>
                	  <div class="form-check-inline">
                	  	<label class="form-check-label">
@@ -127,7 +113,7 @@
                </div>
             </div>
 
-         </form>
+         </form:form>
 
          <hr class="featurette-divider">
 
