@@ -17,8 +17,8 @@ public class ContactoController {
 		return "formContacto";
 	}
 	
-	@PostMapping("/create")
-	public String create(@ModelAttribute Contacto contacto){
+	@PostMapping("/save")
+	public String save(@ModelAttribute Contacto contacto){
 		// se guarda en contacto
 		System.out.println("[CREANDO UN NUEVO CONTACTO EN CONTROLLER]");
 		return null;

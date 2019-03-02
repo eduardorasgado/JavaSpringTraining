@@ -25,9 +25,10 @@
       <!-- Fixed navbar -->
       <jsp:include page="includes/menu.jsp"></jsp:include>
 
-      <div class="container theme-showcase" role="main">
+      <div class="container" role="main">
+      <br/>
 
-         <h3 class="blog-title text-center"><span class="label label-success">Contacto</span></h3><br>  
+         <h3 class="blog-title text-center"><span class="badge badge-success">Contacto</span></h3><br>  
 
          <form class="form-horizontal" action="${ saveContacto }" method="post">
             <div class="form-group">
@@ -63,21 +64,53 @@
             <div class="form-group">
                <label class="col-sm-2 control-label">Tu experiencia en el sitio</label>
                <div class="col-sm-10">
-                  <label><input type="radio" name="rating" value="1">Muy Mala</label>
-                  <label><input type="radio" name="rating" value="2">Mala</label>
-                  <label><input type="radio" name="rating" value="3">Regular</label>
-                  <label><input type="radio" name="rating" value="4">Buena</label>
-                  <label><input type="radio" name="rating" value="5">Muy Buena</label>
+                  <div class="form-check-inline">
+                  	<label class="form-check-label">
+                  	<input class="form-check-input" type="radio" name="rating" value="1">Muy Mala</label>
+                  </div>
+                  <div class="form-check-inline">
+                  	<label class="form-check-label">
+                  	<input class="form-check-input" type="radio" name="rating" value="2">Mala</label>
+                  </div>
+                  <div class="form-check-inline">
+                  	<label class="form-check-label">
+                  	<input class="form-check-input" type="radio" name="rating" value="3">Regular</label>
+                  </div>
+                  <div class="form-check-inline">
+                  	<label class="form-check-label">
+                  	<input class="form-check-input" type="radio" name="rating" value="4">Buena</label>
+                  </div>
+                  <div class="form-check-inline">
+                  	<label class="form-check-label">
+                  	<input class="form-check-input" type="radio" name="rating" value="5">Muy Buena</label>
+                  </div>
                </div>
             </div>
 
             <div class="form-group">
                <label class="col-sm-2 control-label">Te gustaría recibir notificaciones de:</label>
                <div class="col-sm-10">
-                  <label><input type="checkbox" name="notificaciones" value="Estrenos">Estrenos</label>
-                  <label><input type="checkbox" name="notificaciones" value="Promociones">Promociones</label>
-                  <label><input type="checkbox" name="notificaciones" value="Noticias" >Noticias</label>
-                  <label><input type="checkbox" name="notificaciones" value="Preventas">Preventas</label>
+               	  <div class="form-check-inline">
+               	  	<label class="form-check-label">
+               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Estrenos">Estrenos</label>
+               	  </div>
+               	  <div class="form-check-inline">
+               	  	<label class="form-check-label">
+               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Promociones">Promociones</label>
+               	  </div>
+               	  <div class="form-check-inline">
+               	  	<label class="form-check-label">
+               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Noticias" >Noticias</label>
+               	  </div>
+               	  <div class="form-check-inline">
+               	  	<label class="form-check-label">
+               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Noticias" >Noticias</label>
+               	  </div>
+                  <div class="form-check-inline">
+                  	<label class="form-check-label">
+                  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Preventas">Preventas</label>
+                  </div>
+                  
                </div>
             </div>
 
