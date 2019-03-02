@@ -14,6 +14,7 @@
       
       <spring:url value="/resources" var="urlPublic"></spring:url>
       <spring:url value="/" var="urlRoot"></spring:url>
+      <spring:url value="/contacto/save" var="saveContacto"></spring:url>
       
       <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
       
@@ -28,7 +29,7 @@
 
          <h3 class="blog-title text-center"><span class="label label-success">Contacto</span></h3><br>  
 
-         <form class="form-horizontal">
+         <form class="form-horizontal" action="${ saveContacto }" method="post">
             <div class="form-group">
                <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                <div class="col-sm-10">
