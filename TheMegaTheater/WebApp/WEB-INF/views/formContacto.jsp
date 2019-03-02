@@ -2,7 +2,7 @@
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -28,7 +28,12 @@
       <div class="container" role="main">
       <br/>
 
-         <h3 class="blog-title text-center"><span class="badge badge-success">Contacto</span></h3><br>  
+         <h3 class="blog-title text-center"><span class="badge badge-success">Contacto</span></h3><br>
+         
+          <c:if test="${ message != null }">
+          	<span class="alert alert-success">${ message }</span>
+          	<br/><br/>
+          </c:if>
 
          <form:form class="form-horizontal" action="${ saveContacto }" method="post" modelAttribute="instanciaContacto">
             <div class="form-group">
