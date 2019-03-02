@@ -54,6 +54,14 @@
       
       <!-- form tag library de spring: cambiamos name por path -->
       <form:form action="${ urlPeliculaForm }" method="post" enctype="multipart/form-data" modelAttribute="pelicula">
+      <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" 
+              width="150" height="200" title="Imagen Actual de la Pelicula">
+            </div>  
+          </div>
+      </div>
       	<div class="row">
           <div class="col-sm-3">
             <div class="form-group">
