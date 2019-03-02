@@ -82,19 +82,19 @@
                <div class="col-sm-10">
                	  <div class="form-check-inline">
                	  	<label class="form-check-label">
-               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Estrenos">Estrenos</label>
+               	  	<form:checkbox class="form-check-input" path="notificaciones" value="Estrenos" />Estrenos</label>
                	  </div>
                	  <div class="form-check-inline">
                	  	<label class="form-check-label">
-               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Promociones">Promociones</label>
+               	  	<form:checkbox class="form-check-input" path="notificaciones" value="Promociones" />Promociones</label>
                	  </div>
                	  <div class="form-check-inline">
                	  	<label class="form-check-label">
-               	  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Noticias" >Noticias</label>
+               	  	<form:checkbox class="form-check-input" path="notificaciones" value="Noticias" />Noticias</label>
                	  </div>
                   <div class="form-check-inline">
                   	<label class="form-check-label">
-                  	<input class="form-check-input" type="checkbox" name="notificaciones" value="Preventas">Preventas</label>
+                  	<form:checkbox class="form-check-input" path="notificaciones" value="Preventas" />Preventas</label>
                   </div>
                   
                </div>
@@ -103,7 +103,7 @@
             <div class="form-group">
                <label class="col-sm-2 control-label">Comentarios:</label>
                <div class="col-sm-10">
-                  <textarea class="form-control" name="comentarios" id="comentarios" rows="5"></textarea>
+                  <form:textarea class="form-control" path="comentarios" id="comentarios" rows="5"></form:textarea>
                </div>
             </div>
 

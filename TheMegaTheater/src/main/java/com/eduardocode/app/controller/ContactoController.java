@@ -29,7 +29,8 @@ public class ContactoController {
 	@PostMapping("/save")
 	public String save(@ModelAttribute("instanciaContacto") Contacto contacto){
 		// se guarda en contacto
-		System.out.println("[CREANDO UN NUEVO CONTACTO EN CONTROLLER]");
+		System.out.println("[CREANDO UN NUEVO CONTACTO EN CONTROLLER]:");
+		System.out.println(contacto);
 		return "home";
 	}
 }
