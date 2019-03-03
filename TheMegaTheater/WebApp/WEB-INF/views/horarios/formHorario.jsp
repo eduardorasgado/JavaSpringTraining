@@ -34,12 +34,9 @@
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="idPelicula" class="control-label">Pelicula</label>              
-							<select id="idPelicula" name="idPelicula" class="form-control">
-								<option value="1">Titulo Pelicula 1</option>
-								<option value="2">Titulo Pelicula 2</option>
-								<option value="3">Titulo Pelicula 3</option>                
-							</select>             
+							<label for="idPelicula" class="control-label">Pelicula</label>              							
+							<form:select class="form-control" path="pelicula" items="${ peliculas }" 
+							itemValue="id" itemLabel="titulo"></form:select>      
 						</div> 
 					</div>
 				</div>
@@ -47,24 +44,24 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="fecha">Fecha</label>             
-							<input type="text" class="form-control" name="fecha" id="fecha" required="required"/>
+							<form:input type="text" class="form-control" path="fecha" id="fecha" required="required"/>
 						</div>  
 					</div>
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="hora">Hora</label>
-							<input type="text" class="form-control" name="hora" id="hora" placeholder="Formato: HH:mm Ejemplo 21:30" required="required"/>
+							<form:input type="text" class="form-control" path="hora" id="hora" placeholder="Formato: HH:mm Ejemplo 21:30" required="required"/>
 						</div>  
 					</div>
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="sala" class="control-label">Sala</label>              
-							<select id="sala" name="sala" class="form-control">
-								<option value="Premium">Sala Premium</option>
-								<option value="Sala 1">Sala 1</option>
-								<option value="Sala 2">Sala 2</option>
-								<option value="Sala 3">Sala 3</option>                
-							</select>             
+							<form:select id="sala" path="sala" class="form-control">
+								<form:option value="Premium">Sala Premium</form:option>
+								<form:option value="Sala 1">Sala 1</form:option>
+								<form:option value="Sala 2">Sala 2</form:option>
+								<form:option value="Sala 3">Sala 3</form:option>                
+							</form:select>             
 						</div> 
 					</div>
 

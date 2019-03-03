@@ -7,6 +7,7 @@ public class Horario {
 	private Pelicula pelicula;
 	private Date fecha;
 	private String hora; // HH:mm
+	private String sala;
 	private double precio;
 	public int getId() {
 		return id;
@@ -32,6 +33,12 @@ public class Horario {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+	public String getSala() {
+		return sala;
+	}
+	public void setSala(String sala) {
+		this.sala = sala;
+	}
 	public double getPrecio() {
 		return precio;
 	}
@@ -40,8 +47,8 @@ public class Horario {
 	}
 	@Override
 	public String toString() {
-		return "Horario [id=" + id + ", pelicula=" + pelicula + ", fecha=" + fecha + ", hora=" + hora + ", precio="
-				+ precio + "]";
+		return "Horario [id=" + id + ", pelicula=" + pelicula + ", fecha=" + fecha + ", hora=" + hora + ", sala=" + sala
+				+ ", precio=" + precio + "]";
 	}
 	
 }

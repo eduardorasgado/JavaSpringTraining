@@ -9,4 +9,6 @@ public interface IHorariosService {
 	List<Horario> getAll();
 	
 	void insert(Horario horario);
+	
+	List<String> getSalas();
 }

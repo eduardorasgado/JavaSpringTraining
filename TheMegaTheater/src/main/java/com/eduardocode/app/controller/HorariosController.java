@@ -35,6 +35,7 @@ public class HorariosController {
 			Model model) {
 		
 		model.addAttribute("peliculas", peliculaService.getAll());
+		model.addAttribute("horarioSalas", horarioService.getSalas());
 		
 		return "horarios/formHorario";
 	}
