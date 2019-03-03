@@ -77,6 +77,8 @@ public class PeliculasController {
 				// imprimiendo cada uno de los posibles errores
 				System.out.println(error.getDefaultMessage());
 			}
+			
+			// TODO: Cambiar a redirect
 			return "peliculas/formPelicula";
 		}
 		

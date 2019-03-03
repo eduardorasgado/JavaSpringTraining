@@ -13,6 +13,7 @@
 		<meta name="author" content="">
 		<title>Creacion de Horarios</title>
 		<spring:url value="/resources" var="urlPublic"></spring:url>
+		<spring:url value="/horarios/save" var="urlHorarioSave"></spring:url>
 
 		<link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
 		
@@ -29,7 +30,7 @@
 
 			<h3 class="blog-title"><span class="badge badge-success">Datos del Horario</span></h3>  
 
-			<form>
+			<form:form method="post" action="${ urlHorarioSave }" modelAttribute="instanciaHorario">
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
@@ -77,7 +78,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-danger" >Guardar</button>
-			</form> 
+			</form:form> 
 
 			<hr class="featurette-divider">
 
