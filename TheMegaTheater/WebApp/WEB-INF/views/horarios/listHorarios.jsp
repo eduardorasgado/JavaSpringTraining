@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,50 +12,38 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Listado de Horarios</title>
+    <spring:url value="/" var="urlRoot"></spring:url>
+    <spring:url value="/resources" var="urlPublic"></spring:url>
+    <spring:url value="/horarios/create" var="urlNewHorarioForm"></spring:url>
   
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/theme.css" rel="stylesheet">
+    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
     
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">My CineSite</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Acerca</a></li>
-            <li><a href="#">Login</a></li>            
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <jsp:include page="../includes/menu.jsp"></jsp:include>
 
     <div class="container theme-showcase" role="main">
+      <br/>
 
       <h3>Listado de Horarios</h3>
       
-      <a href="#" class="btn btn-success" role="button" title="Nueva Horario" >Nuevo</a><br><br>
+      <a href="${ urlNewHorarioForm }" class="btn btn-success" role="button" title="Nueva Horario" >
+      Nuevo
+      </a><br><br>
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
             <tr>
-                <th>Pelicula</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Sala</th>
-                <th>Precio</th>
-                <th>Opciones</th>
+                <th scope="col">Pelicula</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Sala</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Opciones</th>
             </tr>
             <tr>
                 <td>titulo</td>
@@ -59,41 +52,17 @@
                 <td>sala</td>
                 <td>precio</td>              
                 <td>
-					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-					<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" ><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+					<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" >Eliminar</a>
 				</td>
             </tr>
-            <tr>
-                <td>titulo</td>
-                <td>fecha</td>
-                <td>hora</td>
-                <td>sala</td>
-                <td>precio</td>     	    
-                <td>
-					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-					<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" ><span class="glyphicon glyphicon-trash"></span></a>
-				</td>
-            </tr>
-            <tr>
-                <td>titulo</td>
-                <td>fecha</td>
-                <td>hora</td>
-                <td>sala</td>
-                <td>precio</td>     			
-                <td>
-					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-					<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" ><span class="glyphicon glyphicon-trash"></span></a>
-				</td>
-            </tr>
+            
         </table>
       </div>
       <hr class="featurette-divider">
 
       <!-- FOOTER -->
-      <footer>        
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 My CineSite, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+      <jsp:include page="../includes/footer.jsp"></jsp:include>
 
     </div> <!-- /container -->
 
@@ -101,7 +70,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <script src="bootstrap/js/bootstrap.min.js"></script> 
+    <script src="${ urlPublic }/bootstrap/js/bootstrap.min.js"></script> 
 
   </body>
 </html>
