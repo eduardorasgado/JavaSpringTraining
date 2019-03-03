@@ -86,7 +86,9 @@
                <label class="col-sm-2 control-label">Te gustaría recibir notificaciones de:</label>
                <div class="col-sm-10">
                
-               	  <form:checkboxes items="${ tiposNotificaciones }" path="notificaciones"/>
+               	  <!-- element: va a tomar cada input y label del checkboxes y lo va a meter en un div con class=etc etc -->
+               	  <form:checkboxes items="${ tiposNotificaciones }" 
+               	  element="div class='form-check-inline'" path="notificaciones"/>
                	  
                	  <!-- Se puede usar checkbox si se desea personalizar con clases de bootstrap 4 -->
                	  <!-- div class="form-check-inline">

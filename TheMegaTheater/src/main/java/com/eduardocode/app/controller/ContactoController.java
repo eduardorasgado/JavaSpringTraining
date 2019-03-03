@@ -41,6 +41,8 @@ public class ContactoController {
 		System.out.println("[CREANDO UN NUEVO CONTACTO EN CONTROLLER]:");
 		System.out.println(contacto);
 		
+		contactoService.insert(contacto);
+		
 		attributes.addFlashAttribute("message", contacto.getNombre()+
 				", se han registrado tus preferencias con exito. Tenemos mucho para ti!");
 		

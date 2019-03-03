@@ -5,12 +5,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.eduardocode.app.model.Contacto;
+
 @Service
 public class ContactosServiceImp implements IContactosService{
 
-	List<String> tipos = null;
+	private List<String> tipos = null;
+	private List<Contacto> contactos = null;
 	
 	public ContactosServiceImp() {
+		System.out.println("INSTANCIA DE SERVICIO DE CONTACTO CREADA(SINGLETON)");
+		contactos = new LinkedList<>();
+		
 		tipos = new LinkedList<>();
 		this.setTiposNotificaciones();
 	}
@@ -19,6 +25,12 @@ public class ContactosServiceImp implements IContactosService{
 	public List<String> getTiposNotificaciones() {	
 		return tipos;
 	}
+
+	@Override
+	public void insert(Contacto contacto) {
+		contactos.add(contacto);
+		
+	}
 	
 	private void setTiposNotificaciones() {
 		tipos.add("Estrenos");
@@ -26,5 +38,4 @@ public class ContactosServiceImp implements IContactosService{
 		tipos.add("Noticias");
 		tipos.add("Preventas");
 	}
-
 }
