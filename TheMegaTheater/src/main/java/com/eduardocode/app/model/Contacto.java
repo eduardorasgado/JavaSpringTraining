@@ -1,6 +1,7 @@
 package com.eduardocode.app.model;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Contacto {
 	private int id;
@@ -8,7 +9,7 @@ public class Contacto {
 	private String email;
 	private int rating;
 	private String[] generos;
-	private String[] notificaciones;
+	private List<String> notificaciones;
 	private String comentarios;
 	
 	public int getId() {
@@ -41,10 +42,10 @@ public class Contacto {
 	public void setGeneros(String[] generos) {
 		this.generos = generos;
 	}
-	public String[] getNotificaciones() {
+	public List<String> getNotificaciones() {
 		return notificaciones;
 	}
-	public void setNotificaciones(String[] notificaciones) {
+	public void setNotificaciones(List<String> notificaciones) {
 		this.notificaciones = notificaciones;
 	}
 	public String getComentarios() {
@@ -53,12 +54,13 @@ public class Contacto {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
-	
 	@Override
 	public String toString() {
 		return "Contacto [id=" + id + ", nombre=" + nombre + ", email=" + email + ", rating=" + rating + ", generos="
-				+ Arrays.toString(generos) + ", notificaciones=" + Arrays.toString(notificaciones) + ", comentarios="
-				+ comentarios + "]";
+				+ Arrays.toString(generos) + ", notificaciones=" + notificaciones + ", comentarios=" + comentarios
+				+ "]";
 	}
+	
+	
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Contacto;
+import com.eduardocode.app.service.IContactosService;
 import com.eduardocode.app.service.IPeliculasService;
 
 @Controller
@@ -18,12 +19,17 @@ public class ContactoController {
 	
 	@Autowired
 	private IPeliculasService peliculaService;
+	@Autowired
+	private IContactosService contactoService;
 	
 	@GetMapping("/")
 	public String showForm(@ModelAttribute("instanciaContacto") Contacto contacto, 
 			Model model) {
 		
 		model.addAttribute("generosPelicula", peliculaService.searchGenres());
+		
+		model.addAttribute("tiposNotificaciones", 
+				contactoService.getTiposNotificaciones());
 		
 		return "formContacto";
 	}

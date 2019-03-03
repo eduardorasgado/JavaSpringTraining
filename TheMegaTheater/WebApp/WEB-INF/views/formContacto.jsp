@@ -85,7 +85,11 @@
             <div class="form-group">
                <label class="col-sm-2 control-label">Te gustaría recibir notificaciones de:</label>
                <div class="col-sm-10">
-               	  <div class="form-check-inline">
+               
+               	  <form:checkboxes items="${ tiposNotificaciones }" path="notificaciones"/>
+               	  
+               	  <!-- Se puede usar checkbox si se desea personalizar con clases de bootstrap 4 -->
+               	  <!-- div class="form-check-inline">
                	  	<label class="form-check-label">
                	  	<form:checkbox class="form-check-input" path="notificaciones" value="Estrenos" />Estrenos</label>
                	  </div>
@@ -100,7 +104,7 @@
                   <div class="form-check-inline">
                   	<label class="form-check-label">
                   	<form:checkbox class="form-check-input" path="notificaciones" value="Preventas" />Preventas</label>
-                  </div>
+                  </div> -->
                   
                </div>
             </div>
