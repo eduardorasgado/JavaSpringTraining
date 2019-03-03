@@ -52,7 +52,8 @@
             <div class="form-group">
                <label for="genero" class="col-sm-2 control-label">Géneros Favoritos</label>
                <div class="col-sm-10">
-                  <form:select id="genero" path="generos" multiple="multiple" class="form-control" items="${ generosPelicula }" />
+                  <form:select id="genero" path="generos" multiple="multiple" class="form-control" 
+                  items="${ generosPelicula }"/>
                </div>
             </div>
 
