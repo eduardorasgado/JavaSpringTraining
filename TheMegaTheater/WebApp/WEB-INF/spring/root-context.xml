@@ -15,4 +15,34 @@
 		con el fin de tener solo una instancia de la clase en toda la app -->
 	<context:component-scan base-package="com.eduardocode.app.service"></context:component-scan>
 
+	<!-- configuracion para spring data jpa -->
+	
+	
+	<!-- Configurando la coneccion a mysql -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysl.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/TheMegaTheater?useSSL=false"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	
+	<!-- configuracion del jpa de spring para el uso de hibernate -->
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="generateDdl"value="false"></property>
+		<property name="showSql" value="true"></property>
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"></property>
+	</bean>
+	
+	<!-- mapeo del orm hacia los modelos -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="com.eduardocode.app.model"></property>
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
+	</bean>
+	
+	<!-- referenciamos el manager factory bean(definido arriba) al jpa manager de spring -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>	
+	</bean>
+	
 </beans>
