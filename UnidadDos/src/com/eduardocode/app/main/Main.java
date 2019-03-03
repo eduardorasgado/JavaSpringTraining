@@ -23,8 +23,8 @@ public class Main {
 		System.out.println(a1.getFechaIngreso());
 		
 		// imprimiendo en una ventana
-		//JOptionPane.showMessageDialog(null, p1);
-		//JOptionPane.showMessageDialog(null, a1);
+		JOptionPane.showMessageDialog(null, p1);
+		JOptionPane.showMessageDialog(null, a1);
 	}
 
 }

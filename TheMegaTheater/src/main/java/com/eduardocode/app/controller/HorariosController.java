@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Horario;
-import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IHorariosService;
 import com.eduardocode.app.service.IPeliculasService;
-import com.eduardocode.app.utils.Utility;
 
 @Controller
 @RequestMapping("/horarios")
