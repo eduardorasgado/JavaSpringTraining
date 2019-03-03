@@ -26,7 +26,7 @@
     <!-- Fixed navbar -->
     <jsp:include page="../includes/menu.jsp"></jsp:include>
 
-    <div class="container theme-showcase" role="main">
+    <div class="container" role="main">
       <br/>
 
       <h3>Listado de Horarios</h3>
@@ -34,6 +34,11 @@
       <a href="${ urlNewHorarioForm }" class="btn btn-success" role="button" title="Nueva Horario" >
       Nuevo
       </a><br><br>
+      
+      <c:if test="${ message != null }">
+      	<span class="alert alert-success">${ message }</span>
+      	<br/>
+      </c:if>
 	
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">

@@ -28,7 +28,20 @@
 		<div class="container" role="main">
 			<br/>
 
-			<h3 class="blog-title"><span class="badge badge-success">Datos del Horario</span></h3>  
+			<h3 class="blog-title"><span class="badge badge-success">Datos del Horario</span></h3>
+			
+			<spring:hasBindErrors name="horario">
+				<div class="alert alert-danger" role="alert">
+			  		<p>Se han encontrado los siguientes errores:</p>
+			  		<ul>
+			  			<c:forEach items="${ errors.allErrors }" var="error">
+			  				<li>
+			  					<spring:message message="${ error }"></spring:message>
+			  				</li>
+			  			</c:forEach>
+			  		</ul>
+			  	</div>
+			</spring:hasBindErrors>  
 
 			<form:form method="post" action="${ urlHorarioSave }" modelAttribute="instanciaHorario">
 				<div class="row">         
@@ -56,11 +69,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="sala" class="control-label">Sala</label>              
-							<form:select id="sala" path="sala" class="form-control">
-								<form:option value="Premium">Sala Premium</form:option>
-								<form:option value="Sala 1">Sala 1</form:option>
-								<form:option value="Sala 2">Sala 2</form:option>
-								<form:option value="Sala 3">Sala 3</form:option>                
+							<form:select id="sala" path="sala" class="form-control" items="${ horarioSalas }">
 							</form:select>             
 						</div> 
 					</div>
@@ -68,7 +77,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="precio">Precio</label>
-							<input type="text" class="form-control" name="precio" id="precio" required="required"/>
+							<form:input type="number" class="form-control" path="precio" id="precio" required="required"/>
 						</div>  
 					</div>
 
