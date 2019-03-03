@@ -52,21 +52,27 @@ public class HorariosController {
 	@PostMapping("/save")
 	public String save(@ModelAttribute("instanciaHorario") Horario horario,
 			RedirectAttributes attributes,
+			Model model,
 			BindingResult result) {
 		// guardamos un horario en la base de datos
+		
 		if(result.hasErrors()) {
 			for(var error : result.getAllErrors()) {
 				System.out.println(error.getDefaultMessage());
-				// si existe un error en el binding entonces se envia automaticamente
-				return "redirect:/horarios/create";
 			}
+			// si existe un error en el binding entonces se envia automaticamente
+			model.addAttribute("peliculas", peliculaService.getAll());
+			model.addAttribute("horarioSalas", horarioService.getSalas());
+			// se vuelve a la misma pagina pero ahora con mensajes del binding result
+			return "horarios/create";
 		}
-		System.out.println("POST HORARIO SAVE");
+		System.out.println("POST HORARIO SAVED:");
+		System.out.println(horario);
 		
 		attributes.addFlashAttribute("message", 
 				"Se ha agregado el horario con exito");
 		
-		return "redirect:/horarios/create";
+		return "redirect:/horarios/index";
 	}
 	
 	@InitBinder

@@ -37,7 +37,7 @@
       
       <c:if test="${ message != null }">
       	<span class="alert alert-success">${ message }</span>
-      	<br/>
+      	<br/><br/>
       </c:if>
 	
       <div class="table-responsive">

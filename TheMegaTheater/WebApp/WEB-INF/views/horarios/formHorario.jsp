@@ -41,14 +41,18 @@
 			  			</c:forEach>
 			  		</ul>
 			  	</div>
+			  	<br/><br/>
 			</spring:hasBindErrors>  
 
 			<form:form method="post" action="${ urlHorarioSave }" modelAttribute="instanciaHorario">
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
+						<!-- Observamos que para que se guarde bien la referencia a la pellicula
+						le debemos decir en el path donde va a guardar el itemValue en la nueva instancia
+						de pelicula que se va a crear -->
 							<label for="idPelicula" class="control-label">Pelicula</label>              							
-							<form:select class="form-control" path="pelicula" items="${ peliculas }" 
+							<form:select class="form-control" path="pelicula.id" items="${ peliculas }" 
 							itemValue="id" itemLabel="titulo"></form:select>      
 						</div> 
 					</div>

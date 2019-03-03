@@ -68,7 +68,8 @@ public class PeliculasController {
 			HttpServletRequest request,
 			// con BindingResult podemos obtener posibles errores en el
 			// data binding
-			BindingResult result) {
+			BindingResult result,
+			Model model) {
 		
 		// manejando los errores con el binding result
 		if(result.hasErrors()) {
@@ -78,7 +79,9 @@ public class PeliculasController {
 				System.out.println(error.getDefaultMessage());
 			}
 			
-			// TODO: Cambiar a redirect
+			var generos = peliculasService.searchGenres();
+			
+			model.addAttribute("generos", generos);
 			return "peliculas/formPelicula";
 		}
 		
