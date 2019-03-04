@@ -2,6 +2,7 @@ package com.eduardocode.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,14 @@ public class Noticia {
 											// se define usar una constante(IDENTITY) que
 											// varia segun el motor de base de datos
 	private int id;
+	/*
+	 * @Column
+	 * si el nombre de nuestro atributo en nuestra entidad, mapea con un campo de una tabla 
+	 * y tienen el mismo nombre, en este caso se puede omitir la anotación @Column
+	 * */
+	@Column(name="titulo", length=250, nullable=false)
 	private String titulo;
+	@Column(name="fecha")
 	private Date fechaPublicacion;
 	private String detalle;
 	private String status;
