@@ -26,8 +26,10 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- Podemos ajustar el motor de base de datos siempre y cuando exista un conector jdbc
 		para ese motor de db -->
-		<property name="driverClassName" value="com.mysl.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/TheMegaTheater?useSSL=false"></property>
+		<!-- el driver es deprecado y es importado automaticamente, se recomienda usar com.mysql.cj.jdbc.Driver -->
+		<!-- property name="driverClassName" value="com.mysql.jdbc.Driver"></property-->
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>
@@ -36,7 +38,7 @@
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<!-- indica si cada qu se genere el prouecto se genere el codigo sql para crear las tablas en la db
 		de forma automatica -->
-		<property name="generateDdl" value="false"></property>
+		<property name="generateDdl" value="true"></property>
 		<property name="showSql" value="true"></property>
 		<!-- indicamos el tipo de base de datos con la que se va a trabajar -->
 		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"></property>
