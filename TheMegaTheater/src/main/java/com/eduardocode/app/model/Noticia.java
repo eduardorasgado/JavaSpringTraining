@@ -2,7 +2,24 @@ package com.eduardocode.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+// anotaciones para Spring Data JPA
+// debe pertenecer al paquete javax.persistence
+@Entity
+// configuracion de la tabla donde se almacenara la entidad
+@Table(name="Noticias")
 public class Noticia {
+	
+	@Id // llave primaria. Al ser autoincrementable en la db
+		// entonces sera unica
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // generable por secuencia
+											// se define usar una constante(IDENTITY) que
+											// varia segun el motor de base de datos
 	private int id;
 	private String titulo;
 	private Date fechaPublicacion;

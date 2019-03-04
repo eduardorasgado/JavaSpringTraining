@@ -38,7 +38,7 @@
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<!-- indica si cada qu se genere el prouecto se genere el codigo sql para crear las tablas en la db
 		de forma automatica -->
-		<property name="generateDdl" value="true"></property>
+		<property name="generateDdl" value="false"></property>
 		<property name="showSql" value="true"></property>
 		<!-- indicamos el tipo de base de datos con la que se va a trabajar -->
 		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"></property>
