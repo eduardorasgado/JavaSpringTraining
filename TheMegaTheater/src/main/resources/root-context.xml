@@ -29,7 +29,10 @@
 		<!-- el driver es deprecado y es importado automaticamente, se recomienda usar com.mysql.cj.jdbc.Driver -->
 		<!-- property name="driverClassName" value="com.mysql.jdbc.Driver"></property-->
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false"></property>
+		<!-- linux -->
+		<!-- property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false"></property-->
+		<!-- windows cheetos -->
+		<property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>

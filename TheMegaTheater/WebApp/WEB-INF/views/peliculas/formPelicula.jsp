@@ -145,7 +145,7 @@
 
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="trailer">URL del Trailer (enlace tipo <\insertar\> o embed de Youtube)</label>
+              <label for="trailer">URL del Trailer (enlace tipo insertar o embed de Youtube)</label>
               <form:input type="text" class="form-control" path="detalle.trailer" id="trailer" placeholder="URL completa del video de YOUTUBE" />
             </div>  
           </div> 
