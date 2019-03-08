@@ -48,6 +48,30 @@ public class AppCreate {
 		var founded = repository1.findById(1);
 		System.out.println(founded.get().getStatus());
 		
+		// Metodo para verificar si una entidad existe en la base de datos
+		// metodo existsById
+		int idNoticia = 1;
+		if(repository1.existsById(idNoticia)) {
+			System.out.println("El registro de Noticia con id: " + idNoticia +
+					" ya existe en la tabla");
+		}
+		
+		
+		// creamos una nueva noticia
+		var newNotice = new Noticia();
+		newNotice.setDetalle("Se acerca nueva premisa del juego macabro, una nueva experiencia para los amantes de esta"
+				+ "perturbadora saga");
+		newNotice.setTitulo("Vuelve el juego macabro");
+		
+		repository1.save(newNotice);
+		
+		
+		// Eliminar (Delete)
+		int idNot2 = 2;
+		// borrar de forma segura, ya que spring data se asegura  de que
+		// el objeto se encuentre antes de intentar borrarlo
+		//repository1.deleteById(idNot2);
+		
 		context.close();
 	}
 
