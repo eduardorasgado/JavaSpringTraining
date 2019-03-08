@@ -25,7 +25,10 @@ public class AppCreate {
 		// Aplicando el concepto CRUD a nuestra aplicacion
 		
 		// Crear-> persistir el objeto de tipo noticia
-		//r1.save(noticia);
+		if(!repository1.existsById(1)) {
+			// si el regstro no se encuentra dentro de la db
+			repository1.save(noticia);
+		}
 		
 		// Leer (Read) -> leer objeto
 		// finbyid va a devolver un objeto optional con una noticia o vacia si esta no existe
@@ -63,14 +66,21 @@ public class AppCreate {
 				+ "perturbadora saga");
 		newNotice.setTitulo("Vuelve el juego macabro");
 		
-		repository1.save(newNotice);
+		if(!repository1.existsById(4)) {
+			// si el registro no existe entonces se guarda
+			repository1.save(newNotice);
+		}
 		
 		
 		// Eliminar (Delete)
-		int idNot2 = 2;
-		// borrar de forma segura, ya que spring data se asegura  de que
-		// el objeto se encuentre antes de intentar borrarlo
-		//repository1.deleteById(idNot2);
+		int idNot2 = 4;
+		if(repository1.existsById(idNot2)) {
+			// si el id se encuentra en el registro entonces se elimina
+			System.out.println("Eliminamos objeto de la tabla");
+			//repository1.deleteById(idNot2);
+		}
+		
+		
 		
 		context.close();
 	}
