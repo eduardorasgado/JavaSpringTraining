@@ -1,5 +1,8 @@
 package pruebasJPA;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.eduardocode.app.model.Noticia;
@@ -41,6 +44,16 @@ public class appCreate2 {
 		// volvemos a incluir todos los elementos de nuevo en la tabla
 		noticias.forEach((noticia) ->
 					{ repo.save(noticia); } );
+		
+		// Buscando varias entidades pasando por parametros un listado de varios ids
+		List<Integer> ids = new LinkedList<Integer>();
+		ids.add(11);
+		ids.add(12);
+		
+		// debemos de meter el objeto de tipo lista como argumento para este metodo
+		var allNotices = repo.findAllById(ids);
+		allNotices.forEach((noticia) ->
+					{ System.out.println(noticia.getTitulo()); });
 		
 		context.close();
 	}
