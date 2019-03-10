@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		
+	<!-- COFIGURACION PARA LA CAPA DE SERVICIO Y DATOS -->
+	<!--  AAgregamos configuraciones para la capa de servicio
+	 		y para la capa de datos -->
+
+	<!-- ACTIVANDO EL AUTOESCANEO PARA DETECTAR E INSTANCIAR BEANS -->
+	
+	<!-- Nota: Los beans son creados con el patron de diseño singleton: 
+		con el fin de tener solo una instancia de la clase en toda la app -->
+	<context:component-scan base-package="com.eduardocode.app.service"></context:component-scan>
+
+	<!-- configuracion para spring data jpa -->
+	<jpa:repositories base-package="com.eduardocode.app.repository"></jpa:repositories>
+	
+	<!-- Configurando la coneccion a mysql db -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- Podemos ajustar el motor de base de datos siempre y cuando exista un conector jdbc
+		para ese motor de db -->
+		<!-- el driver es deprecado y es importado automaticamente, se recomienda usar com.mysql.cj.jdbc.Driver -->
+		<!-- property name="driverClassName" value="com.mysql.jdbc.Driver"></property-->
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<!-- linux -->
+		<!-- property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false"></property-->
+		<!-- windows dev user: cheetos -->
+		<property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	
+	<!-- configuracion del jpa de spring para el uso de hibernate framework -->
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<!-- indica si cada qu se genere el prouecto se genere el codigo sql para crear las tablas en la db
+		de forma automatica -->
+		<property name="generateDdl" value="false"></property>
+		<property name="showSql" value="true"></property>
+		<!-- indicamos el tipo de base de datos con la que se va a trabajar -->
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"></property>
+	</bean>
+	
+	<!-- mapeo del orm hacia los modelos: permite manejar o administrar los modelos -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="com.eduardocode.app.model"></property>
+		<!-- indicar la referencia de un bean que implemente la interfaz dataSource -->
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
+	</bean>
+	
+	<!-- Permite el soporte de transacciones.
+	referenciamos el manager factory bean(definido arriba) al jpa transaction manager de spring -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>	
+	</bean>
+	
+</beans>

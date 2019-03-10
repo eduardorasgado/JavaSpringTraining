@@ -1,4 +1,4 @@
-package pruebasJPA;
+package pruebasCrudRepository;
 
 import java.util.Optional;
 
