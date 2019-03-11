@@ -20,13 +20,15 @@ public class AppSorting {
 		});
 		
 		System.out.println("[NOTICIAS ORDENADAS POR TITULO]");
-		// findAll que toma de parametro un tipo Sort
-		var sort = Sort.by("titulo");
+		// findAll que toma de parametro un tipo Sort: ordenando descendentemente
+		var sort = Sort.by("titulo").descending();
 		var allNoticiasSorted = repoNoticias.findAll(sort); // ordenar por titulo
 		
 		allNoticiasSorted.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());
 		});
+		
+		System.out.println("Elements counted: " + allNoticiasSorted.size());
 		
 		context.close();
 	}

@@ -35,7 +35,7 @@ public class Noticia {
 	private String status;
 	
 	public Noticia() {
-		System.out.println("[NUEVA NOTICIA CREADA]");
+		//System.out.println("[NUEVA NOTICIA CREADA]");
 		// el atributo de fecha se crea de forma automatica
 		this.fechaPublicacion = new Date();
 		this.status = "Activa";
