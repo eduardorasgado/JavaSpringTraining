@@ -1,6 +1,6 @@
 package com.eduardocode.app.repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,4 +29,6 @@ public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 	// Metodos personalizados de acuerdo a lo requerido en nuestro negocio
 	// select * from Noticias where status = ?
 	List<Noticia> findByStatus(String status);
+	
+	List<Noticia> findByFechaPublicacion(LocalDate fechaPublicacion);
 }
