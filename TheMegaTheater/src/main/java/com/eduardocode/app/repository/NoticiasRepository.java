@@ -1,5 +1,8 @@
 package com.eduardocode.app.repository;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -20,5 +23,10 @@ import com.eduardocode.app.model.Noticia;
 
 @Repository
 public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
-	//
+	// Al extender JpaRepository tenemos varios metodos implementados de manera
+	// automatica, pero aun con ello podemos agregar metodos personalizados
+	
+	// Metodos personalizados de acuerdo a lo requerido en nuestro negocio
+	// select * from Noticias where status = ?
+	List<Noticia> findByStatus(String status);
 }

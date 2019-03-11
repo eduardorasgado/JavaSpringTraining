@@ -25,7 +25,7 @@ public class Noticia {
 	/*
 	 * @Column
 	 * si el nombre de nuestro atributo en nuestra entidad, mapea con un campo de una tabla 
-	 * y tienen el mismo nombre, en este caso se puede omitir la anotación @Column
+	 * y tienen el mismo nombre, en este caso se puede omitir la anotacion @Column
 	 * */
 	@Column(name="titulo", length=250, nullable=false)
 	private String titulo;

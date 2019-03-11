@@ -15,6 +15,8 @@ public class appCreate2 {
 		
 		NoticiasRepository repo = context.getBean("noticiasRepository", NoticiasRepository.class);
 
+		// METODOS CUANDO NOTICIASREPOSITORY EXTIENDE DE CRUDREPOSITORY
+		
 		// Contar los numeros de regustros en la tabla
 		long num = repo.count();
 		System.out.println("Existen "+ num + " registros en la tabla Noticias");
