@@ -30,5 +30,6 @@ public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 	// select * from Noticias where status = ?
 	List<Noticia> findByStatus(String status);
 	
+	// select * from Noticias where fecha = ?
 	List<Noticia> findByFechaPublicacion(LocalDate fechaPublicacion);
 }
