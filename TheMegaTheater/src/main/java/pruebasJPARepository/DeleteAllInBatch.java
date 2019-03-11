@@ -1,0 +1,20 @@
+package pruebasJPARepository;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.eduardocode.app.repository.NoticiasRepository;
+
+public class DeleteAllInBatch {
+
+	public static void main(String[] args) {
+		var context = new ClassPathXmlApplicationContext("root-context.xml");
+		var repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
+		
+		repoNoticias.deleteAllInBatch();
+		
+		System.out.println("Elementos en tabla noticias: "+ repoNoticias.count());
+		
+		context.close();
+	}
+
+}

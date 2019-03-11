@@ -15,6 +15,7 @@ public class AppFindAll {
 		var context = new ClassPathXmlApplicationContext("root-context.xml");
 		NoticiasRepository repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
+		/*
 		List<String> titulos = new LinkedList<String>() 
 		{{
 			add("Titulo1"); add("Titulo2"); add("Titulo3"); add("Titulo4"); add("Titulo5"); add("Titulo6"); add("Titulo7"); add("Titulo8");
@@ -33,6 +34,7 @@ public class AppFindAll {
 			not.setDetalle(detalles.get(i));
 			repoNoticias.save(not);
 		}
+		*/
 		
 		// obtener todas las entidades
 		// con NoticiasRepository extendiendo de CrudRepository
@@ -42,6 +44,8 @@ public class AppFindAll {
 		var noticias = repoNoticias.findAll(); // devuelve una lista de Noticias List<Noticia>
 		noticias.forEach((noticia) ->
 					{ System.out.println(noticia.getTitulo()); });
+		
+		context.close();
 	}
 
 }
