@@ -7,8 +7,8 @@ import com.eduardocode.app.repository.NoticiasRepository;
 public class DeleteAllInBatch {
 
 	public static void main(String[] args) {
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
-		var repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		NoticiasRepository repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
 		repoNoticias.deleteAllInBatch();
 		

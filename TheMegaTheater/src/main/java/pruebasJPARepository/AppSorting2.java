@@ -1,19 +1,22 @@
 package pruebasJPARepository;
 
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.domain.Sort;
 
+import com.eduardocode.app.model.Noticia;
 import com.eduardocode.app.repository.NoticiasRepository;
 
 public class AppSorting2 {
 
 	public static void main(String[] args) {
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
-		var repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		NoticiasRepository repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
 		// Obtener entidades de una tabla ordenadas por dos o mas atributos
 		// ordenar por fecha ascendentemente
-		var sort = Sort.by("fechaPublicacion")
+		Sort sort = Sort.by("fechaPublicacion")
 						.descending()
 				// por cada fecha que acumule noticias, estas van a ser ordenadas
 				// por titulo de forma descendente
@@ -21,7 +24,7 @@ public class AppSorting2 {
 						.ascending()
 				);
 		
-		var listaNoticias = repoNoticias.findAll(sort);
+		List<Noticia> listaNoticias = repoNoticias.findAll(sort);
 		
 		listaNoticias.forEach( (noticia) -> {
 			System.out.println("titulo: "+noticia.getTitulo() +
