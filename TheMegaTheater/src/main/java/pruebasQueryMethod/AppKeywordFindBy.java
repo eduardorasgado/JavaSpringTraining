@@ -2,19 +2,21 @@ package pruebasQueryMethod;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.eduardocode.app.model.Noticia;
 import com.eduardocode.app.repository.NoticiasRepository;
 
 public class AppKeywordFindBy {
 
 	public static void main(String[] args) {
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
-		var repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		NoticiasRepository repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
 		// Ejemplo Keyword findBy
-		var noticias = repoNoticias.findByStatus("Inactiva");
+		List<Noticia> noticias = repoNoticias.findByStatus("Inactiva");
 		
 		noticias.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());
@@ -31,7 +33,7 @@ public class AppKeywordFindBy {
 		// y la base de datos maneje hora local, asi entonces usamos hora local
 		// hasta en el model
 		LocalDate fechaPublicacion = LocalDate.of(2019, 3, 11);
-		var noticiasFecha = repoNoticias.findByFechaPublicacion(fechaPublicacion);
+		List<Noticia> noticiasFecha = repoNoticias.findByFechaPublicacion(fechaPublicacion);
 		
 		noticiasFecha.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());

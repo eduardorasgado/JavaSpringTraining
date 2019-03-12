@@ -9,7 +9,7 @@ public class AppConnection {
 		// con todos los beans del root-context
 		// para que aqui funcione tenemos que mover el root context a la carpeta
 		// src/main/resources
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		context.close();
 	}
 

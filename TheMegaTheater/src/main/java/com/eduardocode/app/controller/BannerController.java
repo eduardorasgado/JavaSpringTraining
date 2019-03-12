@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,7 +51,7 @@ public class BannerController {
 			HttpServletRequest request, BindingResult result) {
 		// manejo de errores
 		if(result.hasErrors()) {
-			for(var error : result.getAllErrors()) {
+			for(ObjectError error : result.getAllErrors()) {
 				System.out.println(error.getDefaultMessage());
 			}
 			// retornar a la misma vista del form
@@ -62,7 +63,7 @@ public class BannerController {
 		if(!imagen.isEmpty()) {
 			// obtener el nombre de la imagen al mismo tiempo que
 			// guardamos la imagen y procesamos su nombre y ruta completa
-			var nombreImagen = Utility.guardarImagen(imagen, request);
+			String nombreImagen = Utility.guardarImagen(imagen, request);
 			banner.setNombreArchivo(nombreImagen);
 		}
 		

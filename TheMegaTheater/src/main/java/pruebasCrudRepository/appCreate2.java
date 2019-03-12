@@ -11,7 +11,7 @@ import com.eduardocode.app.repository.NoticiasRepository;
 public class appCreate2 {
 
 	public static void main(String[] args) {
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		
 		NoticiasRepository repo = context.getBean("noticiasRepository", NoticiasRepository.class);
 
@@ -53,7 +53,7 @@ public class appCreate2 {
 		ids.add(12);
 		
 		// debemos de meter el objeto de tipo lista como argumento para este metodo
-		var allNotices = repo.findAllById(ids);
+		List<Noticia> allNotices = repo.findAllById(ids);
 		allNotices.forEach((noticia) ->
 					{ System.out.println(noticia.getTitulo()); });
 		

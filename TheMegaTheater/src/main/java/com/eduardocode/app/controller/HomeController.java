@@ -2,6 +2,7 @@ package com.eduardocode.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.eduardocode.app.model.Banner;
+import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IBannersService;
-//import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IPeliculasService;
 import com.eduardocode.app.utils.Utility;
 
@@ -59,7 +61,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String showMain(Model model) {
-		var fechaBusqueda = homeDateFormatter.format(new Date());
+		String fechaBusqueda = homeDateFormatter.format(new Date());
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		
 		// agregando banners al modelo
@@ -74,7 +76,7 @@ public class HomeController {
 			@PathVariable("fecha") String fechaBusqueda) {
 		
 		// llamando a un metodo del servicio de peliculas
-		var pelicula = servicePeliculas.searchById(idPelicula);
+		Pelicula pelicula = servicePeliculas.searchById(idPelicula);
 		
 		if(pelicula == null) {
 			// en caso de no existir el id
@@ -93,10 +95,10 @@ public class HomeController {
 			String fechaBusqueda) {
 		// sintaxis java 10
 		// llenando la lista con el modelo
-		var peliculas = servicePeliculas.getAll();
+		List<Pelicula> peliculas = servicePeliculas.getAll();
 		
 		// creando la lista de 5 dias a partir de ahorita
-		var siguientesDias = Utility.generateNextDays(4);
+		List<String> siguientesDias = Utility.generateNextDays(4);
 		
 		// mandando la lista al frontend
 		model.addAttribute("peliculas", peliculas);
@@ -109,13 +111,13 @@ public class HomeController {
 	
 	private Model getBanners(Model model) {
 		// agregando banners al modelo
-		var listaBanners = bannerService.getAll();
+		List<Banner> listaBanners = bannerService.getAll();
 						
 		model.addAttribute("listaBanners", listaBanners);
 		
 		// tomar el id del primer elemento como punto de inicio o cero
 		if(listaBanners.size() > 0) {
-			var initPoint = listaBanners.get(0).getId();
+			int initPoint = listaBanners.get(0).getId();
 			
 			// counter para el slider
 			int[] sliderCount = new int[listaBanners.size()];

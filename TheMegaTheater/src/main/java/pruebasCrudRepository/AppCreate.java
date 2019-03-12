@@ -10,11 +10,11 @@ import com.eduardocode.app.repository.NoticiasRepository;
 public class AppCreate {
 
 	public static void main(String[] args) {
-		var noticia = new Noticia();
+		Noticia noticia = new Noticia();
 		noticia.setTitulo("Se estrena Toy Story 4! Quieres saber la fecha?");
 		noticia.setDetalle("lorem ipsum dolor sit amet");
 		
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		
 		// Agregando una instancia del bean de noticias.
 		// buscamos el bean en el context, si no se especifica el nombre del bean
@@ -32,7 +32,7 @@ public class AppCreate {
 		
 		// Leer (Read) -> leer objeto
 		// finbyid va a devolver un objeto optional con una noticia o vacia si esta no existe
-		var noticiaReq = repository1.findById(1); // Optional<Noticia>
+		Optional<Noticia> noticiaReq = repository1.findById(1); // Optional<Noticia>
 		
 		System.out.println(noticiaReq.get());
 		
@@ -41,14 +41,14 @@ public class AppCreate {
 		Optional<Noticia> queryNoticia = repository1.findById(2);
 		
 		if(queryNoticia.isPresent()) {
-			var noticiaToUpdate = queryNoticia.get();
+			Noticia noticiaToUpdate = queryNoticia.get();
 			noticiaToUpdate.setStatus("Inactiva");
 			
 			repository1.save(noticiaToUpdate);
 		}
 		
 		// buscando el objeto actualizado y mostrandolo en pantalla
-		var founded = repository1.findById(1);
+		Optional<Noticia> founded = repository1.findById(1);
 		System.out.println(founded.get().getStatus());
 		
 		// Metodo para verificar si una entidad existe en la base de datos
@@ -61,7 +61,7 @@ public class AppCreate {
 		
 		
 		// creamos una nueva noticia
-		var newNotice = new Noticia();
+		Noticia newNotice = new Noticia();
 		newNotice.setDetalle("Se acerca nueva premisa del juego macabro, una nueva experiencia para los amantes de esta"
 				+ "perturbadora saga");
 		newNotice.setTitulo("Vuelve el juego macabro");

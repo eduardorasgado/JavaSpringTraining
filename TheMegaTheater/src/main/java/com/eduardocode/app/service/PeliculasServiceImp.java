@@ -25,7 +25,7 @@ public class PeliculasServiceImp implements IPeliculasService{
 		System.out.println("INSTANCIA DE SERVICIO DE PELICULAS CREADA(SINGLETON)");
 		// constructor
 		// formateador de fechas
-		var formatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		
 		try {
 			// generando una lista de peliculas
@@ -33,7 +33,7 @@ public class PeliculasServiceImp implements IPeliculasService{
 			/*
 			 * Por el momento lo agregamos por fuerza bruta, 
 			 * */
-			var p1 = new Pelicula();
+			Pelicula p1 = new Pelicula();
 			p1 = this.setDatatoPelicula(p1, 1, "El viaje de Chihiro", 124, "A",
 					"Anime Aventura", formatter.parse("02-05-2017"), "cinema.png",
 					"Activa");
@@ -41,25 +41,25 @@ public class PeliculasServiceImp implements IPeliculasService{
 					"https://www.youtube.com/embed/bILE5BEyhdo");
 			
 			
-			var p2 = new Pelicula();
+			Pelicula p2 = new Pelicula();
 			p2 = this.setDatatoPelicula(p2, 2, "La bella y la bestia", 132, "B",
 					"Drama", formatter.parse("20-05-2017"), "bella.png", "Activa");
 			p2 = this.setDetalle(p2, 2, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
 					"https://www.youtube.com/embed/bILE5BEyhdo");
 			
-			var p3 = new Pelicula();
+			Pelicula p3 = new Pelicula();
 			p3 = this.setDatatoPelicula(p3, 3, "Contratiempo", 106, "A", "Accion",
 					formatter.parse("28-03-2016"), "contratiempo.png", "Activa");
 			p3 = this.setDetalle(p3, 3, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
 					"https://www.youtube.com/embed/bILE5BEyhdo");
 			
-			var p4 = new Pelicula();
+			Pelicula p4 = new Pelicula();
 			p4 = this.setDatatoPelicula(p4, 4, "Kong", 154, "A", "Accion",
 					formatter.parse("06-06-2017"), "kong.png", "Inactiva");
 			p4 = this.setDetalle(p4, 4, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
 					"https://www.youtube.com/embed/bILE5BEyhdo");
 			
-			var p5 = new Pelicula();
+			Pelicula p5 = new Pelicula();
 			p5 = this.setDatatoPelicula(p5, 5, "Life: Vida Inteligente", 122, "B", "Terror",
 					formatter.parse("01-02-2016"), "estreno5.png", "Activa");
 			p5 = this.setDetalle(p5, 5, "Jimmy Jim", "Tom Cruise, Katherine Jones", "lorem ipsum dolor sit amet",
@@ -90,7 +90,7 @@ public class PeliculasServiceImp implements IPeliculasService{
 	public Pelicula searchById(int idMovie) {
 		// Auto-generated method stub
 		
-		for(var pelicula : listaPeliculas) {
+		for(Pelicula pelicula : listaPeliculas) {
 			if(pelicula.getId() == idMovie) {
 				// si encuentra la pelicula con el id deseado
 				return pelicula;
@@ -123,7 +123,7 @@ public class PeliculasServiceImp implements IPeliculasService{
 	
 	private Pelicula setDetalle(Pelicula p, int id, String director,
 			String actores, String sinopsis, String trailer) {
-		var detalle = new Detalle();
+		Detalle detalle = new Detalle();
 		
 		detalle.setId(id);
 		detalle.setDirector(director);
@@ -137,7 +137,7 @@ public class PeliculasServiceImp implements IPeliculasService{
 
 	@Override
 	public List<String> searchGenres() {
-		var generos = new LinkedList<String>();
+		List<String> generos = new LinkedList<String>();
 		
 		generos.add("Accion");
 		generos.add("Aventura");

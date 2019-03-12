@@ -21,21 +21,21 @@ public class Utility {
 	public static List<String> generateNextDays(int quantity){
 		// generamos una lista de los siguientes n dias a la fecha
 		// actual
-		var dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 		
 		// la fecha de hoy
-		var primerDia = new Date();
+		Date primerDia = new Date();
 		
 		// calculando la fecha de pasados los N dias a partir de hoy
-		var calendario = Calendar.getInstance();
+		Calendar calendario = Calendar.getInstance();
 		calendario.add(Calendar.DAY_OF_MONTH, quantity); // agregando n dias
-		var ultimoDia = calendario.getTime();
+		Date ultimoDia = calendario.getTime();
 		
-		var fechas = new ArrayList<String>();
+		List<String> fechas = new ArrayList<String>();
 		
 		// obtener las fechas intermedias
 		// calendario donde iran las fechas
-		var g_cal = new GregorianCalendar();
+		GregorianCalendar g_cal = new GregorianCalendar();
 		g_cal.setTime(primerDia);
 		
 		// agregando las fechas faltantes
@@ -54,7 +54,7 @@ public class Utility {
 	public static String guardarImagen(MultipartFile multiPart,
 			HttpServletRequest request) {
 		// Obtener el nombre original del archivo
-		var nombreOriginal = multiPart.getOriginalFilename();
+		String nombreOriginal = multiPart.getOriginalFilename();
 		
 		// quitando espacios del nombre del archivo imagen
 		nombreOriginal = nombreOriginal.replace(" ", "-");
@@ -68,17 +68,17 @@ public class Utility {
 		
 		// reemplazando el nombre y agregando caracteres extra para evitar repeticion
 		// de nombre de imagenes
-		var diffCharacters = randomCharGenerator(8);
+		String diffCharacters = randomCharGenerator(8);
 		nombreOriginal = nombreOriginal.replace("."+extension, diffCharacters+"."+extension);
 		
 		// Obtener la ruta absoluta del directorio images
 		// apache-tomcat/webapps/cineapp/resources/images/
-		var rutaFinal = request.getServletContext()
+		String rutaFinal = request.getServletContext()
 				.getRealPath("/resources/images/");
 		try {
 			// Formamos el nombre del archivo para guardarlo en el disco
 			// duro
-			var imageFile = new File(rutaFinal + nombreOriginal);
+			File imageFile = new File(rutaFinal + nombreOriginal);
 			
 			System.out.println("ruta completa: "+ imageFile.getAbsolutePath());
 			

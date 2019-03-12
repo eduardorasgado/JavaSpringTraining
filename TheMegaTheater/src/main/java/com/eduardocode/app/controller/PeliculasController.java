@@ -11,6 +11,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +48,7 @@ public class PeliculasController {
 		// el metodo create debe tener un modelo de clase pelicula
 		// ya que en la vista que regresa este metodo se usa
 		// un form con for tag library de spring
-		var generos = peliculasService.searchGenres();
+		List<String> generos = peliculasService.searchGenres();
 		
 		model.addAttribute("generos", generos);
 		return "peliculas/formPelicula";
@@ -74,12 +75,12 @@ public class PeliculasController {
 		// manejando los errores con el binding result
 		if(result.hasErrors()) {
 			// solo retornamos la vista
-			for(var error : result.getAllErrors()) {
+			for(ObjectError error : result.getAllErrors()) {
 				// imprimiendo cada uno de los posibles errores
 				System.out.println(error.getDefaultMessage());
 			}
 			
-			var generos = peliculasService.searchGenres();
+			List<String> generos = peliculasService.searchGenres();
 			
 			model.addAttribute("generos", generos);
 			return "peliculas/formPelicula";
@@ -87,7 +88,7 @@ public class PeliculasController {
 		
 		//- despues de validar guardamos la imagen 
 		if(!multiPart.isEmpty()) {
-			var nombreImagen = Utility.guardarImagen(multiPart, request);
+			String nombreImagen = Utility.guardarImagen(multiPart, request);
 			// ahora si guardamos el nombre de la imagen, una vez esta es
 			// obtenida
 			pelicula.setImagen(nombreImagen);
@@ -111,7 +112,7 @@ public class PeliculasController {
 	// la funcion y anotada
 	@InitBinder
 	private void peliculaInitBinder(WebDataBinder binder, ServletRequestDataBinder b2) {
-		var dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 		// ultimo false no permitira fechas vacias
 		binder.registerCustomEditor(Date.class,
 				new CustomDateEditor(dateFormatter, false));

@@ -10,8 +10,8 @@ import com.eduardocode.app.repository.NoticiasRepository;
 public class AppPagination {
 
 	public static void main(String[] args) {
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
-		var repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		NoticiasRepository repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
 		// Obtener todas las entidades por paginacion
 		// recuperando las paginas de la 1 a la 7
@@ -28,7 +28,7 @@ public class AppPagination {
 	
 	public static void showPage(NoticiasRepository repoNoticias, int page, int items) {
 		
-		var pageable = PageRequest.of(page, items); // num de pagina, num de registros
+		PageRequest pageable = PageRequest.of(page, items); // num de pagina, num de registros
 		Page<Noticia> pagina = repoNoticias.findAll(pageable);
 		
 		// imprimiendo los elementos contenidos en la primera pagina

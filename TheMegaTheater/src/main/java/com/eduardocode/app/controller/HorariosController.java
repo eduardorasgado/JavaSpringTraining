@@ -8,6 +8,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -55,7 +56,7 @@ public class HorariosController {
 		// guardamos un horario en la base de datos
 		
 		if(result.hasErrors()) {
-			for(var error : result.getAllErrors()) {
+			for(ObjectError error : result.getAllErrors()) {
 				System.out.println(error.getDefaultMessage());
 			}
 			// si existe un error en el binding entonces se envia automaticamente
@@ -77,7 +78,7 @@ public class HorariosController {
 	private void horariosInitBinder(WebDataBinder binder) {
 		// la fecha que viene del request tiene el formato dd-MM-yyyy
 		// y tiene que formatearse
-		var dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormatter, false));
 	}
 }

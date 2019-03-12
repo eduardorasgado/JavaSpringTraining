@@ -30,13 +30,13 @@ public class BannersServiceImp implements IBannersService {
 			
 			// creamos instancias de Banner con los banners con los que
 			// ya se cuentan en resources/images
-			var b1 = new Banner();
-			var b2 = new Banner();
-			var b3 = new Banner();
-			var b4 = new Banner();
-			var b5 = new Banner();
-			var b6 = new Banner();
-			var b7 = new Banner();
+			Banner b1 = new Banner();
+			Banner b2 = new Banner();
+			Banner b3 = new Banner();
+			Banner b4 = new Banner();
+			Banner b5 = new Banner();
+			Banner b6 = new Banner();
+			Banner b7 = new Banner();
 			
 			b1 = setDataToBanner( b1, 1, "Kong/Logan", "slide1.jpg", "Activo", 
 					formatter.parse("28-05-2017"));

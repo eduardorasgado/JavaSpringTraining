@@ -12,7 +12,7 @@ public class AppFindAll {
 
 	public static void main(String[] args) {
 		
-		var context = new ClassPathXmlApplicationContext("root-context.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		NoticiasRepository repoNoticias = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
 		
@@ -29,7 +29,7 @@ public class AppFindAll {
 			add("XDetalle7: lorem ipsum dolor sit amet"); add("dDetalle8: lorem ipsum dolor sit amet");}};
 		
 		for(int i = 0; i < 8; i++) {
-			var not = new Noticia();
+			Noticia not = new Noticia();
 			not.setTitulo(titulos.get(i));
 			not.setDetalle(detalles.get(i));
 			repoNoticias.save(not);
@@ -41,7 +41,7 @@ public class AppFindAll {
 		//repoNoticias.findAll(); // regresa un iterable que envuelve objetos Noticia
 		
 		// con NoticiasRepository extendiendo de JpaRepository
-		var noticias = repoNoticias.findAll(); // devuelve una lista de Noticias List<Noticia>
+		List<Noticia> noticias = repoNoticias.findAll(); // devuelve una lista de Noticias List<Noticia>
 		noticias.forEach((noticia) ->
 					{ System.out.println(noticia.getTitulo()); });
 		
