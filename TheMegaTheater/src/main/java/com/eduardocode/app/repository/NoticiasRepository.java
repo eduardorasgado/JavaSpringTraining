@@ -42,4 +42,8 @@ public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 	// si se cumple una de las dos condiciones entonces devuelve la entidad
 	List<Noticia> findByStatusOrFechaPublicacion(String status,
 			LocalDate fechaPublicacion);
+	
+	// where fecha between ? and ?
+	List<Noticia> findByFechaPublicacionBetween(
+			LocalDate startDate, LocalDate finishDate);
 }
