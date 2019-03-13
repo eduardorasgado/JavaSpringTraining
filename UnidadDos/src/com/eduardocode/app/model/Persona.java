@@ -20,9 +20,17 @@ public class Persona {
 	public int getEdad() {
 		return edad;
 	}
+	
+	public float getEdad(String e) {
+		return (float) edad;
+	}
 
 	public void setEdad(int edad) {
 		this.edad = edad;
+	}
+	
+	public void setEdad(float edad) {
+		this.edad = (int) edad;
 	}
 
 	@Override
