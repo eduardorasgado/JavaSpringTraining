@@ -46,4 +46,6 @@ public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 	// where fecha between ? and ?
 	List<Noticia> findByFechaPublicacionBetween(
 			LocalDate startDate, LocalDate finishDate);
+	
+	List<Noticia> findByIdBetween(int startId, int finishId);
 }

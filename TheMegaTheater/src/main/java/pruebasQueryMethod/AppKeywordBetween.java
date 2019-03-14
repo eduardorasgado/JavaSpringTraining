@@ -27,6 +27,13 @@ public class AppKeywordBetween {
 		noticias.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());
 		});
+		
+		List<Noticia> noticiasById = repoNoticias.findByIdBetween(10, 15);
+		
+		System.out.println("BUSCANDO POR ID BETWEEN");
+		noticiasById.forEach( (noticia) -> {
+			System.out.println(noticia.getId() + " | " + noticia.getTitulo());
+		});
 	}
 
 }
