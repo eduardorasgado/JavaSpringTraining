@@ -35,6 +35,7 @@ public class Pelicula {
 	// ignorar este atributo durante la persistencia
 	// indica a jpa que este atributo no es persistente
 	// Es usado en casos de relaciones entre tablas
+	// para evitar hacer la relacion en algun query que aisle a Pelicula
 	@Transient 
 	private Detalle detalle;
 	
