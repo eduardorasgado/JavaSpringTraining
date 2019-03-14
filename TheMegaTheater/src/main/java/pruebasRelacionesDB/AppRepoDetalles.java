@@ -20,7 +20,8 @@ public class AppRepoDetalles {
 		detalles.forEach( (detalle) -> {
 			System.out.println(detalle.getId() + " | " + detalle.getSinopsis());
 		});
-
+		
+		context.close();
 	}
 
 }
