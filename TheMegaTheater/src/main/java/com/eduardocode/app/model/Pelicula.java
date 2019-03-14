@@ -1,19 +1,32 @@
 package com.eduardocode.app.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 // esta clase es un modelo y se representara como un java bean
+@Entity
+@Table(name="Peliculas")
 public class Pelicula {
 
 	// las propiedades esran privadas y podran ser
 	// accesadas con setters / getters
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // Autoincrement MySQL
 	private int id;
+	@Column(name="titulo", length=250, nullable=false)
 	private String titulo;
 	private int duracion = 100;
 	private String clasificacion = "B";
 	private String genero;
 	private String imagen = "cinema.png"; // valor por default
-	private Date fechaEstreno;
+	private LocalDate fechaEstreno;
 	private String status = "Activa";
 	
 	// atributos de la clase compuesta
@@ -63,10 +76,10 @@ public class Pelicula {
 			this.imagen = imagen;
 		}
 	}
-	public Date getFechaEstreno() {
+	public LocalDate getFechaEstreno() {
 		return fechaEstreno;
 	}
-	public void setFechaEstreno(Date fechaEstreno) {
+	public void setFechaEstreno(LocalDate fechaEstreno) {
 		this.fechaEstreno = fechaEstreno;
 	}
 	public String getStatus() {
