@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 // esta clase es un modelo y se representara como un java bean
 @Entity
@@ -30,6 +31,11 @@ public class Pelicula {
 	private String status = "Activa";
 	
 	// atributos de la clase compuesta
+	
+	// ignorar este atributo durante la persistencia
+	// indica a jpa que este atributo no es persistente
+	// Es usado en casos de relaciones entre tablas
+	@Transient 
 	private Detalle detalle;
 	
 	public Pelicula() {
