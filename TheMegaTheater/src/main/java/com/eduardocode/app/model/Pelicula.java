@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 // esta clase es un modelo y se representara como un java bean
 @Entity
@@ -35,7 +36,11 @@ public class Pelicula {
 	// indica a jpa que este atributo no es persistente
 	// Es usado en casos de relaciones entre tablas
 	// para evitar hacer la relacion en algun query que aisle a Pelicula
-	@Transient 
+	//@Transient
+	
+	// relacion uno a uno
+	@OneToOne
+	@JoinColumn(name="idDetalle")
 	private Detalle detalle;
 	
 	public Pelicula() {

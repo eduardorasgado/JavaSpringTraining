@@ -19,7 +19,7 @@ public class AppFindAll {
 		// relacion entre las entidades detalle y peliculas
 		List<Pelicula> peliculas = repoPeliculas.findAll();
 		peliculas.forEach( (pelicula) -> {
-			System.out.println(pelicula.getTitulo());
+			System.out.println(pelicula);
 		});
 		context.close();
 	}
