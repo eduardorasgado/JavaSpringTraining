@@ -1,13 +1,16 @@
 package com.eduardocode.app.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -42,6 +45,11 @@ public class Pelicula {
 	@OneToOne
 	@JoinColumn(name="idDetalle")
 	private Detalle detalle;
+	
+	@OneToMany(mappedBy="pelicula", // "pelicula" es nombre del objeto que tenemos declarado en el modelo Horario 
+			fetch=FetchType.EAGER) // EAGER significa que cada que consultemos en pelicula tambien
+									// consultemos en el modelo de Horario y traernos todos los horarios
+	private List<Horario> horarios;
 	
 	public Pelicula() {
 		// default constructor
@@ -106,11 +114,19 @@ public class Pelicula {
 		this.detalle = detalle;
 	}
 
+	public List<Horario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
+
 	// formato del despliegue actual del objeto
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
 				+ clasificacion + ", genero=" + genero + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
-				+ ", status=" + status + ", detalle=" + detalle + "]";
+				+ ", status=" + status + ", detalle=" + detalle + ", horarios=" + horarios + "]";
 	}
 }
