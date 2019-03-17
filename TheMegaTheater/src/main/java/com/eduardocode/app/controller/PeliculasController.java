@@ -102,6 +102,12 @@ public class PeliculasController {
 			pelicula.setImagen(nombreImagen);
 		}
 		
+		System.out.println("DETALLE ANTES: " + pelicula.getDetalle());
+		// insertando el detalle mapeado de la movie a la db
+		detallesService.insert(pelicula.getDetalle());
+		System.out.println("DETALLE DESPUES: " + pelicula.getDetalle());
+		
+		// guardando en la db
 		peliculasService.insert(pelicula);
 		
 		System.out.println("Una pelicula se ha guardado:");

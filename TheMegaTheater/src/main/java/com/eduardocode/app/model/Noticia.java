@@ -1,6 +1,6 @@
 package com.eduardocode.app.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class Noticia {
 	@Column(name="titulo", length=250, nullable=false)
 	private String titulo;
 	@Column(name="fecha")
-	private LocalDate fechaPublicacion;
+	private Date fechaPublicacion;
 	//private Date fechaPublicacion;
 	private String detalle;
 	private String status;
@@ -38,8 +38,8 @@ public class Noticia {
 	public Noticia() {
 		//System.out.println("[NUEVA NOTICIA CREADA]");
 		// el atributo de fecha se crea de forma automatica
-		//this.fechaPublicacion = new Date();
-		this.fechaPublicacion = LocalDate.now(); // Se cambia de date a local date para poder buscar
+		this.fechaPublicacion = new Date();
+		//this.fechaPublicacion = LocalDate.now(); // Se cambia de date a local date para poder buscar
 												// noticias en JpaRepository de forma efectiva
 		this.status = "Activa";
 	}
@@ -60,11 +60,11 @@ public class Noticia {
 		this.titulo = titulo;
 	}
 
-	public LocalDate getFechaPublicacion() {
+	public Date getFechaPublicacion() {
 		return fechaPublicacion;
 	}
 
-	public void setFechaPublicacion(LocalDate fechaPublicacion) {
+	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 

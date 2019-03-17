@@ -1,6 +1,6 @@
 package com.eduardocode.app.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,7 +30,8 @@ public class Pelicula {
 	private String clasificacion = "B";
 	private String genero;
 	private String imagen = "cinema.png"; // valor por default
-	private LocalDate fechaEstreno;
+	//private LocalDate fechaEstreno;
+	private Date fechaEstreno;
 	private String status = "Activa";
 	
 	// atributos de la clase compuesta
@@ -49,6 +50,7 @@ public class Pelicula {
 	@OneToMany(mappedBy="pelicula", // "pelicula" es nombre del objeto que tenemos declarado en el modelo Horario 
 			fetch=FetchType.EAGER) // EAGER significa que cada que consultemos en pelicula tambien
 									// consultemos en el modelo de Horario y traernos todos los horarios
+	//@Column(name="horarios", nullable=true)
 	private List<Horario> horarios;
 	
 	public Pelicula() {
@@ -95,10 +97,10 @@ public class Pelicula {
 			this.imagen = imagen;
 		}
 	}
-	public LocalDate getFechaEstreno() {
+	public Date getFechaEstreno() {
 		return fechaEstreno;
 	}
-	public void setFechaEstreno(LocalDate fechaEstreno) {
+	public void setFechaEstreno(Date fechaEstreno) {
 		this.fechaEstreno = fechaEstreno;
 	}
 	public String getStatus() {

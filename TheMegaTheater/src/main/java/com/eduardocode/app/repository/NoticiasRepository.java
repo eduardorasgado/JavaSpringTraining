@@ -1,6 +1,6 @@
 package com.eduardocode.app.repository;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,21 +31,21 @@ public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 	List<Noticia> findByStatus(String status);
 	
 	// select * from Noticias where fecha = ?
-	List<Noticia> findByFechaPublicacion(LocalDate fechaPublicacion);
+	List<Noticia> findByFechaPublicacion(Date fechaPublicacion);
 	
 	// filtrando con dos atributos usando and
 	// si se cumplen las dos condiciones se devuelve la entidad
 	// where status = ? and fecha = ?
 	List<Noticia> findByStatusAndFechaPublicacion(String status, 
-			LocalDate fechaPublicacion);
+			Date fechaPublicacion);
 	
 	// si se cumple una de las dos condiciones entonces devuelve la entidad
 	List<Noticia> findByStatusOrFechaPublicacion(String status,
-			LocalDate fechaPublicacion);
+			Date fechaPublicacion);
 	
 	// where fecha between ? and ?
 	List<Noticia> findByFechaPublicacionBetween(
-			LocalDate startDate, LocalDate finishDate);
+			Date startDate, Date finishDate);
 	
 	List<Noticia> findByIdBetween(int startId, int finishId);
 }
