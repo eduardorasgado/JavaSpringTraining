@@ -52,4 +52,14 @@ public class PeliculasServiceJPA implements IPeliculasService {
 		return generos;
 	}
 
+	@Override
+	public List<String> searchPEGI() {
+		List<String> pegi = new LinkedList<String>();
+		pegi.add("A");
+		pegi.add("B");
+		pegi.add("C");
+		
+		return pegi;
+	}
+
 }

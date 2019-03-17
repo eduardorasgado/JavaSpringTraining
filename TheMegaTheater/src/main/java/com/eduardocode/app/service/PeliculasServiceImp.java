@@ -145,4 +145,10 @@ public class PeliculasServiceImp implements IPeliculasService{
 		return generos;
 	}
 
+	@Override
+	public List<String> searchPEGI() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

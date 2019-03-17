@@ -13,4 +13,6 @@ public interface IPeliculasService {
 	void insert(Pelicula pelicula);
 	
 	List<String> searchGenres();
+	
+	List<String> searchPEGI();
 }

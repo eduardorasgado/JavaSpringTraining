@@ -49,8 +49,11 @@ public class PeliculasController {
 		// ya que en la vista que regresa este metodo se usa
 		// un form con for tag library de spring
 		List<String> generos = peliculasService.searchGenres();
+		List<String> clasificaciones = peliculasService.searchPEGI();
 		
 		model.addAttribute("generos", generos);
+		model.addAttribute("clasificaciones", clasificaciones);
+		
 		return "peliculas/formPelicula";
 	}
 	

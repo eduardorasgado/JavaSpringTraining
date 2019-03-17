@@ -79,11 +79,8 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="clasificacion" class="control-label">Clasificacion</label>              
-              <form:select id="clasificacion" path="clasificacion" class="form-control">
-                <form:option value="A">Clasificacion A</form:option>
-                <form:option value="B">Clasificacion B</form:option>
-                <form:option value="C">Clasificacion C</form:option>                  
-              </form:select>             
+              <form:select id="clasificacion" path="clasificacion" class="form-control" 
+              items="${ clasificaciones }"/>
             </div> 
           </div>
           <div class="col-sm-3">
