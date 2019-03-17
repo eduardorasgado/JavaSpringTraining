@@ -84,8 +84,10 @@ public class PeliculasController {
 			}
 			
 			List<String> generos = peliculasService.searchGenres();
-			
+			List<String> clasificaciones = peliculasService.searchPEGI();
 			model.addAttribute("generos", generos);
+			model.addAttribute("clasificaciones", clasificaciones);
+			
 			return "peliculas/formPelicula";
 		}
 		
@@ -96,12 +98,13 @@ public class PeliculasController {
 			// obtenida
 			pelicula.setImagen(nombreImagen);
 		}
+		
 		peliculasService.insert(pelicula);
 		
 		System.out.println("Una pelicula se ha guardado:");
 		System.out.println(pelicula);
 		
-		attributes.addFlashAttribute("message", "La película ha sido guardada con éxito");
+		attributes.addFlashAttribute("message", "La pelicula ha sido guardada con exito");
 		
 		// si todo sale bien se redirige al user al listado
 		return "redirect:/peliculas/index";
