@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
 import com.eduardocode.app.model.Pelicula;
@@ -73,14 +74,19 @@ public class HomeController {
 	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
 	public String showDetail(Model model,
 			@PathVariable("id") int idPelicula,
-			@PathVariable("fecha") String fechaBusqueda) {
+			@PathVariable("fecha") String fechaBusqueda,
+			RedirectAttributes attributes) {
 		
 		// llamando a un metodo del servicio de peliculas
 		Pelicula pelicula = servicePeliculas.searchById(idPelicula);
 		
 		if(pelicula == null) {
 			// en caso de no existir el id
-			model.addAttribute("Error", true);
+			//model.addAttribute("Error", true);
+			// redireccionamos al inicio
+			attributes.addFlashAttribute("error", "Lo que intentas buscar no existe, "
+					+ "prueba con nuestro nuevo contenido, te va a gustar");
+			return "redirect:/";
 		} else {
 			model.addAttribute("pelicula", pelicula);
 			model.addAttribute("fechaBusqueda", fechaBusqueda);

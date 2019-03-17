@@ -110,6 +110,10 @@
 
       <!-- Marketing messaging -->
       <div class="container">
+      <c:if test="${ error != null }">
+          	<span class="alert alert-success">${ error }</span>
+          	<br/><br/>
+          </c:if>
 
         <div class="row">
 

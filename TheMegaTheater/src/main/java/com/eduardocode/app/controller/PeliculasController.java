@@ -102,10 +102,13 @@ public class PeliculasController {
 			pelicula.setImagen(nombreImagen);
 		}
 		
-		System.out.println("DETALLE ANTES: " + pelicula.getDetalle());
+		// podemos ver que antes de agregar el detalle el id tiene valor 0
+		//System.out.println("DETALLE ANTES: " + pelicula.getDetalle());
 		// insertando el detalle mapeado de la movie a la db
 		detallesService.insert(pelicula.getDetalle());
-		System.out.println("DETALLE DESPUES: " + pelicula.getDetalle());
+		// una vez que spring jpa agrega el detalle a la db toma el id y lo mapea al detalle
+		// de la pelicula en cuestion de forma automatica sin que tengamos que configurarlo
+		//System.out.println("DETALLE DESPUES: " + pelicula.getDetalle());
 		
 		// guardando en la db
 		peliculasService.insert(pelicula);

@@ -2,6 +2,7 @@ package com.eduardocode.app.service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,15 @@ public class PeliculasServiceJPA implements IPeliculasService {
 
 	@Override
 	public List<Pelicula> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return peliculasRepository.findAll();
 	}
 
 	@Override
 	public Pelicula searchById(int idMovie) {
-		// TODO Auto-generated method stub
+		Optional<Pelicula> peliculaContainer = peliculasRepository.findById(idMovie);
+		if (peliculaContainer.isPresent()) {
+			return peliculaContainer.get();
+		}
 		return null;
 	}
 
