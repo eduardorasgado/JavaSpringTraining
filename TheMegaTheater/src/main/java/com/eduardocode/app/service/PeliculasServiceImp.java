@@ -14,7 +14,7 @@ import com.eduardocode.app.model.Pelicula;
 /* Notacion service: permite la autoinclusion de una instancia de
  * Esta clase de servicio en un controller en forma de inyeccion
  *  de dependencia*/
-@Service
+//@Service // comentamos la linea para que no se considere como un bean
 public class PeliculasServiceImp implements IPeliculasService{
 	
 	private List<Pelicula> listaPeliculas = null;
