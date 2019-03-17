@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Pelicula;
+import com.eduardocode.app.service.IDetallesService;
 import com.eduardocode.app.service.IPeliculasService;
 import com.eduardocode.app.utils.Utility;
 
@@ -32,7 +33,9 @@ import com.eduardocode.app.utils.Utility;
 public class PeliculasController {
 
 	@Autowired
-	private IPeliculasService peliculasService;
+	private IPeliculasService peliculasService; // implementa jpa en su imp
+	@Autowired
+	private IDetallesService detallesService;
 	
 	@GetMapping("/index")
 	public String showIndex(Model model) {

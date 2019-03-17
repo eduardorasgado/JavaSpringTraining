@@ -7,7 +7,7 @@ import com.eduardocode.app.model.Detalle;
 import com.eduardocode.app.repository.DetallesRepository;
 
 @Service
-public class DetallesServiceImp implements IDetallesServiceJPA {
+public class DetallesServiceJPA implements IDetallesService {
 
 	@Autowired
 	private DetallesRepository detallesRepository;
