@@ -18,11 +18,13 @@ public class AppKeywordOr {
 				NoticiasRepository.class);
 		
 		LocalDate date = LocalDate.of(2017, 9, 1);
+		/*
 		List<Noticia> noticias = repoNoticias.findByStatusOrFechaPublicacion("Activa", date);
 		
 		noticias.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());
 		});
+		*/
 	}
 
 }

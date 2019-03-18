@@ -17,6 +17,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,11 +52,7 @@ public class PeliculasController {
 		// el metodo create debe tener un modelo de clase pelicula
 		// ya que en la vista que regresa este metodo se usa
 		// un form con for tag library de spring
-		List<String> generos = peliculasService.searchGenres();
-		List<String> clasificaciones = peliculasService.searchPEGI();
-		
-		model.addAttribute("generos", generos);
-		model.addAttribute("clasificaciones", clasificaciones);
+		model = this.addGenerosAndCalificaciones(model);
 		
 		return "peliculas/formPelicula";
 	}
@@ -86,10 +83,7 @@ public class PeliculasController {
 				System.out.println(error.getDefaultMessage());
 			}
 			
-			List<String> generos = peliculasService.searchGenres();
-			List<String> clasificaciones = peliculasService.searchPEGI();
-			model.addAttribute("generos", generos);
-			model.addAttribute("clasificaciones", clasificaciones);
+			model = this.addGenerosAndCalificaciones(model);
 			
 			return "peliculas/formPelicula";
 		}
@@ -122,6 +116,18 @@ public class PeliculasController {
 		return "redirect:/peliculas/index";
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String editar(@PathVariable("id") int idPelicula,
+			@ModelAttribute Pelicula pelicula,
+			Model model) {
+		// editar una pelicula
+		// buscamos la pelicula con el id seleccionado
+		pelicula = this.peliculasService.searchById(idPelicula);
+		model = this.addGenerosAndCalificaciones(model);
+		
+		return "peliculas/formPelicula";
+	}
+	
 	
 	// uitilidades
 	
@@ -134,5 +140,14 @@ public class PeliculasController {
 		// ultimo false no permitira fechas vacias
 		binder.registerCustomEditor(Date.class,
 				new CustomDateEditor(dateFormatter, false));
+	}
+	
+	private Model addGenerosAndCalificaciones(Model model) {
+		List<String> generos = peliculasService.searchGenres();
+		List<String> clasificaciones = peliculasService.searchPEGI();
+		
+		model.addAttribute("generos", generos);
+		model.addAttribute("clasificaciones", clasificaciones);
+		return model;
 	}
 }

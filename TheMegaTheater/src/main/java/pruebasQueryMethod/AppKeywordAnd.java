@@ -19,11 +19,12 @@ public class AppKeywordAnd {
 		// query builder usando and
 		
 		LocalDate fechaPublicacion = LocalDate.of(2017, 9, 1); 
-		List<Noticia> noticias = repoNoticias.findByStatusAndFechaPublicacion("Activa", fechaPublicacion);
+		/*List<Noticia> noticias = repoNoticias.findByStatusAndFechaPublicacion("Activa", fechaPublicacion);
 		
 		noticias.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());
 		});
+		*/
 		context.close();
 	}
 

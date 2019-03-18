@@ -21,6 +21,7 @@ public class AppKeywordBetween {
 		LocalDate startDate = LocalDate.of(2017, 9, 3);
 		LocalDate finishDate = LocalDate.of(2017, 9, 6);
 		
+		/*
 		List<Noticia> noticias = repoNoticias.findByFechaPublicacionBetween(
 				startDate, finishDate);
 		
@@ -34,6 +35,7 @@ public class AppKeywordBetween {
 		noticiasById.forEach( (noticia) -> {
 			System.out.println(noticia.getId() + " | " + noticia.getTitulo());
 		});
+		*/
 	}
 
 }

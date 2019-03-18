@@ -33,12 +33,13 @@ public class AppKeywordFindBy {
 		// y la base de datos maneje hora local, asi entonces usamos hora local
 		// hasta en el model
 		LocalDate fechaPublicacion = LocalDate.of(2019, 3, 11);
+		/*
 		List<Noticia> noticiasFecha = repoNoticias.findByFechaPublicacion(fechaPublicacion);
 		
 		noticiasFecha.forEach( (noticia) -> {
 			System.out.println(noticia.getTitulo());
 		});
-		
+		*/
 		context.close();
 	}
 	
