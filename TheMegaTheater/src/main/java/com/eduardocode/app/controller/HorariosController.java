@@ -72,7 +72,9 @@ public class HorariosController {
 		System.out.println(horario);
 	
 		//guardando el horario en la db
-		//horarioService.insert(horario);
+		horarioService.insert(horario);
+		
+		// de todo lo siguiente se encarga el jpa
 		//Pelicula pelicula = peliculaService.searchById(horario.getPelicula().getId());
 		//List<Horario> horariosList = pelicula.getHorarios();
 		//horariosList.add(horario);

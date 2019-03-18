@@ -25,7 +25,6 @@ public class HorariosServiceJPA implements IHorariosService{
 
 	@Override
 	public List<Horario> getAll() {
-		// TODO Auto-generated method stub
 		return horariosRepository.findAll();
 	}
 

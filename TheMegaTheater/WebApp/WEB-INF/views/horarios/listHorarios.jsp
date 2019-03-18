@@ -50,17 +50,19 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Opciones</th>
             </tr>
-            <tr>
-                <td>titulo</td>
-                <td>fecha</td>
-                <td>hora</td>
-                <td>sala</td>
-                <td>precio</td>              
-                <td>
-					<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-					<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" >Eliminar</a>
-				</td>
-            </tr>
+            <c:forEach items="${ horarios }" var="horario">
+            	<tr>
+	                <td>${ horario.pelicula.titulo }</td>
+	                <td><fmt:formatDate value="${ horario.fecha }"/></td>
+	                <td>${ horario.hora }</td>
+	                <td>${ horario.sala }</td>
+	                <td>$${ horario.precio }</td>              
+	                <td>
+						<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+						<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" >Eliminar</a>
+					</td>
+            	</tr>
+            </c:forEach>
             
         </table>
       </div>
