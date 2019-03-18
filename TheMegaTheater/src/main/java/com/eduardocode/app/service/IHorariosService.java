@@ -11,4 +11,6 @@ public interface IHorariosService {
 	void insert(Horario horario);
 	
 	List<String> getSalas();
+	
+	Horario searchById(int idHorario);
 }

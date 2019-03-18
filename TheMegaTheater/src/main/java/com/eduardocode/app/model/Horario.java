@@ -21,6 +21,7 @@ public class Horario {
 	@ManyToOne // relacion muchos horarios le pertenecen a una pelicula
 	@JoinColumn(name="idPelicula")
 	private Pelicula pelicula;
+	
 	private Date fecha;
 	private String hora; // HH:mm
 	private String sala;
