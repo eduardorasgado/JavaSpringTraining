@@ -66,7 +66,14 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="titulo">Título</label>
+              <!-- pasamos el id para decirle al controller cual pelicula estamos guardando
+              	de las que spring crea, de igual manera cuando la pelicula ya viene con un id
+              	esto hace que no se reescriba una nueva pelicula -->
               <form:hidden path="id"/>
+              <!-- detalle es el objeto de tipo detalle que traemos en el objeto pelicula 
+              	y ponemos este detalle-->
+              <form:hidden path="detalle.id"/>
+              
               <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
             </div>  
           </div>
