@@ -15,6 +15,7 @@
     <spring:url value="/" var="urlRoot"></spring:url>
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/horarios/create" var="urlNewHorarioForm"></spring:url>
+    <spring:url value="/horarios/edit" var="urlEditHorario"></spring:url>
   
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -58,7 +59,7 @@
 	                <td>${ horario.sala }</td>
 	                <td>$${ horario.precio }</td>              
 	                <td>
-						<a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+						<a href="${ urlEditHorario }/${ horario.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
 						<a href="#" class="btn btn-danger btn-sm" role="button" title="Delete" >Eliminar</a>
 					</td>
             	</tr>
