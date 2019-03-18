@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -45,7 +46,7 @@ public class HorariosController {
 			Model model) {
 		
 		model.addAttribute("peliculas", peliculaService.getAll());
-		model.addAttribute("horarioSalas", horarioService.getSalas());
+		// las salas se envian desde el metodo que implementa al anotacion modelattribute
 		
 		return "horarios/formHorario";
 	}
@@ -63,7 +64,8 @@ public class HorariosController {
 			}
 			// si existe un error en el binding entonces se envia automaticamente
 			model.addAttribute("peliculas", peliculaService.getAll());
-			model.addAttribute("horarioSalas", horarioService.getSalas());
+			// el model attribute de las salas se agrega como metodo con anotacion
+			
 			// se vuelve a la misma pagina pero ahora con mensajes del binding result
 			
 			return "horarios/create";
@@ -86,6 +88,26 @@ public class HorariosController {
 				"Se ha agregado el horario con exito");
 		
 		return "redirect:/horarios/index";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String editar(Model model,
+			@PathVariable("id") int idHorario) {
+		// regresando el modelo de la instancia ya guardada a la vista para editarla
+		Horario horario = horarioService.searchById(idHorario);
+		model.addAttribute("instanciaHorario", horario);
+		// buscando las peliculas para renderearlas
+		List<Pelicula> peliculas = peliculaService.getAll();
+		
+		model.addAttribute("peliculas", peliculas);
+		return "horarios/formHorario";
+	}
+	
+	// utilidades
+	@ModelAttribute("horarioSalas")
+	public List<String> getSalas() {
+		List<String> salas = horarioService.getSalas();
+		return salas;
 	}
 	
 	@InitBinder
