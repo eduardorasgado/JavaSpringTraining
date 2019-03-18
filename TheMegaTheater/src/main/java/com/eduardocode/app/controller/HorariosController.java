@@ -2,6 +2,7 @@ package com.eduardocode.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Horario;
+import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IHorariosService;
 import com.eduardocode.app.service.IPeliculasService;
 
@@ -63,10 +65,20 @@ public class HorariosController {
 			model.addAttribute("peliculas", peliculaService.getAll());
 			model.addAttribute("horarioSalas", horarioService.getSalas());
 			// se vuelve a la misma pagina pero ahora con mensajes del binding result
+			
 			return "horarios/create";
 		}
 		System.out.println("POST HORARIO SAVED:");
 		System.out.println(horario);
+	
+		//guardando el horario en la db
+		//horarioService.insert(horario);
+		//Pelicula pelicula = peliculaService.searchById(horario.getPelicula().getId());
+		//List<Horario> horariosList = pelicula.getHorarios();
+		//horariosList.add(horario);
+		//pelicula.setHorarios(horariosList);
+		//peliculaService.insert(pelicula);
+		
 		
 		attributes.addFlashAttribute("message", 
 				"Se ha agregado el horario con exito");
