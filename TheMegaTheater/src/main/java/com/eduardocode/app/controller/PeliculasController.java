@@ -123,6 +123,7 @@ public class PeliculasController {
 		// editar una pelicula
 		// buscamos la pelicula con el id seleccionado
 		pelicula = this.peliculasService.searchById(idPelicula);
+		
 		model = this.addGenerosAndCalificaciones(model);
 		
 		return "peliculas/formPelicula";
