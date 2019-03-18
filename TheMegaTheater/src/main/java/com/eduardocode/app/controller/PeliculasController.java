@@ -52,7 +52,9 @@ public class PeliculasController {
 		// el metodo create debe tener un modelo de clase pelicula
 		// ya que en la vista que regresa este metodo se usa
 		// un form con for tag library de spring
-		model = this.addGenerosAndCalificaciones(model);
+		
+		// generos y clasificaciones son agregados como metodos con la anotacion
+		// ModelAttribute
 		
 		return "peliculas/formPelicula";
 	}
@@ -82,8 +84,8 @@ public class PeliculasController {
 				// imprimiendo cada uno de los posibles errores
 				System.out.println(error.getDefaultMessage());
 			}
-			
-			model = this.addGenerosAndCalificaciones(model);
+			// generos y clasificaciones son agregados como metodos con la anotacion
+			// ModelAttribute
 			
 			return "peliculas/formPelicula";
 		}
@@ -126,7 +128,9 @@ public class PeliculasController {
 		// como no es una pelicula que se vaya a rellenar desde cero,
 		// no es necesario poner un @ModelAttribute Pelicula pelicula
 		model.addAttribute("pelicula", pelicula);
-		model = this.addGenerosAndCalificaciones(model);
+		
+		// generos y clasificaciones son agregados como metodos con la anotacion
+		// ModelAttribute
 		
 		// no necesitamos crear una nueva vista para editar una pelicula
 		// tampoco necesitamos crear un postMapping para editar porque
@@ -135,7 +139,19 @@ public class PeliculasController {
 	}
 	
 	
-	// uitilidades
+	// utilidades
+	
+	// tenemos disponible en cada metodo del controller las listas necesarias
+		// debido a este mapping generalizado
+		@ModelAttribute("generos")
+		public List<String> getGeneros() {
+			return peliculasService.searchGenres();
+		}
+		
+		@ModelAttribute("clasificaciones")
+		public List<String> getClasificaciones() {
+			return peliculasService.searchPEGI();
+		}
 	
 	// anotacion init binder -> personalizar data binding
 	// dada la anotacion initbinder esta sera autodetectada una vez creada 
@@ -148,12 +164,4 @@ public class PeliculasController {
 				new CustomDateEditor(dateFormatter, false));
 	}
 	
-	private Model addGenerosAndCalificaciones(Model model) {
-		List<String> generos = peliculasService.searchGenres();
-		List<String> clasificaciones = peliculasService.searchPEGI();
-		
-		model.addAttribute("generos", generos);
-		model.addAttribute("clasificaciones", clasificaciones);
-		return model;
-	}
 }
