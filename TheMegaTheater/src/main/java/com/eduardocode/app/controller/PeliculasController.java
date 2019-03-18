@@ -116,16 +116,21 @@ public class PeliculasController {
 		return "redirect:/peliculas/index";
 	}
 	
+	// editar una pelicula
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") int idPelicula,
-			@ModelAttribute Pelicula pelicula,
 			Model model) {
-		// editar una pelicula
 		// buscamos la pelicula con el id seleccionado
-		pelicula = this.peliculasService.searchById(idPelicula);
-		
+		Pelicula pelicula = this.peliculasService.searchById(idPelicula);
+		// enviamos una pelicula debido a que la vista solicita una para rellenar el form
+		// como no es una pelicula que se vaya a rellenar desde cero,
+		// no es necesario poner un @ModelAttribute Pelicula pelicula
+		model.addAttribute("pelicula", pelicula);
 		model = this.addGenerosAndCalificaciones(model);
 		
+		// no necesitamos crear una nueva vista para editar una pelicula
+		// tampoco necesitamos crear un postMapping para editar porque
+		// spring reusa el de pelicula save de acuerdo a como esta en la view
 		return "peliculas/formPelicula";
 	}
 	
