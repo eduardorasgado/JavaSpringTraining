@@ -71,7 +71,9 @@
 	                ">${ pelicula.status }</span></td>
 	                <td>
 	                    <a href="${ urlEditarPelicula }/${ pelicula.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-	                    <a href="${ urlDeletePelicula }/${ pelicula.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
+	                    <a href="${ urlDeletePelicula }/${ pelicula.id }" 
+	                    class="btn btn-danger btn-sm" role="button" title="Eliminar" 
+	                    onclick = "if (! confirm('Está seguró?')) { return false; }">Eliminar</a>
 	                </td>
 	            </tr>
             </c:forEach>

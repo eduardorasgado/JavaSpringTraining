@@ -139,8 +139,14 @@ public class PeliculasController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String eliminar() {
-		return "home";
+	public String eliminar(@PathVariable("id") int idPelicula,
+			RedirectAttributes attributes) {
+		
+		// eliminando una pelicula
+		peliculasService.delete(idPelicula);
+		
+		attributes.addFlashAttribute("message", "Se ha eliminado la pelicula");
+		return "redirect:/peliculas/index";
 	}
 	
 	
