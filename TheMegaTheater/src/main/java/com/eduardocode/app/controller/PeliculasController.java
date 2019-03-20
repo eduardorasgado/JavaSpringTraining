@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.eduardocode.app.model.Detalle;
 import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IDetallesService;
 import com.eduardocode.app.service.IPeliculasService;
@@ -142,8 +143,15 @@ public class PeliculasController {
 	public String eliminar(@PathVariable("id") int idPelicula,
 			RedirectAttributes attributes) {
 		
+		
+		Detalle detalle = peliculasService.searchById(idPelicula).getDetalle();
+		
 		// eliminando una pelicula
 		peliculasService.delete(idPelicula);
+		// eliminando el detalle de la pelicula
+		if(detalle != null) {
+			detallesService.delete(detalle.getId());
+		}
 		
 		attributes.addFlashAttribute("message", "Se ha eliminado la pelicula");
 		return "redirect:/peliculas/index";

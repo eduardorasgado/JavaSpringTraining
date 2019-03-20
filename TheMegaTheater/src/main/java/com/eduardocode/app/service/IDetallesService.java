@@ -4,4 +4,6 @@ import com.eduardocode.app.model.Detalle;
 
 public interface IDetallesService {
 	void insert(Detalle detalle);
+	
+	void delete(int idDetalle);
 }
