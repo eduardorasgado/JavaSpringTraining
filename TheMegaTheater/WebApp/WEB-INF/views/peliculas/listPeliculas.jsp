@@ -17,8 +17,9 @@
     <spring:url value="/" var="urlRoot"></spring:url>
     <spring:url value="/peliculas/create" var="urlCreatePelicula"></spring:url>
     <spring:url value="/peliculas/edit" var="urlEditarPelicula"></spring:url>
+    <spring:url value="/peliculas/delete" var="urlDeletePelicula"></spring:url>
     
-    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
     
   </head>
 
@@ -70,7 +71,7 @@
 	                ">${ pelicula.status }</span></td>
 	                <td>
 	                    <a href="${ urlEditarPelicula }/${ pelicula.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
+	                    <a href="${ urlDeletePelicula }/${ pelicula.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
 	                </td>
 	            </tr>
             </c:forEach>

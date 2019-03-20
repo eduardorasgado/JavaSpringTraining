@@ -65,4 +65,9 @@ public class PeliculasServiceJPA implements IPeliculasService {
 		return pegi;
 	}
 
+	@Override
+	public void delete(int idMovie) {
+		peliculasRepository.deleteById(idMovie);		
+	}
+
 }

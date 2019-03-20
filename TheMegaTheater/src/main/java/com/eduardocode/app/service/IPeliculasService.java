@@ -12,6 +12,8 @@ public interface IPeliculasService {
 	
 	void insert(Pelicula pelicula);
 	
+	void delete(int idMovie);
+	
 	List<String> searchGenres();
 	
 	List<String> searchPEGI();

@@ -138,6 +138,11 @@ public class PeliculasController {
 		return "peliculas/formPelicula";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String eliminar() {
+		return "home";
+	}
+	
 	
 	// utilidades
 	
