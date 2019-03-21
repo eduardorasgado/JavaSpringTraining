@@ -8,4 +8,6 @@ public interface IBannersService {
 	List<Banner> getAll();
 	
 	void insert(Banner banner);
+	
+	void delete(int idBanner);
 }

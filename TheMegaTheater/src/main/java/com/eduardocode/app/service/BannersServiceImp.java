@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.eduardocode.app.model.Banner;
 
 /*Notacion que permite la inyeccion de dependencia*/
-@Service
+//@Service
 public class BannersServiceImp implements IBannersService {
 
 	private List<Banner> listaBanners = null;
@@ -88,6 +88,11 @@ public class BannersServiceImp implements IBannersService {
 		b.setFechaPub(fechaPub);
 		
 		return b;
+	}
+	@Override
+	public void delete(int idBanner) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
