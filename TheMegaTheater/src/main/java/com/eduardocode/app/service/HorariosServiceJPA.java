@@ -58,5 +58,10 @@ public class HorariosServiceJPA implements IHorariosService{
 		return null;
 		
 	}
+
+	@Override
+	public void delete(int idHorario) {
+		horariosRepository.deleteById(idHorario);		
+	}
 	
 }

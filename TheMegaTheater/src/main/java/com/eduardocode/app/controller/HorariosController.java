@@ -104,7 +104,11 @@ public class HorariosController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String eliminar(RedirectAttributes attributes) {
+	public String eliminar(@PathVariable("id") int idHorario,
+			RedirectAttributes attributes) {
+		
+		//
+		
 		attributes.addFlashAttribute("message", "Se ha eliminado el horario");
 		return "redirect:/horarios/index";
 	}

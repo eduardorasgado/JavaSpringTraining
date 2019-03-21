@@ -10,6 +10,8 @@ public interface IHorariosService {
 	
 	void insert(Horario horario);
 	
+	void delete(int idHorario);
+	
 	List<String> getSalas();
 	
 	Horario searchById(int idHorario);
