@@ -103,6 +103,12 @@ public class HorariosController {
 		return "horarios/formHorario";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String eliminar(RedirectAttributes attributes) {
+		attributes.addFlashAttribute("message", "Se ha eliminado el horario");
+		return "redirect:/horarios/index";
+	}
+	
 	// utilidades
 	@ModelAttribute("horarioSalas")
 	public List<String> getSalas() {
