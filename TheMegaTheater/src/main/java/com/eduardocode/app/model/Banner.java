@@ -2,6 +2,7 @@ package com.eduardocode.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,9 @@ public class Banner {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String titulo;
+	@Column(name="fecha", nullable=false)
 	private Date fechaPub; // fecha de publicacion
+	@Column(name="archivo", nullable=false)
 	private String nombreArchivo; // atributo para guardar el nombre de imagen
 	private String status;
 	
