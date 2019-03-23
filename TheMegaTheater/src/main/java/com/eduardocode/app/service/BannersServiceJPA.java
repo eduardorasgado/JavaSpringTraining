@@ -1,6 +1,7 @@
 package com.eduardocode.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,15 @@ public class BannersServiceJPA implements IBannersService{
 	@Override
 	public void delete(int idBanner) {
 		bannersRepository.deleteById(idBanner);
+	}
+
+	@Override
+	public Banner findById(int idBanner) {
+		Optional<Banner> banner = bannersRepository.findById(idBanner);
+		if(banner.isPresent()) {
+			return banner.get();
+		}
+		return null;
 	}
 
 }

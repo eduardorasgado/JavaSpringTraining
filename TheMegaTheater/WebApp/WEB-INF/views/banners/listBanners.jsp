@@ -18,6 +18,8 @@ pageEncoding="UTF-8" %>
     <spring:url value="/" var="urlRoot"></spring:url>
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/banners/create" var="urlFormNewBanner"></spring:url>
+    <spring:url value="/banners/update" var="urlUpdateBanner"></spring:url>
+    
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
   </head>
@@ -59,7 +61,7 @@ pageEncoding="UTF-8" %>
 	                <td><span class="label label-success">${ banner.status }</span></td>
 	                <td>
 	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
+	                    <a href="${ urlUpdateBanner }/${ banner.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
 	                </td>
 	            </tr>	
             </c:forEach>

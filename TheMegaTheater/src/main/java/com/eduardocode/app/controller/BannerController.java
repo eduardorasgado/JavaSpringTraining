@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
+import com.eduardocode.app.repository.BannersRepository;
 import com.eduardocode.app.service.IBannersService;
 import com.eduardocode.app.utils.Utility;
 
@@ -73,5 +75,14 @@ public class BannerController {
 		// redireccionar la pagina con un mensaje de exito
 		attribute.addFlashAttribute("message", "El banner se ha guardado con exito");
 		return "redirect:/banners/index";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable("id") int idBanner,
+			Model model) {
+		Banner banner = bannersService.findById(idBanner);
+		model.addAttribute("banner", banner);
+		// TODO: actualizar 
+		return "home";
 	}
 }
