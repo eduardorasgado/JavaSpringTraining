@@ -85,6 +85,6 @@ public class BannerController {
 		Banner banner = bannersService.findById(idBanner);
 		model.addAttribute("banner", banner);
 		// TODO: actualizar 
-		return "home";
+		return "banners/formBanner";
 	}
 }

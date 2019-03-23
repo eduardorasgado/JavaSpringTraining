@@ -54,7 +54,7 @@ pageEncoding="UTF-8" %>
 	             <div class="form-group">
 	             <!-- campo imagen en caso de que querramos actualizar -->
 	             <img alt="[IMAGEN DEL BANNER]" class="rounded" src="${ urlPublic }/images/${ banner.nombreArchivo }"
-	             width="150" height="200" title="Banner Actual">
+	             width="800" height="200" title="Banner Actual">
 	             </div>
 	           </div>
 	          </div>
@@ -64,22 +64,33 @@ pageEncoding="UTF-8" %>
          	<div class="col-sm-3">
 	         	<div class="form-group">
 	         		<label for="titulo">Titulo</label>
+	         		
+	         		<form:hidden path="id"/>
+	         		
 	         		<form:input type="text" class="form-control" path="titulo" id="titulo" required="required"/>
 	         	</div>
          	</div>
          	
          	<div class="col-sm-3">
-         		<div class="form-group">
-         			<label for="archivoImagen">Imagen</label>
-         			
-         			<!-- esto va a ayudat a mandar un nombreArchivo vacio en lo que
-         			se obtiene el nombre en el server -->
-         			<form:hidden path="nombreArchivo"/>
-         			
-         			<input class="form-control-file" type="file" id="archivoImagen" name="archivoImagen" required="required"/>
-         			<p class="help-block">Tamaño recomendado: 1140 x 250</p>	
-         		</div>
-         	</div>
+	         		<div class="form-group">
+	         			<label for="archivoImagen">Imagen</label>
+	         			<!-- esto va a ayudat a mandar un nombreArchivo vacio en lo que
+	         			se obtiene el nombre en el server -->
+	         			<form:hidden path="nombreArchivo"/>
+	         			<c:choose>
+	         				<c:when test="${ banner.nombreArchivo != null }">
+	         					<input class="form-control-file" type="file" id="archivoImagen" name="archivoImagen" />
+	         				</c:when>
+	         				<c:otherwise>
+	         					<input class="form-control-file" type="file" id="archivoImagen" name="archivoImagen" 
+	         					required="required"/>
+	         				</c:otherwise>
+	         			</c:choose>
+	         			<p class="help-block">Tamaño recomendado: 1140 x 250</p>	
+	         		</div>
+	         	</div>
+         	
+         	
          	
          	<div class="col-sm-3">
          		<div class="form-group">

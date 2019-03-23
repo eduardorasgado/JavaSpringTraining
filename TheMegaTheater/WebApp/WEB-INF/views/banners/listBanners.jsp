@@ -60,8 +60,8 @@ pageEncoding="UTF-8" %>
 	                <td>${ banner.nombreArchivo }</td>                         
 	                <td><span class="label label-success">${ banner.status }</span></td>
 	                <td>
-	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-	                    <a href="${ urlUpdateBanner }/${ banner.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
+	                    <a href="${ urlUpdateBanner }/${ banner.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
 	                </td>
 	            </tr>	
             </c:forEach>
