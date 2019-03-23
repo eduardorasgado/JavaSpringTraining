@@ -18,7 +18,8 @@ pageEncoding="UTF-8" %>
     <spring:url value="/" var="urlRoot"></spring:url>
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/banners/create" var="urlFormNewBanner"></spring:url>
-    <spring:url value="/banners/update" var="urlUpdateBanner"></spring:url>
+    <spring:url value="/banners/edit" var="urlEditBanner"></spring:url>
+    <spring:url value="/banners/delete" var="urlDeleteBanner"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -60,8 +61,9 @@ pageEncoding="UTF-8" %>
 	                <td>${ banner.nombreArchivo }</td>                         
 	                <td><span class="label label-success">${ banner.status }</span></td>
 	                <td>
-	                    <a href="${ urlUpdateBanner }/${ banner.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" >Eliminar</a>
+	                    <a href="${ urlEditBanner }/${ banner.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+	                    <a href="${ urlDeleteBanner }/${ banner.id }" class="btn btn-danger btn-sm" 
+	                    onclick = "if (! confirm('Está segur@?')) { return false; }" role="button" title="Eliminar" >Eliminar</a>
 	                </td>
 	            </tr>	
             </c:forEach>

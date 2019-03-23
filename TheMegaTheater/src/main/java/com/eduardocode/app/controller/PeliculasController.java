@@ -149,7 +149,6 @@ public class PeliculasController {
 		
 		Pelicula movieToDelete = peliculasService.searchById(idPelicula);
 		Detalle detalle = movieToDelete.getDetalle();
-		List<Horario> horarios = movieToDelete.getHorarios();
 		
 		// eliminando una pelicula
 		peliculasService.delete(idPelicula);
@@ -158,15 +157,6 @@ public class PeliculasController {
 			detallesService.delete(detalle.getId());
 		}
 		
-		/*
-		if(!horarios.isEmpty()) {
-			// eliminamos los horarios que posee la pelicula
-			horarios.forEach( (horario) -> {
-				horariosService.delete(horario.getId());
-			});
-		}
-		
-		*/
 		
 		attributes.addFlashAttribute("message", "Se ha eliminado la pelicula");
 		return "redirect:/peliculas/index";

@@ -79,12 +79,19 @@ public class BannerController {
 		return "redirect:/banners/index";
 	}
 	
-	@GetMapping("/update/{id}")
+	@GetMapping("/edit/{id}")
 	public String update(@PathVariable("id") int idBanner,
 			Model model) {
 		Banner banner = bannersService.findById(idBanner);
 		model.addAttribute("banner", banner);
 		// TODO: actualizar 
 		return "banners/formBanner";
+	}
+	
+	@GetMapping("delete/{id}")
+	public String delete(RedirectAttributes attributes) {
+		attributes.addFlashAttribute("message", "El banner ha sido eliminado");
+		// redireccionamiento a la lista 
+		return "redirect:/banners/index";
 	}
 }
