@@ -71,7 +71,7 @@ public class BannerController {
 		bannersService.insert(banner);
 		
 		// redireccionar la pagina con un mensaje de exito
-		attribute.addFlashAttribute("message", "El banner se ha guardado con éxito");
+		attribute.addFlashAttribute("message", "El banner se ha guardado con exito");
 		return "redirect:/banners/index";
 	}
 }
