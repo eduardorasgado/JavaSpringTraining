@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,13 +43,14 @@ public class BannerController {
 	
 	// metodo para la vista de creacion de banner
 	@GetMapping("/create")
-	public String create() {
+	public String create(@ModelAttribute Banner banner) {
 		return "banners/formBanner";
 	}
 	
 	@PostMapping("/save")
 	// explicacion de los parametros en el controlador de peliculas
-	public String save(Banner banner, RedirectAttributes attribute,
+	public String save(@ModelAttribute Banner banner, 
+			RedirectAttributes attribute,
 			@RequestParam("archivoImagen") MultipartFile imagen,
 			HttpServletRequest request, BindingResult result) {
 		// manejo de errores

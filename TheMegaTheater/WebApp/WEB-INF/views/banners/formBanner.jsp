@@ -2,6 +2,7 @@
 pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,39 +44,53 @@ pageEncoding="UTF-8" %>
          		</ul>
          	</div>
          </spring:hasBindErrors>
-
-         <form action="${saveBanner}" method="post" enctype="multipart/form-data">
-            <div class="row">         
-               <div class="col-sm-6">
-                  <div class="form-group">
-                     <label for="titulo">Titulo</label>             
-                     <input type="text" class="form-control" name="titulo" id="titulo" required="required"/>
-                  </div>
-               </div>
-
-
-               <div class="col-sm-3">
-                  <div class="form-group">
-                     <label for="archivoImagen">Imagen</label>
-                     <input class="form-cotrol-file" 
-                     type="file" id="archivoImagen" name="archivoImagen" required="required" />
-                     <p class="help-block">Tamaño recomendado: 1140 x 250 </p>
-                  </div> 
-               </div> 
-
-               <div class="col-sm-3">
-                  <div class="form-group">
-                     <label for="status">Status</label>             
-                     <select id="status" name="status" class="form-control">
-                        <option value="Activo">Activo</option>
-                        <option value="Inactivo">Inactivo</option>                
-                     </select>  
-                  </div>
-               </div>
-            </div>
-
-            <button type="submit" class="btn btn-danger" >Guardar</button>
-         </form> 
+         
+         <form:form action="${ saveBanner }" method="post" enctype="multipart/form-data"
+         			modelAttribute="banner">
+         
+          <div class="row">
+           <div class="col-sm-3">
+             <div class="form-group">
+             <!-- campo imagen en caso de que querramos actualizar -->
+             <img alt="Generic Image" class="rounded" src="">
+             </div>
+           </div>
+         </div>
+         
+         <div class="row">
+         	<div class="col-sm-3">
+	         	<div class="form-group">
+	         		<label for="titulo">Titulo</label>
+	         		<form:input type="text" class="form-control" path="titulo" id="titulo" required="required"/>
+	         	</div>
+         	</div>
+         	
+         	<div class="col-sm-3">
+         		<div class="form-group">
+         			<label for="archivoImagen">Imagen</label>
+         			
+         			<!-- esto va a ayudat a mandar un nombreArchivo vacio en lo que
+         			se obtiene el nombre en el server -->
+         			<form:hidden path="nombreArchivo"/>
+         			
+         			<input class="form-control-file" type="file" id="archivoImagen" name="archivoImagen" required="required"/>
+         			<p class="help-block">Tamaño recomendado: 1140 x 250</p>	
+         		</div>
+         	</div>
+         	
+         	<div class="col-sm-3">
+         		<div class="form-group">
+         			<label for="status">Status</label>
+         			<form:select class="form-control" id="status" path="status">
+         				<form:option value="Activo">Activo</form:option>
+         				<form:option value="Inactivo">Inactivo</form:option>
+         			</form:select>
+         		</div>
+         	</div>	
+         </div>
+         
+         <button type="submit" class="btn btn-danger" >Guardar</button>
+         </form:form>
 
          <hr class="featurette-divider">
 
