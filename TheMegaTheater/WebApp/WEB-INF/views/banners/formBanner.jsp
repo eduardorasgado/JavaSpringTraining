@@ -48,14 +48,17 @@ pageEncoding="UTF-8" %>
          <form:form action="${ saveBanner }" method="post" enctype="multipart/form-data"
          			modelAttribute="banner">
          
-          <div class="row">
-           <div class="col-sm-3">
-             <div class="form-group">
-             <!-- campo imagen en caso de que querramos actualizar -->
-             <img alt="Generic Image" class="rounded" src="">
-             </div>
-           </div>
-         </div>
+          <c:if test="${ banner.nombreArchivo != null }">
+          	<div class="row">
+	           <div class="col-sm-3">
+	             <div class="form-group">
+	             <!-- campo imagen en caso de que querramos actualizar -->
+	             <img alt="[IMAGEN DEL BANNER]" class="rounded" src="${ urlPublic }/images/${ banner.nombreArchivo }"
+	             width="150" height="200" title="Banner Actual">
+	             </div>
+	           </div>
+	          </div>
+          </c:if>
          
          <div class="row">
          	<div class="col-sm-3">
