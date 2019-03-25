@@ -21,6 +21,11 @@ public class NoticiasController {
 	// Dependency injection del servicio de Noticias
 	@Autowired
 	private INoticiasService noticiasService;
+	
+	@GetMapping("/index")
+	public String index() {
+		return "home";
+	}
 
 	// mapping a nivel de metodo con get y post mapping
 	@GetMapping("/create")

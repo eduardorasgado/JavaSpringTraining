@@ -24,6 +24,9 @@
           <a class="nav-link" href="${ urlRoot }horarios/index">Horarios</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="${ urlRoot }/noticias/index">Noticias</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="${ urlContacto }">Contacto</a>
         </li>
         <li class="nav-item">
