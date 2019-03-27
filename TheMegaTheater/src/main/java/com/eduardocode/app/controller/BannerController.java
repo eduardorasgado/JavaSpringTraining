@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
-import com.eduardocode.app.repository.BannersRepository;
 import com.eduardocode.app.service.IBannersService;
 import com.eduardocode.app.utils.Utility;
 

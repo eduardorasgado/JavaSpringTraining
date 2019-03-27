@@ -45,7 +45,7 @@ public class HorariosController {
 	public String create(@ModelAttribute("instanciaHorario") Horario horario,
 			Model model) {
 		
-		model.addAttribute("peliculas", peliculaService.getAll());
+		model = this.addMovies(model);
 		// las salas se envian desde el metodo que implementa al anotacion modelattribute
 		
 		return "horarios/formHorario";
@@ -63,7 +63,7 @@ public class HorariosController {
 				System.out.println(error.getDefaultMessage());
 			}
 			// si existe un error en el binding entonces se envia automaticamente
-			model.addAttribute("peliculas", peliculaService.getAll());
+			model = this.addMovies(model);
 			// el model attribute de las salas se agrega como metodo con anotacion
 			
 			// se vuelve a la misma pagina pero ahora con mensajes del binding result
@@ -97,9 +97,7 @@ public class HorariosController {
 		Horario horario = horarioService.searchById(idHorario);
 		model.addAttribute("instanciaHorario", horario);
 		// buscando las peliculas para renderearlas
-		List<Pelicula> peliculas = peliculaService.getAll();
-		
-		model.addAttribute("peliculas", peliculas);
+		model = this.addMovies(model);
 		return "horarios/formHorario";
 	}
 	
@@ -126,5 +124,12 @@ public class HorariosController {
 		// y tiene que formatearse
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormatter, false));
+	}
+	
+	private Model addMovies(Model model) {
+		
+		List<Pelicula> peliculas = peliculaService.getAll();
+		model.addAttribute("peliculas", peliculas);
+		return model;
 	}
 }

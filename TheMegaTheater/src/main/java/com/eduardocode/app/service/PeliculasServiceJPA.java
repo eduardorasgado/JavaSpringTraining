@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.eduardocode.app.model.Pelicula;
@@ -15,10 +17,17 @@ public class PeliculasServiceJPA implements IPeliculasService {
 	
 	@Autowired // inyeccion de la dependencia del repositorio
 	private PeliculasRepository peliculasRepository;
-
-	@Override
+	
+	@Override // paginacion
 	public List<Pelicula> getAll() {
+		//return peliculasRepository.findAll();
 		return peliculasRepository.findAll();
+	}
+
+	@Override // paginacion
+	public Page<Pelicula> getAll(Pageable page) {
+		//return peliculasRepository.findAll();
+		return peliculasRepository.findAll(page);
 	}
 
 	@Override

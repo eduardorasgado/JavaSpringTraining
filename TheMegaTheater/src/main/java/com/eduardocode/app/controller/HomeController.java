@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,6 +65,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String showMain(Model model) {
 		String fechaBusqueda = homeDateFormatter.format(new Date());
+		
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		
 		// agregando banners al modelo
