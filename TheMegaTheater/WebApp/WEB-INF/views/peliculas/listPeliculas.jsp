@@ -15,6 +15,7 @@
     
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/" var="urlRoot"></spring:url>
+    <spring:url value="/peliculas" var="urlPeliculas"></spring:url>
     <spring:url value="/peliculas/create" var="urlCreatePelicula"></spring:url>
     <spring:url value="/peliculas/edit" var="urlEditarPelicula"></spring:url>
     <spring:url value="/peliculas/delete" var="urlDeletePelicula"></spring:url>
@@ -51,7 +52,7 @@
                 <th>Status</th>
                 <th>Opciones</th>
             </tr>
-            <c:forEach items="${ peliculas }" var="pelicula">
+            <c:forEach items="${ peliculas.content }" var="pelicula">
             	<tr>
 	                <td>${ pelicula.titulo }</td>
 	                <td>${ pelicula.genero }</td>
@@ -79,6 +80,15 @@
             </c:forEach>
            
         </table>
+        <nav aria-label="">
+	        <ul class="pager"> 
+	        	<c:if test="${ peliculas.number > 1 }">
+	        		<li><a href="${urlPeliculas}/index?page=${peliculas.number - 1 }">Anterior</a></li>
+	        	</c:if>
+	        	<li><a href="${urlPeliculas}/index?page=${peliculas.number + 1 }">Siguiente</a></li>
+	        </ul>
+        </nav>
+Integración 
       </div>
           
       <hr class="featurette-divider">
