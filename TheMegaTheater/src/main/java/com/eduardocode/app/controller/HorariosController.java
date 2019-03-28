@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,10 +36,13 @@ public class HorariosController {
 	private IPeliculasService peliculaService;
 	
 	@GetMapping("/index")
-	public String index(Model model) {
+	public String index(Model model, Pageable page) {
 		
-		model.addAttribute("horarios", horarioService.getAll());
+		Page<Horario> horarios = horarioService.getAll(page);
 		
+		// pasando una paginacion de hojas de horarios
+		model.addAttribute("horarios", horarios);
+		model.addAttribute("pageSize", horarios.getTotalPages());
 		return "horarios/listHorarios";
 	}
 	

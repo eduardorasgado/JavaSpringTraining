@@ -17,6 +17,7 @@
     <spring:url value="/horarios/create" var="urlNewHorarioForm"></spring:url>
     <spring:url value="/horarios/edit" var="urlEditHorario"></spring:url>
     <spring:url value="/horarios/delete" var="urlDeleteHorario"></spring:url>
+    <spring:url value="/horarios" var="urlHorarios"></spring:url> 
   
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -52,7 +53,7 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Opciones</th>
             </tr>
-            <c:forEach items="${ horarios }" var="horario">
+            <c:forEach items="${ horarios.content }" var="horario">
             	<tr>
 	                <td>${ horario.pelicula.titulo }</td>
 	                <td><fmt:formatDate value="${ horario.fecha }"/></td>
@@ -67,6 +68,20 @@
             </c:forEach>
             
         </table>
+        <nav aria-label="">
+	        <ul class="pager"> 
+	        	<c:if test="${ horarios.number > 0 }">
+	        		<li><a href="${urlHorarios}/index?page=${horarios.number - 1 }">Anterior</a></li>
+	        	</c:if>
+	        	
+	        	<span>pagina: ${ horarios.number + 1 }</span>
+	        	
+	        	<c:if test="${ horarios.number < (pageSize - 1) }">
+	        		<li><a href="${urlHorarios}/index?page=${horarios.number + 1 }">Siguiente</a></li>
+	        	</c:if>
+	        	
+	        </ul>
+        </nav>
       </div>
       <hr class="featurette-divider">
 

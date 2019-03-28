@@ -84,6 +84,9 @@
 	        	<c:if test="${ peliculas.number > 0 }">
 	        		<li><a href="${urlPeliculas}/index?page=${peliculas.number - 1 }">Anterior</a></li>
 	        	</c:if>
+	        	
+	        	<span>pagina: ${ peliculas.number + 1 }</span>
+	        	
 	        	<c:if test="${ peliculas.number < (pageSize - 1) }">
 	        		<li><a href="${urlPeliculas}/index?page=${peliculas.number + 1 }">Siguiente</a></li>
 	        	</c:if>

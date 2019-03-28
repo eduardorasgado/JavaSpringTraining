@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.eduardocode.app.model.Horario;
@@ -26,6 +28,11 @@ public class HorariosServiceJPA implements IHorariosService{
 	@Override
 	public List<Horario> getAll() {
 		return horariosRepository.findAll();
+	}
+	
+	@Override
+	public Page<Horario> getAll(Pageable page) {
+		return horariosRepository.findAll(page);
 	}
 
 	@Override
