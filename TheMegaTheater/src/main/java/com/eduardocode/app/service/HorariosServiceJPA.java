@@ -1,5 +1,6 @@
 package com.eduardocode.app.service;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -69,6 +70,12 @@ public class HorariosServiceJPA implements IHorariosService{
 	@Override
 	public void delete(int idHorario) {
 		horariosRepository.deleteById(idHorario);		
+	}
+
+	@Override
+	public List<Horario> searchByIdPelicula(int idPelicula, Date date) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.eduardocode.app.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -20,4 +21,6 @@ public interface IHorariosService {
 	List<String> getSalas();
 	
 	Horario searchById(int idHorario);
+	
+	public List<Horario> searchByIdPelicula(int idPelicula, Date date);
 }

@@ -21,7 +21,7 @@
           <a class="nav-link" href="${ urlRoot }banners/index">Banners</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${ urlRoot }horarios/index">Horarios</a>
+          <a class="nav-link" href="${ urlRoot }horarios/index?page=0">Horarios</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${ urlRoot }/noticias/index">Noticias</a>
