@@ -74,8 +74,7 @@ public class HorariosServiceJPA implements IHorariosService{
 
 	@Override
 	public List<Horario> searchByIdPelicula(int idPelicula, Date date) {
-		// TODO Auto-generated method stub
-		return null;
+		return horariosRepository.findByPelicula_IdAndFechaOrderByHora(idPelicula, date);
 	}
 	
 }

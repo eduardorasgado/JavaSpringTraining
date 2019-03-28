@@ -1,5 +1,6 @@
 package com.eduardocode.app.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
+import com.eduardocode.app.model.Horario;
 import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IBannersService;
+import com.eduardocode.app.service.IHorariosService;
 import com.eduardocode.app.service.IPeliculasService;
 import com.eduardocode.app.utils.Utility;
 
@@ -34,6 +37,9 @@ public class HomeController {
 	
 	@Autowired
 	private IBannersService bannerService;
+	
+	@Autowired
+	private IHorariosService horariosService;
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
 	
@@ -91,9 +97,20 @@ public class HomeController {
 					+ "prueba con nuestro nuevo contenido, te va a gustar");
 			return "redirect:/";
 		} else {
+			Date date = null;
+			try {
+				date = homeDateFormatter.parse(fechaBusqueda);
+			} catch(ParseException e) {
+				e.printStackTrace();
+			}
+			// buscamos el los horarios de la pelicula segun la fecha
+			List<Horario> horarios = horariosService
+					.searchByIdPelicula(idPelicula,
+							date);
+			
 			model.addAttribute("pelicula", pelicula);
 			model.addAttribute("fechaBusqueda", fechaBusqueda);
-			model.addAttribute("precio", 50);
+			model.addAttribute("horarios", horarios);
 		}
 		return "detail";
 	}

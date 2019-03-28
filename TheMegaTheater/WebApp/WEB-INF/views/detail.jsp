@@ -79,42 +79,15 @@
 									<th>Precio</th>                                  
 								</tr>
 							</thead>
-							<tbody>             
-								<tr>                 
-									<td>16:00</td>
-									<td>Sala 1</td>  
-									<td>$${ precio }</td>  
-								</tr>              
-								<tr>                 
-									<td>18:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>20:00</td>
-									<td>Sala 1</td>                        
-									<td>$10</td>  
-								</tr>              
-								<tr>                
-									<td>14:00</td>
-									<td>Sala 1</td>                       
-									<td>$10</td>  
-								</tr>              
-								<tr>               
-									<td>16:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>                             
-								<tr>                  
-									<td>20:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>22:00</td>
-									<td>Sala 1</td>  
-									<td>$10</td>  
-								</tr>              
+							<tbody>
+								<c:forEach items="${ horarios }" var="horario">
+									<tr>                 
+										<td>${ horario.hora }</td>
+										<td>${ horario.sala }</td>  
+										<td>$${ horarios.precio }</td>  
+									</tr>    
+								</c:forEach>								       
+								
 							</tbody>           
 						</table>
 					</div>
