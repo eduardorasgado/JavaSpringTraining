@@ -77,18 +77,19 @@
 	                    onclick = "if (! confirm('Está segur@?')) { return false; }">Eliminar</a>
 	                </td>
 	            </tr>
-            </c:forEach>
-           
+            </c:forEach>           
         </table>
         <nav aria-label="">
 	        <ul class="pager"> 
-	        	<c:if test="${ peliculas.number > 1 }">
+	        	<c:if test="${ peliculas.number > 0 }">
 	        		<li><a href="${urlPeliculas}/index?page=${peliculas.number - 1 }">Anterior</a></li>
 	        	</c:if>
-	        	<li><a href="${urlPeliculas}/index?page=${peliculas.number + 1 }">Siguiente</a></li>
+	        	<c:if test="${ peliculas.number < (pageSize - 1) }">
+	        		<li><a href="${urlPeliculas}/index?page=${peliculas.number + 1 }">Siguiente</a></li>
+	        	</c:if>
+	        	
 	        </ul>
         </nav>
-Integración 
       </div>
           
       <hr class="featurette-divider">

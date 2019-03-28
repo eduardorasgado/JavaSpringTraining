@@ -46,7 +46,9 @@ public class PeliculasController {
 	public String showIndex(Model model, Pageable page) {
 		Page<Pelicula> listaPeliculas = peliculasService.getAll(page);
 		
+		int pageSize = listaPeliculas.getTotalPages();
 		model.addAttribute("peliculas", listaPeliculas);
+		model.addAttribute("pageSize", pageSize);
 		
 		return "peliculas/listPeliculas";
 	}
