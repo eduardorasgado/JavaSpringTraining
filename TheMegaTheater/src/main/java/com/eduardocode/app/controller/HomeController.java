@@ -105,9 +105,6 @@ public class HomeController {
 			List<Horario> horarios = horariosService
 					.searchByIdPelicula(idPelicula,
 							fechaBusqueda);
-			System.out.println("horarios: "+horarios.size());
-			
-			System.out.println("fecha busqueda: " + fechaBusqueda);
 			
 			model.addAttribute("pelicula", pelicula);
 			model.addAttribute("fechaBusqueda", homeDateFormatter.format(fechaBusqueda));

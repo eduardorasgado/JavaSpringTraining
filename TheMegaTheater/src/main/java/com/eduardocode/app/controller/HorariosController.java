@@ -92,7 +92,7 @@ public class HorariosController {
 		attributes.addFlashAttribute("message", 
 				"Se ha agregado el horario con exito");
 		
-		return "redirect:/horarios/index";
+		return "redirect:/horarios/index?page=0";
 	}
 	
 	@GetMapping("/edit/{id}")
