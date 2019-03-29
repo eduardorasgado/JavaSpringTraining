@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <!DOCTYPE html>
@@ -31,9 +32,41 @@
 		class="btn btn-success" role="button" title="Nueva Noticia">Nueva</a>
 		<br/> <br/>
 		
-		<c:forEach items="${ noticias.content }" var="noticia">
-			<p>${ noticia.titulo }</p>		
-		</c:forEach>
+		<div class="table-responsive">
+			<table class="table table-hover table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Titulo</th>
+					<th>Fecha</th>
+					<th>Detalle</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ noticias.content }" var="noticia">
+					<tr>
+						<td>${ noticia.titulo }</td>
+						<td><fmt:formatDate value="${ noticia.fechaPublicacion }"/></td>
+						<td style="font-size:12px">${ noticia.detalle }</td>
+						<td>
+						<c:choose>
+							<c:when test="${ noticia.status == 'Activa' }">
+								<span class="badge badge-success">
+									${ noticia.status }
+								</span>
+							</c:when>
+							<c:otherwise>
+								<span class="badge badge-danger">
+									${ noticia.status }
+								</span>
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		</div>
 		
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
