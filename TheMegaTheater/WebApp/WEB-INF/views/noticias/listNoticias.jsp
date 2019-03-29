@@ -14,6 +14,7 @@
 	    <title>Listado de Noticias</title>
 	    
 	    <spring:url value="/resources" var="urlPublic" ></spring:url>
+	    <spring:url value="/noticias/create" var="urlCreateNoticia"></spring:url>
 	    
 	    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -23,7 +24,17 @@
 	<jsp:include page="../includes/menu.jsp"></jsp:include>
 	
 	<div class="container" role="main">
-	
+		<br/>
+		<h3>Listado de Noticias</h3>
+		
+		<a href="${ urlCreateNoticia }" 
+		class="btn btn-success" role="button" title="Nueva Noticia">Nueva</a>
+		<br/> <br/>
+		
+		<c:forEach items="${ noticias.content }" var="noticia">
+			<p>${ noticia.titulo }</p>		
+		</c:forEach>
+		
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
 	

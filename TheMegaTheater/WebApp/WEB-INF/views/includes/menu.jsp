@@ -24,7 +24,7 @@
           <a class="nav-link" href="${ urlRoot }horarios/index?page=0">Horarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${ urlRoot }/noticias/index">Noticias</a>
+          <a class="nav-link" href="${ urlRoot }noticias/index?page=0">Noticias</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${ urlContacto }">Contacto</a>

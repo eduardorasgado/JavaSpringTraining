@@ -30,7 +30,7 @@ public class NoticiasController {
 		Page<Noticia> noticias = noticiasService.getAll(page);
 		
 		model.addAttribute("noticias", noticias);
-		
+		//model.addAttribute("pageSize", pageSize);
 		return "noticias/listNoticias";
 	}
 
