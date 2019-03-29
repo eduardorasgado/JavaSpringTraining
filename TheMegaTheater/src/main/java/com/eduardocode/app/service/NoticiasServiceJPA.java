@@ -1,6 +1,7 @@
 package com.eduardocode.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,5 +30,14 @@ public class NoticiasServiceJPA implements INoticiasService {
 	@Override
 	public void insert(Noticia noticia) {
 		noticiasRepository.save(noticia);
+	}
+
+	@Override
+	public Noticia searchById(int idNoticia) {
+		Optional<Noticia> noticiaContainer = noticiasRepository.findById(idNoticia);
+		if(noticiaContainer.isPresent()) {
+			return noticiaContainer.get();
+		}
+		return null;
 	}
 }

@@ -30,9 +30,11 @@ public class NoticiasController {
 	@GetMapping("/index")
 	public String index(Model model, Pageable page) {
 		Page<Noticia> noticias = noticiasService.getAll(page);
+		int pageSize = noticias.getTotalPages();
 		
 		model.addAttribute("noticias", noticias);
-		//model.addAttribute("pageSize", pageSize);
+		model.addAttribute("pageSize", pageSize);
+		
 		return "noticias/listNoticias";
 	}
 
@@ -59,8 +61,16 @@ public class NoticiasController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String editar(@PathVariable("id") int idNoticia) {
+	public String editar(@PathVariable("id") int idNoticia,
+			Model model) {
+		Noticia noticia = noticiasService.searchById(idNoticia);
+		if(noticia == null) {
+			// error 404
+			return "errors/404";
+		}
+		// retornar la vista para editar pero con la noticia
+		model.addAttribute("noticia", noticia);
 		
-		return "noticias7formNoticia";
+		return "noticias/formNoticia";
 	}
 }

@@ -14,6 +14,7 @@
 	    
 	    <title>Listado de Noticias</title>
 	    
+	    <spring:url value="/noticias" var="urlNoticias"></spring:url>
 	    <spring:url value="/resources" var="urlPublic" ></spring:url>
 	    <spring:url value="/noticias/create" var="urlCreateNoticia"></spring:url>
 	    <spring:url value="/noticias" var="urlEditarNoticia"></spring:url>
@@ -74,6 +75,21 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<nav aria-label="">
+	        <ul class="pager"> 
+	        	<c:if test="${ noticias.number > 0 }">
+	        		<li><a href="${urlNoticias}/index?page=${noticias.number - 1 }">Anterior</a></li>
+	        	</c:if>
+	        	
+	        	<span>pagina: ${ noticias.number + 1 }</span>
+	        	
+	        	<c:if test="${ peliculas.number < (pageSize - 1) }">
+	        		<li><a href="${urlNoticias}/index?page=${noticias.number + 1 }">Siguiente</a></li>
+	        	</c:if>
+	        	
+	        </ul>
+        </nav>
 		</div>
 		
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
