@@ -1,7 +1,10 @@
 package com.eduardocode.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +26,12 @@ public class NoticiasController {
 	private INoticiasService noticiasService;
 	
 	@GetMapping("/index")
-	public String index() {
-		return "home";
+	public String index(Model model, Pageable page) {
+		Page<Noticia> noticias = noticiasService.getAll(page);
+		
+		model.addAttribute("noticias", noticias);
+		
+		return "noticias/listNoticias";
 	}
 
 	// mapping a nivel de metodo con get y post mapping
@@ -38,7 +45,7 @@ public class NoticiasController {
 	public String save(
 			Noticia noticia) {
 		// se guarda el form en un post
-		noticiasService.guardar(noticia);
+		noticiasService.insert(noticia);
 		
 		return "noticias/formNoticia";
 	}
