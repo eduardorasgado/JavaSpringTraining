@@ -33,6 +33,11 @@
 		
 		<a href="${ urlCreateNoticia }" 
 		class="btn btn-success" role="button" title="Nueva Noticia">Nueva</a>
+		
+		<c:if test="${ message != null }">
+			<span class="alert alert-success">${ message }</span>
+		</c:if>
+		
 		<br/> <br/>
 		
 		<div class="table-responsive">
@@ -84,7 +89,7 @@
 	        	
 	        	<span>pagina: ${ noticias.number + 1 }</span>
 	        	
-	        	<c:if test="${ peliculas.number < (pageSize - 1) }">
+	        	<c:if test="${ noticias.number < (pageSize - 1) }">
 	        		<li><a href="${urlNoticias}/index?page=${noticias.number + 1 }">Siguiente</a></li>
 	        	</c:if>
 	        	

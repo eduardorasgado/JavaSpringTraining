@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Noticia;
 import com.eduardocode.app.service.INoticiasService;
@@ -47,11 +48,13 @@ public class NoticiasController {
 	
 	@PostMapping("/save")
 	public String save(
-			@ModelAttribute Noticia noticia) {
+			@ModelAttribute Noticia noticia,
+			RedirectAttributes attributes) {
 		// se guarda el form en un post
 		noticiasService.insert(noticia);
 		
-		return "noticias/formNoticia";
+		attributes.addFlashAttribute("message", "Se ha agreagado una nueva noticia con exito");
+		return "redirect:/noticias/index?page=0";
 	}
 	
 	// manejando un intento de recargar usando get
