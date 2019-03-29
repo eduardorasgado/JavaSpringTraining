@@ -10,6 +10,8 @@
 <!-- Para poder ocupar los recursos(resources) a traves de los tags de spring -->
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,36 +39,43 @@
     <div class="container" role="main">
       <h3 class="blog-title"><span class="badge badge-success">Datos de la Noticia</span></h3>
 
-      <form method="post" action="${ urlNoticiasForm }">
-        <div class="row">         
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="titulo">Titulo</label>             
-              <input type="text" class="form-control" name="titulo" id="titulo" required="required"/>
+	  <form:form action="${ urlNoticiasForm }" method="post" modelAttribute="noticia">
+	  	<div class="row">
+	  	
+	  		<form:hidden path="id"/>
+	  		
+	  		<div class="col-sm-6">
+              <div class="form-group">
+              	<label for="titulo">Titulo</label>             
+              	<form:input type="text" class="form-control" path="titulo" id="titulo" required="required"/>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label for="status">Status</label>             
-              <select id="status" name="status" class="form-control">
-                <option value="Activa">Activa</option>
-                <option value="Inactiva">Inactiva</option>                
-              </select>  
-            </div>
+            
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="status">Status</label>             
+                <form:select id="status" path="status" class="form-control">
+                  <form:option value="Activa">Activa</form:option>
+                  <form:option value="Inactiva">Inactiva</form:option>              
+                </form:select>  
+              </div>
           </div>
         </div>
+          
         <div class="row"> 
           <div class="col-sm-12">
             <div class="form-group">
               <label for="detalle">Detalles</label>             
-              <textarea class="form-control" name="detalle" id="detalle" rows="10"></textarea>
+              <form:textarea class="form-control" path="detalle" id="detalle" rows="10"></form:textarea>
             </div>  
           </div>
         </div>
 
-        <button type="submit" class="btn btn-danger" >Guardar</button>
-      </form> 
-
+        
+        	<button type="submit" class="btn btn-danger" >Guardar</button>
+            
+	  </form:form>
+	  
       <hr class="featurette-divider">
 
       <!-- FOOTER -->

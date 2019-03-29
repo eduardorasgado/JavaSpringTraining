@@ -16,6 +16,8 @@
 	    
 	    <spring:url value="/resources" var="urlPublic" ></spring:url>
 	    <spring:url value="/noticias/create" var="urlCreateNoticia"></spring:url>
+	    <spring:url value="/noticias" var="urlEditarNoticia"></spring:url>
+	    <spring:url value="/noticias" var="urlEliminarNoticia"></spring:url>
 	    
 	    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -40,6 +42,7 @@
 					<th>Fecha</th>
 					<th>Detalle</th>
 					<th>Status</th>
+					<th>Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -61,6 +64,11 @@
 								</span>
 							</c:otherwise>
 						</c:choose>
+						</td>
+						<td>
+							<a href="" class="btn btn-success btn-sm" role="button">Editar</a>
+							<a href="" class="btn btn-danger btn-sm" role="button"
+								onclick="if (! confirm('Está segur@?')) { return false; }">Eliminar</a>
 						</td>
 					</tr>
 				</c:forEach>

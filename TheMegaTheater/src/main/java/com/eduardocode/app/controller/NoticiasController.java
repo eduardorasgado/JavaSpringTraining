@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -36,14 +38,14 @@ public class NoticiasController {
 
 	// mapping a nivel de metodo con get y post mapping
 	@GetMapping("/create")
-	public String create() {
+	public String create(@ModelAttribute Noticia noticia) {
 		// creacion de una nueva noticia
 		return "noticias/formNoticia";
 	}
 	
 	@PostMapping("/save")
 	public String save(
-			Noticia noticia) {
+			@ModelAttribute Noticia noticia) {
 		// se guarda el form en un post
 		noticiasService.insert(noticia);
 		
@@ -54,5 +56,11 @@ public class NoticiasController {
 	@GetMapping("/save")
 	public String save() {
 		return "noticias/formNoticia";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String editar(@PathVariable("id") int idNoticia) {
+		
+		return "noticias7formNoticia";
 	}
 }
