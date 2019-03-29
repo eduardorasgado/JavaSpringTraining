@@ -20,11 +20,15 @@
     <div class="container" role="main">
         <div class="card">
             <div class="card-header text-white bg-danger">
-                <h3 class="card-title">Error 404.</h3>
+                <h3 class="card-title">Error 500: Internal Server Error.</h3>
             </div>
             <div class="card-body">
                 <img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
-                <h4>La página solicitada no existe!</h4>                
+                <h4>Error interno del servidor</h4>
+                <div class="alert alert-warning" role="alert">
+                	<h4>Descripcion del error</h4>
+                	${ pageContext.exception.message }
+                </div>                
                 <br>
                 <button class="btn btn-success" onclick="goBack()">REGRESAR</button>
             </div>

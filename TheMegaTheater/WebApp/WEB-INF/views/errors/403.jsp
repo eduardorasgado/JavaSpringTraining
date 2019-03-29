@@ -20,11 +20,11 @@
     <div class="container" role="main">
         <div class="card">
             <div class="card-header text-white bg-danger">
-                <h3 class="card-title">Error 404.</h3>
+                <h3 class="card-title">Error 403.</h3>
             </div>
             <div class="card-body">
                 <img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
-                <h4>La página solicitada no existe!</h4>                
+                <h4>FORBIDEN: Acceso Denegado</h4>                
                 <br>
                 <button class="btn btn-success" onclick="goBack()">REGRESAR</button>
             </div>
