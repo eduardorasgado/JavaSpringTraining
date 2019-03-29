@@ -32,7 +32,7 @@
 		<!-- linux -->
 		<!-- property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false"></property-->
 		<!-- windows dev user: cheetos -->
-		<property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/megatheater-app?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=GMT-6"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>

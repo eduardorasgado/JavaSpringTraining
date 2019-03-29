@@ -68,7 +68,9 @@
 
 				<div class="card card-secondary">
 					<div class="card-header">
-						<h3 class="card-title"><span class="badge badge-success">${ fechaBusqueda }</span></h3>
+						<h3 class="card-title"><span class="badge badge-success">
+							${ fechaBusqueda }
+						</span></h3>
 					</div>
 					<div class="card-body">
 						<table class="table table-striped">
@@ -84,10 +86,9 @@
 									<tr>                 
 										<td>${ horario.hora }</td>
 										<td>${ horario.sala }</td>  
-										<td>$${ horarios.precio }</td>  
+										<td>$${ horario.precio }</td>  
 									</tr>    
 								</c:forEach>								       
-								
 							</tbody>           
 						</table>
 					</div>

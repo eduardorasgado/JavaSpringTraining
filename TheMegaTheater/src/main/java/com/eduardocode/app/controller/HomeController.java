@@ -6,11 +6,15 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +45,7 @@ public class HomeController {
 	@Autowired
 	private IHorariosService horariosService;
 	
-	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-M-yyyy");
+	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	//@RequestMapping(value="/home", method=RequestMethod.GET)
 	@GetMapping("/home")
@@ -83,7 +87,7 @@ public class HomeController {
 	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
 	public String showDetail(Model model,
 			@PathVariable("id") int idPelicula,
-			@PathVariable("fecha") String fechaBusqueda,
+			@PathVariable("fecha") Date fechaBusqueda,
 			RedirectAttributes attributes) {
 		
 		// llamando a un metodo del servicio de peliculas
@@ -97,19 +101,16 @@ public class HomeController {
 					+ "prueba con nuestro nuevo contenido, te va a gustar");
 			return "redirect:/";
 		} else {
-			Date date = null;
-			try {
-				date = homeDateFormatter.parse(fechaBusqueda);
-			} catch(ParseException e) {
-				e.printStackTrace();
-			}
 			// buscamos el los horarios de la pelicula segun la fecha
 			List<Horario> horarios = horariosService
 					.searchByIdPelicula(idPelicula,
-							date);
+							fechaBusqueda);
+			System.out.println("horarios: "+horarios.size());
+			
+			System.out.println("fecha busqueda: " + fechaBusqueda);
 			
 			model.addAttribute("pelicula", pelicula);
-			model.addAttribute("fechaBusqueda", fechaBusqueda);
+			model.addAttribute("fechaBusqueda", homeDateFormatter.format(fechaBusqueda));
 			model.addAttribute("horarios", horarios);
 		}
 		return "detail";
@@ -156,5 +157,13 @@ public class HomeController {
 			model.addAttribute("bannerinit", initPoint);
 		}
 		return model;
+	}
+	
+	@InitBinder
+	private void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+		// ultimo false no permitira fechas vacias
+		binder.registerCustomEditor(Date.class,
+				new CustomDateEditor(dateFormatter, false));
 	}
 }

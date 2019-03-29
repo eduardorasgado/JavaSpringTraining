@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -182,7 +181,7 @@ public class PeliculasController {
 	// dada la anotacion initbinder esta sera autodetectada una vez creada 
 	// la funcion y anotada
 	@InitBinder
-	private void peliculaInitBinder(WebDataBinder binder, ServletRequestDataBinder b2) {
+	private void peliculaInitBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 		// ultimo false no permitira fechas vacias
 		binder.registerCustomEditor(Date.class,

@@ -45,6 +45,8 @@
 			</spring:hasBindErrors>  
 
 			<form:form method="post" action="${ urlHorarioSave }" modelAttribute="instanciaHorario">
+				
+				<form:hidden path="id"/>
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
