@@ -1,5 +1,6 @@
 package com.eduardocode.app.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -42,10 +43,12 @@ public class HomeController {
 	private IHorariosService horariosService;
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+	private Date dateGral = new Date();
 	
 	//@RequestMapping(value="/home", method=RequestMethod.GET)
 	@GetMapping("/home")
 	public String index(Model model) {
+		 dateGral = new Date();
 		return this.showMain(model);
 	}
 	
@@ -54,23 +57,25 @@ public class HomeController {
 	public String searchByDate(Model model,
 			@RequestParam("fecha") String fecha) {
 
+		try {
+			dateGral = homeDateFormatter.parse(fecha);
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
 		// ahora la fecha actual va a ser la fecha pasada en el search
-		model = this.getMoviesAboutDate(model, fecha);
-
-		model = this.getBanners(model);
-		
-		return "home";
+		return this.showMain(model);
 	}
 
 	@GetMapping("/search")
 	// Manejando la peticion get de /search
 	public String searchByDate(Model model) {
+		dateGral = new Date();
 		return this.showMain(model);
 	}
 	
 	@GetMapping("/")
 	public String showMain(Model model) {
-		String fechaBusqueda = homeDateFormatter.format(new Date());
+		String fechaBusqueda = homeDateFormatter.format(dateGral);
 		
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		
