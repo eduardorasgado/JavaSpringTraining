@@ -146,16 +146,18 @@
         <div class="container">
         	<div class="row">
         		<c:forEach items="${ peliculas }" var="pelicula">
-		          	<div class="col-xs-12 col-sm-6 col-md-3">
-			            <img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
-			            <h5>${ pelicula.titulo }</h5>
-			            <h5>
-			              <span class="badge badge-secondary">${ pelicula.clasificacion }</span>
-			              <span class="badge badge-secondary">${ pelicula.duracion } min</span>
-			              <span class="badge badge-secondary">${ pelicula.genero }</span>
-			            </h5>         
-			            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
-		          </div>
+		          	<c:if test="${ pelicula.status == 'Activa' }">
+		          		<div class="col-xs-12 col-sm-6 col-md-3">
+				            <img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
+				            <h5>${ pelicula.titulo }</h5>
+				            <h5>
+				              <span class="badge badge-secondary">${ pelicula.clasificacion }</span>
+				              <span class="badge badge-secondary">${ pelicula.duracion } min</span>
+				              <span class="badge badge-secondary">${ pelicula.genero }</span>
+				            </h5>         
+				            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
+			          </div>
+		          	</c:if>
 	          </c:forEach>
         	</div>
         </div>
