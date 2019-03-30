@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,10 +32,10 @@ public class BannerController {
 	
 	// metodo para desplegar el listado de los banners
 	@GetMapping("/index")
-	public String showindex(Model model) {
+	public String showindex(Model model, Pageable page) {
 		// retorna la lista con los datos de cada banner
 		// llamamos a todos los banners disponibles
-		List<Banner> listaBanners = bannersService.getAll();
+		Page<Banner> listaBanners = bannersService.getAll(page);
 		
 		model.addAttribute("listaBanners", listaBanners);
 		

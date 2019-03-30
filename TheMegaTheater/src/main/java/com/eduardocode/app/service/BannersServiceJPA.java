@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.eduardocode.app.model.Banner;
@@ -18,6 +20,11 @@ public class BannersServiceJPA implements IBannersService{
 	@Override
 	public List<Banner> getAll() {
 		return bannersRepository.findAll();
+	}
+	
+	@Override
+	public Page<Banner> getAll(Pageable page) {
+		return bannersRepository.findAll(page);
 	}
 
 	@Override
@@ -39,5 +46,4 @@ public class BannersServiceJPA implements IBannersService{
 		}
 		return null;
 	}
-
 }
