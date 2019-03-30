@@ -1,7 +1,5 @@
 package com.eduardocode.app.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +34,10 @@ public class BannerController {
 		// retorna la lista con los datos de cada banner
 		// llamamos a todos los banners disponibles
 		Page<Banner> listaBanners = bannersService.getAll(page);
+		int pageSize = listaBanners.getTotalPages();
 		
 		model.addAttribute("listaBanners", listaBanners);
+		model.addAttribute("pageSize", pageSize);
 		
 		return "banners/listBanners";
 	}

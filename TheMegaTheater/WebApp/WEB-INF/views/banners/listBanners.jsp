@@ -20,6 +20,7 @@ pageEncoding="UTF-8" %>
     <spring:url value="/banners/create" var="urlFormNewBanner"></spring:url>
     <spring:url value="/banners/edit" var="urlEditBanner"></spring:url>
     <spring:url value="/banners/delete" var="urlDeleteBanner"></spring:url>
+    <spring:url value="/banners" var="urlBanners"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -53,7 +54,7 @@ pageEncoding="UTF-8" %>
                 <th>Estatus</th>
                 <th>Opciones</th>              
             </tr>
-            <c:forEach items="${ listaBanners }" var="banner">
+            <c:forEach items="${ listaBanners.content }" var="banner">
             	<tr>
 	                <td>${ banner.id }</td>
 	                <td>${ banner.titulo }</td>
@@ -69,6 +70,20 @@ pageEncoding="UTF-8" %>
             </c:forEach>
                      
         </table>
+        <nav aria-label="">
+	        <ul class="pager"> 
+	        	<c:if test="${ listaBanners.number > 0 }">
+	        		<li><a href="${urlBanners}/index?page=${listaBanners.number - 1 }">Anterior</a></li>
+	        	</c:if>
+	        	
+	        	<span>pagina: ${ listaBanners.number + 1 }</span>
+	        	
+	        	<c:if test="${ listaBanners.number < (pageSize - 1) }">
+	        		<li><a href="${urlBanners}/index?page=${listaBanners.number + 1 }">Siguiente</a></li>
+	        	</c:if>
+	        	
+	        </ul>
+        </nav>
       </div>  
       <hr class="featurette-divider">
 
