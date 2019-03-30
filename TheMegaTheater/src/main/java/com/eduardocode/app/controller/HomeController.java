@@ -122,6 +122,8 @@ public class HomeController {
 		return "detail";
 	}
 	
+	// TODO: Crear en HomeController un método que redireccione a la página de acerca
+	
 	@ModelAttribute("today")
 	public String addToday() {
 		return homeDateFormatter.format(new Date());
@@ -132,8 +134,8 @@ public class HomeController {
 	private Model getMoviesAboutDate(Model model, 
 			String fechaBusqueda) {
 		// sintaxis java 10
-		// llenando la lista con el modelo
-		List<Pelicula> peliculas = servicePeliculas.getAll();
+		// llenando la lista con el modelo, con peliculas activas
+		List<Pelicula> peliculas = servicePeliculas.getAllActive();
 		
 		// creando la lista de 5 dias a partir de ahorita
 		List<String> siguientesDias = Utility.generateNextDays(4);
