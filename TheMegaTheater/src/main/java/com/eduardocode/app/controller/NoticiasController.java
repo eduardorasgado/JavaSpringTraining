@@ -76,4 +76,16 @@ public class NoticiasController {
 		
 		return "noticias/formNoticia";
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") int idNoticia,
+			RedirectAttributes attributes) {
+		
+		Noticia noticia = noticiasService.searchById(idNoticia);
+		noticiasService.delete(noticia);
+		
+		attributes.addFlashAttribute("error", "Se ha eliminado una noticia");
+		
+		return "redirect:/noticias/index?page=0";
+	}
 }

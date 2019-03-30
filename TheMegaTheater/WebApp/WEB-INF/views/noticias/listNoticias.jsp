@@ -17,8 +17,8 @@
 	    <spring:url value="/noticias" var="urlNoticias"></spring:url>
 	    <spring:url value="/resources" var="urlPublic" ></spring:url>
 	    <spring:url value="/noticias/create" var="urlCreateNoticia"></spring:url>
-	    <spring:url value="/noticias" var="urlEditarNoticia"></spring:url>
-	    <spring:url value="/noticias" var="urlEliminarNoticia"></spring:url>
+	    <spring:url value="/noticias/edit" var="urlEditarNoticia"></spring:url>
+	    <spring:url value="/noticias/delete" var="urlEliminarNoticia"></spring:url>
 	    
 	    <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
@@ -36,6 +36,10 @@
 		
 		<c:if test="${ message != null }">
 			<span class="alert alert-success">${ message }</span>
+		</c:if>
+		
+		<c:if test="${ error != null }">
+			<span class="alert alert-danger">${ error }</span>
 		</c:if>
 		
 		<br/> <br/>
@@ -72,8 +76,8 @@
 						</c:choose>
 						</td>
 						<td>
-							<a href="" class="btn btn-success btn-sm" role="button">Editar</a>
-							<a href="" class="btn btn-danger btn-sm" role="button"
+							<a href="${ urlEditarNoticia }/${ noticia.id }" class="btn btn-success btn-sm" role="button">Editar</a>
+							<a href="${ urlEliminarNoticia }/${ noticia.id }" class="btn btn-danger btn-sm" role="button"
 								onclick="if (! confirm('Está segur@?')) { return false; }">Eliminar</a>
 						</td>
 					</tr>

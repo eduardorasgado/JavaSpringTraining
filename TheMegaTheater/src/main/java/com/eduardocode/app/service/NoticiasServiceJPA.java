@@ -40,4 +40,9 @@ public class NoticiasServiceJPA implements INoticiasService {
 		}
 		return null;
 	}
+
+	@Override
+	public void delete(Noticia noticia) {
+		noticiasRepository.delete(noticia);
+	}
 }
