@@ -2,6 +2,7 @@ package com.eduardocode.app.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -167,7 +168,9 @@ public class HomeController {
 	private Model getNoticias(Model model) {
 		
 		// buscando las ultimas tres noticias agregadas
+		
 		List<Noticia> noticias = noticiasService.getAll();
+		Collections.reverse(noticias);
 		
 		// las ultimas 3 noticias agregadas
 		model.addAttribute("noticias", noticias.subList(0, 3));

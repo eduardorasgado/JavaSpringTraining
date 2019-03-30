@@ -48,4 +48,5 @@ public interface NoticiasRepository extends JpaRepository<Noticia, Integer> {
 			Date startDate, Date finishDate);
 	
 	List<Noticia> findByIdBetween(int startId, int finishId);
+	
 }

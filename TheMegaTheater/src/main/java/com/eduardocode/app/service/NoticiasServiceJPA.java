@@ -45,4 +45,5 @@ public class NoticiasServiceJPA implements INoticiasService {
 	public void delete(Noticia noticia) {
 		noticiasRepository.delete(noticia);
 	}
+
 }
