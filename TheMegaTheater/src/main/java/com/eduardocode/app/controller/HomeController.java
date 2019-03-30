@@ -21,9 +21,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Banner;
 import com.eduardocode.app.model.Horario;
+import com.eduardocode.app.model.Noticia;
 import com.eduardocode.app.model.Pelicula;
 import com.eduardocode.app.service.IBannersService;
 import com.eduardocode.app.service.IHorariosService;
+import com.eduardocode.app.service.INoticiasService;
 import com.eduardocode.app.service.IPeliculasService;
 import com.eduardocode.app.utils.Utility;
 
@@ -41,6 +43,9 @@ public class HomeController {
 	
 	@Autowired
 	private IHorariosService horariosService;
+	
+	@Autowired
+	private INoticiasService noticiasService;
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 	private Date dateGral = new Date();
@@ -81,6 +86,8 @@ public class HomeController {
 		
 		// agregando banners al modelo
 		model = this.getBanners(model);
+		
+		model = this.getNoticias(model);
 		
 		return "home";		
 	}
@@ -155,6 +162,16 @@ public class HomeController {
 			model.addAttribute("bannerinit", initPoint);
 		}
 		return model;
+	}
+	
+	private Model getNoticias(Model model) {
+		
+		// buscando las ultimas tres noticias agregadas
+		List<Noticia> noticias = noticiasService.getAll();
+		
+		// las ultimas 3 noticias agregadas
+		model.addAttribute("noticias", noticias.subList(0, 3));
+		return model; 
 	}
 	
 	@InitBinder
