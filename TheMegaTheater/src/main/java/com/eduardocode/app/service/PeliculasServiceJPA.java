@@ -1,5 +1,6 @@
 package com.eduardocode.app.service;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.eduardocode.app.model.Pelicula;
+import com.eduardocode.app.repository.HorariosRepository;
 import com.eduardocode.app.repository.PeliculasRepository;
 
 @Service
@@ -17,6 +19,8 @@ public class PeliculasServiceJPA implements IPeliculasService {
 	
 	@Autowired // inyeccion de la dependencia del repositorio
 	private PeliculasRepository peliculasRepository;
+	
+	@Autowired HorariosRepository horariosRepository;
 	
 	@Override // paginacion
 	public List<Pelicula> getAll() {
@@ -28,6 +32,12 @@ public class PeliculasServiceJPA implements IPeliculasService {
 	public Page<Pelicula> getAll(Pageable page) {
 		//return peliculasRepository.findAll();
 		return peliculasRepository.findAll(page);
+	}
+	
+	@Override
+	public List<Pelicula> getAllActive() {
+		return peliculasRepository.findByStatus("Activa");
+		
 	}
 
 	@Override
@@ -78,5 +88,4 @@ public class PeliculasServiceJPA implements IPeliculasService {
 	public void delete(int idMovie) {
 		peliculasRepository.deleteById(idMovie);		
 	}
-
 }

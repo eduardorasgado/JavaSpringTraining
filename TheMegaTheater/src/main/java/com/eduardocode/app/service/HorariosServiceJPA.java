@@ -73,7 +73,7 @@ public class HorariosServiceJPA implements IHorariosService{
 	}
 
 	@Override
-	public List<Horario> searchByIdPelicula(int idPelicula, Date date) {
+	public List<Horario> searchByIdPeliculaAndFecha(int idPelicula, Date date) {
 		return horariosRepository.findByPelicula_IdAndFechaOrderByHora(idPelicula, date);
 	}
 	

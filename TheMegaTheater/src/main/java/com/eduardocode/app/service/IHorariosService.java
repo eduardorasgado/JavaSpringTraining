@@ -22,5 +22,5 @@ public interface IHorariosService {
 	
 	Horario searchById(int idHorario);
 	
-	List<Horario> searchByIdPelicula(int idPelicula, Date date);
+	List<Horario> searchByIdPeliculaAndFecha(int idPelicula, Date date);
 }

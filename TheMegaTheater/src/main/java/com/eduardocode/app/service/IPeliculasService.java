@@ -13,6 +13,8 @@ public interface IPeliculasService {
 	
 	Page<Pelicula> getAll(Pageable page);
 	
+	List<Pelicula> getAllActive();
+	
 	Pelicula searchById(int idMovie);
 	
 	void insert(Pelicula pelicula);

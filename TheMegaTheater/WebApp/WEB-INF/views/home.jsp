@@ -85,25 +85,13 @@
 
       <div class="row pb-2 mt-4 mb-2 border-bottom">          
         <div class="col-md-12">         
-          <h2 class="text text-center"><span class="badge badge-success">EN CARTELERA</span></h2>
-                    
-          <form class="form-inline" action="${ urlRoot }search" method="post">
-            <div class="form-group mx-sm-3 mb-2">
-              <label class="" for="fecha">Fecha: </label>
-              <select id="fecha" name="fecha" class="form-control">
-                <c:forEach items="${ listaFechas }" var="fecha">
-                	<option value="${ fecha }"
-                	<c:choose>
-                		<c:when test="${ fecha == fechaBusqueda }">
-                			selected
-                		</c:when>
-                	</c:choose>
-                	>${ fecha }</option>
-                </c:forEach>                
-              </select>
-            </div>            
-            <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
-          </form>
+          <h2 class="text text-center"><span class="badge badge-success">
+          DISPONIBLES 
+          <c:choose>
+          	<c:when test="${ today == fechaBusqueda }">HOY</c:when>
+          	<c:otherwise>${ fechaBusqueda }</c:otherwise>
+          </c:choose>
+          </span></h2>
           
         </div>
       </div>
@@ -117,19 +105,59 @@
 
         <div class="row">
 
-          <c:forEach items="${ peliculas }" var="pelicula">
+          <c:forEach items="${ peliculasToday }" var="peliculaHoy">
           	<div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
-            <h5>${ pelicula.titulo }</h5>
-            <h5>
-              <span class="badge badge-secondary">${ pelicula.clasificacion }</span>
-              <span class="badge badge-secondary">${ pelicula.duracion } min</span>
-              <span class="badge badge-secondary">${ pelicula.genero }</span>
-            </h5>         
-            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
+		            <img class="rounded" src="${ urlPublic }/images/${ peliculaHoy.imagen }" alt="Generic placeholder image" width="150" height="200">
+		            <h5>${ peliculaHoy.titulo }</h5>
+		            <h5>
+		              <span class="badge badge-secondary">${ peliculaHoy.clasificacion }</span>
+		              <span class="badge badge-secondary">${ peliculaHoy.duracion } min</span>
+		              <span class="badge badge-secondary">${ peliculaHoy.genero }</span>
+		            </h5>         
+		            <p><a class="btn btn-sm btn-primary" href="detail/${ peliculaHoy.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
+	          </div>
           </c:forEach>
 
+        </div>
+        
+        <div class="row pb-2 mt-4 mb-2 border-bottom">          
+	        <div class="col-md-12">         
+	          <h2 class="text text-center"><span class="badge badge-success">EN CARTELERA</span></h2>
+	          <form class="form-inline" action="${ urlRoot }search" method="post">
+	            <div class="form-group mx-sm-3 mb-2">
+	              <label class="" for="fecha">Fecha: </label>
+	              <select id="fecha" name="fecha" class="form-control">
+	                <c:forEach items="${ listaFechas }" var="fecha">
+	                	<option value="${ fecha }"
+	                	<c:choose>
+	                		<c:when test="${ fecha == fechaBusqueda }">
+	                			selected
+	                		</c:when>
+	                	</c:choose>
+	                	>${ fecha }</option>
+	                </c:forEach>                
+	              </select>
+	            </div>            
+	            <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+	          </form>
+	        </div>
+        </div>
+        
+        <div class="container">
+        	<div class="row">
+        		<c:forEach items="${ peliculas }" var="pelicula">
+		          	<div class="col-xs-12 col-sm-6 col-md-3">
+			            <img class="rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
+			            <h5>${ pelicula.titulo }</h5>
+			            <h5>
+			              <span class="badge badge-secondary">${ pelicula.clasificacion }</span>
+			              <span class="badge badge-secondary">${ pelicula.duracion } min</span>
+			              <span class="badge badge-secondary">${ pelicula.genero }</span>
+			            </h5>         
+			            <p><a class="btn btn-sm btn-primary" href="detail/${ pelicula.id }/${ fechaBusqueda }" role="button">Consulta Horarios &raquo;</a></p>
+		          </div>
+	          </c:forEach>
+        	</div>
         </div>
 
         <div class="pb-2 mt-4 mb-2 border-bottom">

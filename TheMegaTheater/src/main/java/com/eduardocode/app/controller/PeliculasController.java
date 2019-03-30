@@ -166,16 +166,16 @@ public class PeliculasController {
 	// utilidades
 	
 	// tenemos disponible en cada metodo del controller las listas necesarias
-		// debido a este mapping generalizado
-		@ModelAttribute("generos")
-		public List<String> getGeneros() {
-			return peliculasService.searchGenres();
-		}
-		
-		@ModelAttribute("clasificaciones")
-		public List<String> getClasificaciones() {
-			return peliculasService.searchPEGI();
-		}
+	// debido a este mapping generalizado
+	@ModelAttribute("generos")
+	public List<String> getGeneros() {
+		return peliculasService.searchGenres();
+	}
+	
+	@ModelAttribute("clasificaciones")
+	public List<String> getClasificaciones() {
+		return peliculasService.searchPEGI();
+	}
 	
 	// anotacion init binder -> personalizar data binding
 	// dada la anotacion initbinder esta sera autodetectada una vez creada 
