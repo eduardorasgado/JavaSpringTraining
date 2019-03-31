@@ -53,7 +53,13 @@
   <!-- needed for ContextLoaderListener -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		
+		<param-value>
+		<!-- permite la lectura del root context -->
+		/WEB-INF/spring/root-context.xml,
+		<!-- Necesario para poder cargar el archivo de configuracion de spring security -->
+		/WEB-INF/spring/security.xml
+		</param-value>
 	</context-param>
 
 	<!-- Bootstraps the root web application context before servlet initialization -->
