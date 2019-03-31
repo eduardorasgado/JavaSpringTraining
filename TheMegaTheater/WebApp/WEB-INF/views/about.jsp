@@ -29,7 +29,7 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<p class="text-center">
-								<img class="img-rounded" src="images/acerca.png" alt="Generic placeholder image" height="220">            
+								<img class="img-rounded" src="${ urlPublic }/images/acerca.png" alt="Generic placeholder image" height="220">            
 							</p>
 						</div>
 						<div class="col-sm-9">
