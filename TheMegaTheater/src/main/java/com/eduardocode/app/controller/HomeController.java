@@ -122,7 +122,10 @@ public class HomeController {
 		return "detail";
 	}
 	
-	// TODO: Crear en HomeController un método que redireccione a la página de acerca
+	@GetMapping("/about")
+	public String acerca() {
+		return "about";
+	}
 	
 	@ModelAttribute("today")
 	public String addToday() {

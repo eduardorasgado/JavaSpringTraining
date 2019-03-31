@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <spring:url value="/" var="urlRoot"></spring:url>
 <spring:url value="/contacto/" var="urlContacto"></spring:url>
+<<spring:url value="/about" var="urlAcercaDe"></spring:url>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
@@ -28,6 +29,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${ urlContacto }">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${ urlAcercaDe }">Acerca de</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
