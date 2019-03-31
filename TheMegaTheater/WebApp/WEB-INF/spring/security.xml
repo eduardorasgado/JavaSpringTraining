@@ -9,13 +9,23 @@ con namespaces: beans y security -->
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<!-- con esta configuracion spring genera un formulario html de login de forma
+	automatica -->
+	<!-- con esta configuracion ya se agrega CSRF attack prevention que es una proteccion
+	contra ataques de tipo cross site request forgery -->
+	
+	<!-- que urls se van a proteger en la aplicacion(en caso de que el user no se haya 
+	logueado) -->
 	<http></http>
 
+	<!-- de donde se va a tomar el usuario y contrasenias para la aplicacion-->
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
+				<!-- de momento se crean dos usuarios in memory -->
+				<!-- el prefijo noop entre llaves indica que el password esta en texto plano -->
 				<user name="marisol" password="{noop}mari123" authorities="EDITOR"/>
-				<user name="Eduardo" password="{noop}gabagabahey" authorities="GERENTE"/>
+				<user name="eduardo" password="{noop}gabagabahey" authorities="GERENTE"/>
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
