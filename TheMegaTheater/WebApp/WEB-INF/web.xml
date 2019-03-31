@@ -35,6 +35,18 @@
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
+  <!-- spring security filter, interceptando las peticiones antes de ser procesadas -->
+  <filter>
+  	<filter-name>springSecurityFilterChain</filter-name>
+  	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>springSecurityFilterChain</filter-name>
+  	<!-- interceptar todas las urls http request antes de ser procesadas -->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
   <!-- Listener para el application Context-->
   <!-- Codigo generado con ctrl + space y buscamos generar contextLoaderListerner -->
   
