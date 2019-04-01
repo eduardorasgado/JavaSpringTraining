@@ -16,7 +16,13 @@ con namespaces: beans y security -->
 	
 	<!-- que urls se van a proteger en la aplicacion(en caso de que el user no se haya 
 	logueado) -->
-	<http></http>
+	<http auto-config="true">
+		<!-- declaracion de todos los recursos que van a estar protegidos -->
+		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR')"/>
+		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR')"/>
+		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR')"/>
+		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')"/>
+	</http>
 
 	<!-- de donde se va a tomar el usuario y contrasenias para la aplicacion-->
 	<authentication-manager>
