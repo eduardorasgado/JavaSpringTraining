@@ -14,6 +14,7 @@ public class LoginController {
 	@GetMapping("/index")
 	public String showDashboard() {
 		// se carga despues de que el user es logueado
+		// para esto configuramos el tag form-login en el tag http en security.xml
 		return "admin";
 	}
 	

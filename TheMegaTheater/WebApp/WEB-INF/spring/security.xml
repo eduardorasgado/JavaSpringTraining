@@ -21,6 +21,7 @@ con namespaces: beans y security -->
 		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
+		<intercept-url pattern="/admin/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')"/>
 		
 		<!-- configurando la ruta donde se va a encontrar nuestro formulario personalizado, sera
