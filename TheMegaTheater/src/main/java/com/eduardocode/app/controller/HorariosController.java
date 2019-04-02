@@ -133,7 +133,8 @@ public class HorariosController {
 	
 	private Model addMovies(Model model) {
 		
-		List<Pelicula> peliculas = peliculaService.getAll();
+		// traer todas las peliculas que estan permitidas para mostrar en la pagina
+		List<Pelicula> peliculas = peliculaService.getAllActive();
 		model.addAttribute("peliculas", peliculas);
 		return model;
 	}
