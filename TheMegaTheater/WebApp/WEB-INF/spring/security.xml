@@ -22,6 +22,10 @@ con namespaces: beans y security -->
 		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')"/>
+		
+		<!-- configurando la ruta donde se va a encontrar nuestro formulario personalizado, sera
+		en e -->
+		<form-login login-page="/admin/entrar"/>
 	</http>
 
 	<!-- de donde se va a tomar el usuario y contrasenias para la aplicacion-->
@@ -35,4 +39,5 @@ con namespaces: beans y security -->
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+	
 </b:beans>
