@@ -185,7 +185,7 @@ public class HomeController {
 	
 	private Model getBanners(Model model) {
 		// agregando banners al modelo
-		List<Banner> listaBanners = bannerService.getAll();
+		List<Banner> listaBanners = bannerService.getAllActive();
 						
 		model.addAttribute("listaBanners", listaBanners);
 		

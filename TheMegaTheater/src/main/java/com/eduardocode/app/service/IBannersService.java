@@ -12,6 +12,8 @@ public interface IBannersService {
 	
 	Page<Banner> getAll(Pageable page);
 	
+	List<Banner> getAllActive();
+	
 	Banner findById(int idBanner);
 	
 	void insert(Banner banner);

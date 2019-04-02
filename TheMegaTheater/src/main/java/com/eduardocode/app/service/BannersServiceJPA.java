@@ -46,4 +46,9 @@ public class BannersServiceJPA implements IBannersService{
 		}
 		return null;
 	}
+
+	@Override
+	public List<Banner> getAllActive() {
+		return bannersRepository.findByStatus("Activo");
+	}
 }
