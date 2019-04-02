@@ -51,12 +51,11 @@ public class HomeController {
 	private INoticiasService noticiasService;
 	
 	private SimpleDateFormat homeDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
-	private Date dateGral = new Date();
+	
 	
 	//@RequestMapping(value="/home", method=RequestMethod.GET)
 	@GetMapping("/home")
 	public String index(Model model) {
-		 dateGral = new Date();
 		return this.showMain(model);
 	}
 	
@@ -64,26 +63,23 @@ public class HomeController {
 	@PostMapping("/search")
 	public String searchByDate(Model model,
 			@RequestParam("fecha") String fecha) {
-
-		try {
-			dateGral = homeDateFormatter.parse(fecha);
-		} catch(ParseException e) {
-			e.printStackTrace();
-		}
-		// ahora la fecha actual va a ser la fecha pasada en el search
-		return this.showMain(model);
+		model = this.getMoviesToday(model);
+		model = this.getMoviesAboutDate(model, fecha);
+		model = this.getBanners(model);
+		model = this.getNoticias(model);
+		
+		return "home";
 	}
 
 	@GetMapping("/search")
 	// Manejando la peticion get de /search
 	public String searchByDate(Model model) {
-		dateGral = new Date();
 		return this.showMain(model);
 	}
 	
 	@GetMapping("/")
 	public String showMain(Model model) {
-		String fechaBusqueda = homeDateFormatter.format(dateGral);
+		String fechaBusqueda = homeDateFormatter.format(new Date());
 		
 		model = this.getMoviesToday(model);
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
@@ -152,10 +148,10 @@ public class HomeController {
 		return model;
 	}
 	
-	private Model getMoviesToday(Model model) {
+	private Model getMoviesToday(Model model, Date userDate) {
 		// conversion de dateGral a formato comparable al almacenado en peliculas
 		// donde el tiempo sea 00:00:00 entre otros detalles
-		String dateString = homeDateFormatter.format(dateGral);
+		String dateString = homeDateFormatter.format(userDate);
 		Date dateToday = new Date();
 		try {
 			 dateToday = homeDateFormatter.parse(dateString);
