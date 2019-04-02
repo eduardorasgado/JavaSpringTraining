@@ -7,7 +7,15 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="${urlRoot}">TheMegaTheater</a>
+    
+    <!-- En caso de que el admin este logueado se podra acceder a su menu de sistema -->
+    <sec:authorize access="isAnonymous()">
+    	<a class="navbar-brand" href="${urlRoot}">TheMegaTheater</a>
+    </sec:authorize>
+    <sec:authorize access="hasAnyAuthority('EDITOR', 'GERENTE')">
+    	<a class="navbar-brand" href="${urlRoot}admin/index">TheMegaTheater</a>
+    </sec:authorize>
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

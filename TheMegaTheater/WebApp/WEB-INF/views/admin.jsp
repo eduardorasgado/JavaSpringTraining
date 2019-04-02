@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Error</title>    
+    <title>Bienvenido administrador</title>    
 
 	<spring:url value="/resources" var="urlPublic"></spring:url>
 	
@@ -26,7 +27,7 @@
 
       <div class="jumbotron">        
         <h3>Administración del Sistema</h3>
-        <p>Bienvenido(a) usuario </p>
+        <p>Bienvenido(a) <sec:authentication property="principal.username"/> </p>
       </div>
 
       <!-- FOOTER -->
