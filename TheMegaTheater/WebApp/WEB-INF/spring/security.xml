@@ -18,9 +18,9 @@ con namespaces: beans y security -->
 	logueado) -->
 	<http auto-config="true">
 		<!-- declaracion de todos los recursos que van a estar protegidos -->
-		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR')"/>
-		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR')"/>
-		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR')"/>
+		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
+		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
+		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')"/>
 	</http>
 
