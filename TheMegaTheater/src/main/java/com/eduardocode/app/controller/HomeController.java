@@ -64,13 +64,13 @@ public class HomeController {
 	public String searchByDate(Model model,
 			@RequestParam("fecha") String fecha) {
 		// convirtiendo la fecha en string a una fecha en date
-		Date dateToday = new Date();
+		Date userDate = new Date();
 		try {
-			 dateToday = homeDateFormatter.parse(fecha);
+			userDate = homeDateFormatter.parse(fecha);
 		} catch(ParseException e) {
 			e.printStackTrace();
 		}
-		model = this.getMoviesToday(model, dateToday);
+		model = this.getMoviesToday(model, userDate);
 		model = this.getMoviesAboutDate(model, fecha);
 		model = this.getBanners(model);
 		model = this.getNoticias(model);
@@ -88,7 +88,19 @@ public class HomeController {
 	public String showMain(Model model) {
 		String fechaBusqueda = homeDateFormatter.format(new Date());
 		
-		model = this.getMoviesToday(model, new Date());
+		// convertimos la fecha busqueda aprovechandola, para tener una fecha de
+		// hoy formateada a como los registros se estan guardando en los campos de fecha
+		// sin hora. Con esto al entrar a la vista principal, se renderean correctamente
+		// las peliculasToday
+		// no queremos una excepcion nula de java, por eso no ponemos null
+		Date today = new Date();
+		try {
+			 today = homeDateFormatter.parse(fechaBusqueda);
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
+		model = this.getMoviesToday(model, today);
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		model = this.getBanners(model);
 		model = this.getNoticias(model);
@@ -156,7 +168,6 @@ public class HomeController {
 	
 	private Model getMoviesAboutDate(Model model, 
 			String fechaBusqueda) {
-		// sintaxis java 10
 		// llenando la lista con el modelo, con peliculas activas
 		List<Pelicula> peliculas = servicePeliculas.getAllActive();
 		

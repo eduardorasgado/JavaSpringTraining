@@ -105,7 +105,7 @@
           </c:if>
 
         <div class="row">
-
+		  
           <c:forEach items="${ peliculasToday }" var="peliculaHoy">
           	<div class="col-xs-12 col-sm-6 col-md-3">
 		            <img class="rounded" src="${ urlPublic }/images/${ peliculaHoy.imagen }" alt="Generic placeholder image" width="150" height="200">
