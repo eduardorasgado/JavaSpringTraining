@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 
@@ -28,6 +29,12 @@
 		<div class="container" role="main">
 			<hr class="featurette-divider">
 			<img src="${ urlPublic }/images/login.png" width="136" height="136" class="">
+			
+			<!-- manejando el error recibido en los parametros en caso de que los datos del loguin
+			sean incorrectos -->
+			<c:if test="${ param.error != null }">
+				<span class="aler alert-danger">Él o los datos ingresados no coinciden con nuestros registros</span>
+			</c:if>
 			
 			<!-- la accion post del inicio de sesion corresponde a la ruta /login dada la aplicacion y spring security -->
 			<form action="${ urlRoot }login" method="post">
