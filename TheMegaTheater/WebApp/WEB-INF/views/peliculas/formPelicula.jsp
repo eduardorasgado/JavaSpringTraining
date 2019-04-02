@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="secure" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +55,10 @@
       
       <!-- form tag library de spring: cambiamos name por path -->
       <form:form action="${ urlPeliculaForm }" method="post" enctype="multipart/form-data" modelAttribute="pelicula">
+      
+      <!-- spring security csrf token para poder mandar formularios de manera segura -->
+	  <secure:csrfInput/>
+      
       <div class="row">
           <div class="col-sm-3">
             <div class="form-group">

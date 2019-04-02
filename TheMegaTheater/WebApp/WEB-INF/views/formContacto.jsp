@@ -3,6 +3,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- para el csrf token de los formularios -->
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="secure"%>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -36,6 +39,10 @@
           </c:if>
 
          <form:form class="form-horizontal" action="${ saveContacto }" method="post" modelAttribute="instanciaContacto">
+         
+         	<!-- spring security csrf token para poder mandar formularios de manera segura -->
+	      	<secure:csrfInput/>
+	      	
             <div class="form-group">
                <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                <div class="col-sm-10">

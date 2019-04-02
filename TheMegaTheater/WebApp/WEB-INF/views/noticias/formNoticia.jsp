@@ -11,6 +11,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!-- para el csrf token de los formularios -->
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="secure"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +44,9 @@
 	  <form:form action="${ urlNoticiasForm }" method="post" modelAttribute="noticia">
 	  	<div class="row">
 	  	
+	  		<!-- spring security csrf token para poder mandar formularios de manera segura -->
+	        <secure:csrfInput/>
+	  		
 	  		<form:hidden path="id"/>
 	  		
 	  		<div class="col-sm-6">

@@ -9,6 +9,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!-- Para poder ocupar los recursos(resources) a traves de los tags de spring -->
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="secure" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -123,7 +124,12 @@
         <div class="row pb-2 mt-4 mb-2 border-bottom">          
 	        <div class="col-md-12">         
 	          <h2 class="text text-center"><span class="badge badge-success">EN CARTELERA</span></h2>
+	          
 	          <form class="form-inline" action="${ urlRoot }search" method="post">
+	          	
+	          	<!-- spring security csrf token para poder mandar formularios de manera segura -->
+	          	<secure:csrfInput/>
+	          	
 	            <div class="form-group mx-sm-3 mb-2">
 	              <label class="" for="fecha">Fecha: </label>
 	              <select id="fecha" name="fecha" class="form-control">

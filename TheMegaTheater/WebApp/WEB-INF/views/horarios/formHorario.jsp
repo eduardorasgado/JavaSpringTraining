@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!-- para el csrf token de los formularios -->
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="secure"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +47,9 @@
 			</spring:hasBindErrors>  
 
 			<form:form method="post" action="${ urlHorarioSave }" modelAttribute="instanciaHorario">
+				
+				<!-- spring security csrf token para poder mandar formularios de manera segura -->
+	        	<secure:csrfInput/>
 				
 				<form:hidden path="id"/>
 				<div class="row">         

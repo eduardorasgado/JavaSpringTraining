@@ -2,7 +2,6 @@
 <spring:url value="/" var="urlRoot"></spring:url>
 <spring:url value="/contacto/" var="urlContacto"></spring:url>
 <spring:url value="/about" var="urlAcercaDe"></spring:url>
-<spring:url value="/admin" var="urlAdmin"></spring:url>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
@@ -38,7 +37,7 @@
           <a class="nav-link" href="#">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${ urlAdmin }/logout">Logout</a>
+          <a class="nav-link" href="${ urlRoot }admin/logout">Logout</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">

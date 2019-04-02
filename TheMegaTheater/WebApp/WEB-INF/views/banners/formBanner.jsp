@@ -3,6 +3,8 @@ pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!-- para el csrf token de los formularios -->
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="secure"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +49,9 @@ pageEncoding="UTF-8" %>
          
          <form:form action="${ saveBanner }" method="post" enctype="multipart/form-data"
          			modelAttribute="banner">
+         			
+          <!-- spring security csrf token para poder mandar formularios de manera segura -->
+	      <secure:csrfInput/>
          
           <c:if test="${ banner.nombreArchivo != null }">
           	<div class="row">
