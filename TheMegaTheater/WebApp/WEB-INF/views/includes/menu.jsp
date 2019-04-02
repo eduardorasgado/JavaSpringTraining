@@ -26,7 +26,7 @@
 	          <a class="nav-link" href="${ urlAcercaDe }">Acerca de</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="${ urlRoot }admin/entrar">Login</a>
+	          <a class="nav-link" href="${ urlRoot }entrar">Login</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="${ urlContacto }">Contacto</a>

@@ -24,8 +24,9 @@ con namespaces: beans y security -->
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')"/>
 		
 		<!-- configurando la ruta donde se va a encontrar nuestro formulario personalizado, sera
-		en e -->
-		<form-login login-page="/admin/entrar"/>
+		en la ruta /admin/entrar marcado por login-page, 
+		una vez logueado el user, este va a ser redirigido a la ruta marcada por defaul-target-url -->
+		<form-login login-page="/entrar"/>
 	</http>
 
 	<!-- de donde se va a tomar el usuario y contrasenias para la aplicacion-->

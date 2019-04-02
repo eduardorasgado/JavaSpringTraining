@@ -135,7 +135,24 @@ public class HomeController {
 		return homeDateFormatter.format(new Date());
 	}
 	
-	// utilidades
+	// RUTAS PARA EL LOGIN ========================
+	
+	@GetMapping("/entrar")
+	public String entrar() {
+		// metodo para devolver el formulario personalizado del login
+		// Se configura su llamado en security.xml dentro del tag html
+		return "auth/formLogin";
+	}
+	
+	/*
+	 * Para el logueo de usuario se manda el form a traves del metodo entrar anterior
+	 * En el caso de procesar los datos adquiridos, spring security lo hace automaticamente
+	 * siempre en la ruta /login
+	 * En caso de haber error en los datos del logueo spring devolvera un parametro de error en la url
+	 * que puede ser manejado directamente en la vista custom del login
+	 * */
+	
+	// utilidades ================================
 	
 	private Model getMoviesAboutDate(Model model, 
 			String fechaBusqueda) {
