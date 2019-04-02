@@ -24,6 +24,6 @@ public class LoginController {
 		
 		// salir de la session actual
 		logoutHandler.logout(request, null, null);
-		return "redirect:/login";
+		return "redirect:/admin/entrar";
 	}
 }

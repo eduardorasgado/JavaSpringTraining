@@ -34,7 +34,7 @@
           <a class="nav-link" href="${ urlAcercaDe }">Acerca de</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="${ urlRoot }admin/entrar">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${ urlRoot }admin/logout">Logout</a>

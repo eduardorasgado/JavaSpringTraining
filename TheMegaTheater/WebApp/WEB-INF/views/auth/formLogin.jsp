@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,6 +13,7 @@
 		<title>Entrar al sistema</title>
 
 		<spring:url value="/resources" var="urlPublic"></spring:url>
+		<spring:url value="/" var="urlRoot"></spring:url>
 
 		<link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
 		<link href="${ urlPublic }bootstrap/css/theme.css" rel="stylesheet">
@@ -26,13 +28,32 @@
 		<div class="container" role="main">
 			<hr class="featurette-divider">
 			<img src="${ urlPublic }/images/login.png" width="136" height="136" class="">
-			<form class="" action="j_security_check" method="post">        
-				<h3 class="form-signin-heading">The Mega Theater | Administracion</h3>        
-				<label for="username" class="sr-only">Usuario</label>
-				<input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required autofocus>
-				<label for="password" class="sr-only">Contraseña</label>
-				<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+			
+			<!-- la accion post del inicio de sesion corresponde a la ruta /login dada la aplicacion y spring security -->
+			<form action="${ urlRoot }login" method="post">
+			
+				<!-- otra forma de trabajar el token de spring security -->
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			        
+				<h3 class="">The Mega Theater | Administracion</h3>        
+				<div class="form-group">
+					<label for="username" class="sr-only">Usuario</label>
+					<div class="col-sm-6">						
+						<input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required autofocus>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="sr-only">Contraseña</label>
+					<div class="col-sm-6">				
+						<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-md-3">
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+					</div>
+				</div>
 			</form>
 
 		</div> <!-- /container -->
