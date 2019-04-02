@@ -63,7 +63,14 @@ public class HomeController {
 	@PostMapping("/search")
 	public String searchByDate(Model model,
 			@RequestParam("fecha") String fecha) {
-		model = this.getMoviesToday(model);
+		// convirtiendo la fecha en string a una fecha en date
+		Date dateToday = new Date();
+		try {
+			 dateToday = homeDateFormatter.parse(fecha);
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		model = this.getMoviesToday(model, dateToday);
 		model = this.getMoviesAboutDate(model, fecha);
 		model = this.getBanners(model);
 		model = this.getNoticias(model);
@@ -81,7 +88,7 @@ public class HomeController {
 	public String showMain(Model model) {
 		String fechaBusqueda = homeDateFormatter.format(new Date());
 		
-		model = this.getMoviesToday(model);
+		model = this.getMoviesToday(model, new Date());
 		model = this.getMoviesAboutDate(model, fechaBusqueda);
 		model = this.getBanners(model);
 		model = this.getNoticias(model);
@@ -149,15 +156,6 @@ public class HomeController {
 	}
 	
 	private Model getMoviesToday(Model model, Date userDate) {
-		// conversion de dateGral a formato comparable al almacenado en peliculas
-		// donde el tiempo sea 00:00:00 entre otros detalles
-		String dateString = homeDateFormatter.format(userDate);
-		Date dateToday = new Date();
-		try {
-			 dateToday = homeDateFormatter.parse(dateString);
-		} catch(ParseException e) {
-			e.printStackTrace();
-		}
 		
 		// conseguir las peliculas con horarios disponibles para la fecha actual
 		List<Pelicula> peliculas = servicePeliculas.getAllActive();
@@ -171,10 +169,8 @@ public class HomeController {
 			// bandera para prevenir agregar una pelicula que ya existe en la lista today
 			boolean nonExistFlag = false;
 			for(int j = 0; j < horariosPelicula.size(); j++) {
-				System.out.println("fecha horario: " + horariosPelicula.get(j).getFecha());
-				System.out.println("fecha gral: " + dateToday);
 				
-				if((horariosPelicula.get(j).getFecha().compareTo(dateToday) == 0) && !nonExistFlag) {
+				if((horariosPelicula.get(j).getFecha().compareTo(userDate) == 0) && !nonExistFlag) {
 					// si la pelicula en cuestion tiene un horario marcado para la fecha general
 					// entonces se agrega a la lista que se va a agregar al modelo
 					peliculasToday.add(peliculas.get(i));
