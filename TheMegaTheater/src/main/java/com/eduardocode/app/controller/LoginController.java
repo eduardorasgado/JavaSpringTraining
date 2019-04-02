@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class LoginController {
 	
+	@GetMapping("/index")
+	public String showDashboard() {
+		// se carga despues de que el user es logueado
+		return "admin";
+	}
+	
 	@GetMapping("/logout")
 	public String salir(HttpServletRequest request) {
 		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
