@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2019 a las 10:51:46
+-- Tiempo de generación: 03-04-2019 a las 20:49:21
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -199,6 +199,7 @@ INSERT INTO `peliculas` (`id`, `titulo`, `duracion`, `clasificacion`, `genero`, 
 --
 
 CREATE TABLE `perfiles` (
+  `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(100) NOT NULL,
   `perfil` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -207,9 +208,9 @@ CREATE TABLE `perfiles` (
 -- Volcado de datos para la tabla `perfiles`
 --
 
-INSERT INTO `perfiles` (`username`, `perfil`) VALUES
-('eduardo', 'GERENTE'),
-('marisol', 'EDITOR');
+INSERT INTO `perfiles` (`id`, `username`, `perfil`) VALUES
+(1, 'eduardo', 'GERENTE'),
+(2, 'marisol', 'EDITOR');
 
 -- --------------------------------------------------------
 
@@ -238,6 +239,7 @@ INSERT INTO `users` (`username`, `password`, `enabled`) VALUES
 --
 
 CREATE TABLE `usuarios` (
+  `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(100) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellidos` varchar(150) NOT NULL,
@@ -252,9 +254,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`username`, `nombre`, `apellidos`, `email`, `telefono`, `status`, `password`, `created_at`) VALUES
-('eduardo', 'Eduardo', 'Rasgado', 'eduardo.rasgado@hotmail.com', '917237212', 1, '{noop}gabagabahey', '2019-04-03 00:00:00'),
-('marisol', 'Marisol', 'Melendez', 'marisol_melendez@gmail.com', '4421223432', 1, '{noop}mari123', '2019-04-03 02:36:00');
+INSERT INTO `usuarios` (`id`, `username`, `nombre`, `apellidos`, `email`, `telefono`, `status`, `password`, `created_at`) VALUES
+(1, 'eduardo', 'Eduardo', 'Rasgado', 'eduardo.rasgado@hotmail.com', '4421298978', 1, '$2a$10$AefVYiHoxC.wAo2oGbWjCuGnwdDlm6b0g9qxvH7/ZjQw.Au4eMxBq', '2019-04-03 09:23:00'),
+(2, 'marisol', 'Marisol', 'Castro', 'marisol.castro@gmail.com', '9920012032', 1, '$2a$10$aWGM4Ii9FhGFQXq2oGg6b.CF/Q.0s.LS6U3PCySRr6ddXq3nwo.om', '2019-04-03 06:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -302,7 +304,8 @@ ALTER TABLE `peliculas`
 -- Indices de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  ADD UNIQUE KEY `usuarios.username` (`username`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username_perfil_UNIQUE` (`username`,`perfil`) USING BTREE;
 
 --
 -- Indices de la tabla `users`
@@ -314,8 +317,9 @@ ALTER TABLE `users`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`username`) USING BTREE,
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username_UNIQUE` (`username`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -350,6 +354,12 @@ ALTER TABLE `noticias`
 --
 ALTER TABLE `peliculas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `perfiles`
+--
+ALTER TABLE `perfiles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

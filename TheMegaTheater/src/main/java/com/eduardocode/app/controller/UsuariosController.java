@@ -16,6 +16,17 @@ public class UsuariosController {
 	@GetMapping("/demo-bcript")
 	public String encriptar() {
 		//
+		String password = "mari123";
+		String password2 = "gabagabahey";
+		
+		String encriptacion = encoder.encode(password);
+		String encriptacion2 = encoder.encode(password2);
+		
+		System.out.println("password: " + password);
+		System.out.println("encriptacion: " + encriptacion);
+		System.out.println("password 2: " + password2);
+		System.out.println("encriptacion 2: " + encriptacion2);
+		
 		return "home";
 	}
 }
