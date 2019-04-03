@@ -12,8 +12,7 @@ public class PerfilesServiceJPA implements IPerfilesService {
 	
 	@Override
 	public void insert(Perfil perfil) {
-		// TODO Auto-generated method stub
-		
+		perfilesRepository.save(perfil);
 	}
 
 }

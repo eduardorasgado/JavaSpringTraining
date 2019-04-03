@@ -12,7 +12,7 @@ public class UsuariosServiceJPA implements IUsuariosService {
 	
 	@Override
 	public void insert(Usuario usuario) {
-		// TODO Auto-generated method stub	
+		usuariosRepository.save(usuario);	
 	}
 
 }

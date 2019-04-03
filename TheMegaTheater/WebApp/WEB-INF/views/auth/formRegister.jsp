@@ -1,3 +1,6 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,34 +9,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">    
 		<meta name="author" content="">
 		<title>Creacion de Usuarios</title>
-		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">    
-		<link href="bootstrap/css/theme.css" rel="stylesheet">
+		
+		<spring:url value="/resources" var="urlPublic"></spring:url>
+		
+		<link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>
 
 		<!-- Fixed navbar -->
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">My CineSite</a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Acerca</a></li>
-						<li><a href="#">Login</a></li>            
-					</ul>
-				</div><!--/.nav-collapse -->
-			</div>
-		</nav>
-
-		<div class="container theme-showcase" role="main">
+		<jsp:include page="../includes/menu.jsp"></jsp:include>
+		
+		<div class="container" role="main">
+		<br/>
 
 			<h3 class="blog-title"><span class="label label-success">Datos del Usuario</span></h3>  
 
@@ -41,7 +29,7 @@
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="perfil" class="control-label">Perfil</label>              
+							<label for="perfil" class="">Perfil</label>              
 							<select id="perfil" name="perfil" class="form-control">
 								<option value="EDITOR">EDITOR</option>
 								<option value="GERENTE">GERENTE</option>								
@@ -67,12 +55,12 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input type="text" class="form-control" name="email" id="email" placeholder="Correo electrónico" required="required"/>
+							<input type="text" class="form-control" name="email" id="email" placeholder="Correo electrÃ³nico" required="required"/>
 						</div>  
 					</div>
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="telefono">Teléfono</label>
+							<label for="telefono">TelÃ©fono</label>
 							<input type="text" class="form-control" name="telefono" id="telefono" required="required"/>
 						</div>  
 					</div>
@@ -85,10 +73,7 @@
 			<hr class="featurette-divider">
 
 			<!-- FOOTER -->
-			<footer>        
-				<p class="pull-right"><a href="#">Back to top</a></p>
-				<p>&copy; 2017 My CineSite, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-			</footer>	
+			<jsp:include page="../includes/footer.jsp"></jsp:include>	
 
 		</div> <!-- /container -->
 
