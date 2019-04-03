@@ -33,12 +33,9 @@ con namespaces: beans y security -->
 	<!-- de donde se va a tomar el usuario y contrasenias para la aplicacion-->
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
-				<!-- de momento se crean dos usuarios in memory -->
-				<!-- el prefijo noop entre llaves indica que el password esta en texto plano -->
-				<user name="marisol" password="{noop}mari123" authorities="EDITOR"/>
-				<user name="eduardo" password="{noop}gabagabahey" authorities="GERENTE"/>
-			</user-service>
+			<!-- autenticacion desde una base de datos: spring bean de conexion a mysql. -->
+			<!-- dataSource esta configurado ya en el root-context.xml -->
+			<jdbc-user-service data-source-ref="dataSource"/>
 		</authentication-provider>
 	</authentication-manager>
 	
