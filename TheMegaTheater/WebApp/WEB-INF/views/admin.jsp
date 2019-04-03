@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
@@ -28,6 +29,9 @@
       <div class="jumbotron">        
         <h3>Administración del Sistema</h3>
         <p>Bienvenido(a) <sec:authentication property="principal.username"/> </p>
+        <c:forEach items="${ roles }" var="rol">
+        	<span class="badge badge-success">${ rol }</span>
+        </c:forEach>
       </div>
 
       <!-- FOOTER -->
