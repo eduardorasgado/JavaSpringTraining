@@ -37,6 +37,7 @@
 		<property name="password" value=""></property>
 	</bean>
 	
+	
 	<!-- configuracion del jpa de spring para el uso de hibernate framework -->
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<!-- indica si cada qu se genere el prouecto se genere el codigo sql para crear las tablas en la db

@@ -14,6 +14,9 @@ con namespaces: beans y security -->
 	<!-- con esta configuracion ya se agrega CSRF attack prevention que es una proteccion
 	contra ataques de tipo cross site request forgery -->
 	
+	<!-- incluyendo el bean de spring security: bcript -->
+	<b:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></b:bean>
+	
 	<!-- que urls se van a proteger en la aplicacion(en caso de que el user no se haya 
 	logueado) -->
 	<http auto-config="true">
@@ -33,6 +36,8 @@ con namespaces: beans y security -->
 	<!-- de donde se va a tomar el usuario y contrasenias para la aplicacion-->
 	<authentication-manager>
 		<authentication-provider>
+			<!-- encriptacion con bCript proporcionada por spring security(bean declarado arriba) -->
+			<password-encoder ref="passwordEncoder"/>
 			<!-- autenticacion desde una base de datos: spring bean de conexion a mysql. -->
 			<!-- dataSource esta configurado ya en el root-context.xml para mysql y podemos reusar esta configuracion-->
 			
