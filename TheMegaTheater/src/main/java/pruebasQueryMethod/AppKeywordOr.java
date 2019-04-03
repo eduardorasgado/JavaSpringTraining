@@ -25,6 +25,8 @@ public class AppKeywordOr {
 			System.out.println(noticia.getTitulo());
 		});
 		*/
+		
+		context.close();
 	}
 
 }

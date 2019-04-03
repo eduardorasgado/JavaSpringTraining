@@ -36,6 +36,8 @@ public class AppKeywordBetween {
 			System.out.println(noticia.getId() + " | " + noticia.getTitulo());
 		});
 		*/
+		
+		context.close();
 	}
 
 }

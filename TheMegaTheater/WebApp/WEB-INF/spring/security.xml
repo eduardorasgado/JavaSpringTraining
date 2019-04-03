@@ -34,7 +34,8 @@ con namespaces: beans y security -->
 	<authentication-manager>
 		<authentication-provider>
 			<!-- autenticacion desde una base de datos: spring bean de conexion a mysql. -->
-			<!-- dataSource esta configurado ya en el root-context.xml -->
+			<!-- dataSource esta configurado ya en el root-context.xml para mysql y podemos reusar esta configuracion-->
+			
 			<!-- en el orden de los campos de la consulta se debe de respetar el orden que posee el estandar
 			de spring security: username,password,enable -->
 			<jdbc-user-service data-source-ref="dataSource"
