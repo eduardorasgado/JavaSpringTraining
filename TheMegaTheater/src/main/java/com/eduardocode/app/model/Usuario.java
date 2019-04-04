@@ -26,6 +26,7 @@ public class Usuario {
 	
 	public Usuario() {
 		this.created_at = new Date();
+		// usuario activado por default
 		this.status = 1;
 	}
 	

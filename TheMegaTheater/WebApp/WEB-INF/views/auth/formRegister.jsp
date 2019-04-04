@@ -30,6 +30,9 @@
 			<h3 class="blog-title"><span class="badge badge-success">Datos del Usuario</span></h3>  
 
 			<form:form action="${ urlSaveUsuario }" method="post" modelAttribute="usuario">
+			
+				<form:hidden path="id"/>
+				
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
