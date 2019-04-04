@@ -14,6 +14,7 @@
     <title>Bienvenido administrador</title>    
 
 	<spring:url value="/resources" var="urlPublic"></spring:url>
+	<spring:url value="/usuarios/index" var="urlUsuariosIndex"></spring:url>
 	
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">   
   </head>
@@ -32,6 +33,10 @@
         <c:forEach items="${ roles }" var="rol">
         	<span class="badge badge-success">${ rol }</span>
         </c:forEach>
+        <sec:authorize access="hasAnyAuthority('GERENTE')">
+        	<br/>
+        	<a href="${ urlUsuariosIndex }" class="btn btn-success">Personal</a>
+        </sec:authorize>
       </div>
 
       <!-- FOOTER -->
