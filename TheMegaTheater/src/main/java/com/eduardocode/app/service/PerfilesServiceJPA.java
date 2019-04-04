@@ -1,5 +1,7 @@
 package com.eduardocode.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,12 @@ public class PerfilesServiceJPA implements IPerfilesService {
 	@Override
 	public void insert(Perfil perfil) {
 		perfilesRepository.save(perfil);
+	}
+
+	@Override
+	public List<Perfil> getAll() {
+		// TODO Auto-generated method stub
+		return perfilesRepository.findAll();
 	}
 
 }
