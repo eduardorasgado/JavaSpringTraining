@@ -1,5 +1,7 @@
 package com.eduardocode.app.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,13 @@ public class Usuario {
 	private String telefono;
 	private int status;
 	private String password;
+	private Date created_at;
+	
+	public Usuario() {
+		this.created_at = new Date();
+		this.status = 1;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -64,6 +73,12 @@ public class Usuario {
 	}
 	public int getId() {
 		return id;
+	}
+	public Date getCreated_at() {
+		return created_at;
+	}
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
 	}
 	@Override
 	public String toString() {

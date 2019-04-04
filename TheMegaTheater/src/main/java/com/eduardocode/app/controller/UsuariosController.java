@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardocode.app.model.Usuario;
 
@@ -29,6 +31,15 @@ public class UsuariosController {
 		 
 		model.addAttribute("perfiles", perfiles);
 		return "auth/formRegister";
+	}
+	
+	@PostMapping("/save")
+	public String save(@ModelAttribute Usuario usuario, Model model,
+			RedirectAttributes attributes) {
+		//
+		System.out.println(usuario);
+		attributes.addFlashAttribute("message", "Se ha guardado el usuario exitosamente");
+		return "redirect:/admin/index";
 	}
 	
 	@GetMapping("/demo-bcript")
