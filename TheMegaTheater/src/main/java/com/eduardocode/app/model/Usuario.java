@@ -80,9 +80,12 @@ public class Usuario {
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", username=" + username + ", nombre=" + nombre + ", apellidos=" + apellidos
-				+ ", email=" + email + ", telefono=" + telefono + ", status=" + status + ", password=" + password + "]";
+				+ ", email=" + email + ", telefono=" + telefono + ", status=" + status + ", password=" + password
+				+ ", created_at=" + created_at + "]";
 	}
+	
 }

@@ -19,8 +19,18 @@ import com.eduardocode.app.model.Usuario;
 @RequestMapping("/usuarios")
 public class UsuariosController {
 
+	// instancia inyectada para poder hacer encriptaciones
+	// con spring security
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@GetMapping("/index")
+	public String index(Model model) {
+		List<Usuario> usuarios = new LinkedList<Usuario>();
+		
+		model.addAttribute("usuarios", usuarios);
+		return "usuarios/listUsuarios";
+	}
 	
 	@GetMapping("/create")
 	public String create(@ModelAttribute Usuario usuario, Model model) {
@@ -39,7 +49,7 @@ public class UsuariosController {
 		//
 		System.out.println(usuario);
 		attributes.addFlashAttribute("message", "Se ha guardado el usuario exitosamente");
-		return "redirect:/admin/index";
+		return "redirect:/usuarios/index";
 	}
 	
 	@GetMapping("/demo-bcript")
