@@ -18,8 +18,8 @@
     
     <spring:url value="/usuarios" var="urlUsuarios"></spring:url>
     <spring:url value="/usuarios/create" var="urlCreateUsuario"></spring:url>
-    <spring:url value="/peliculas/edit" var="urlEditarPelicula"></spring:url>
-    <spring:url value="/peliculas/delete" var="urlDeletePelicula"></spring:url>
+    <spring:url value="/" var="urlEditarUsuario"></spring:url>
+    <spring:url value="/" var="urlDeleteUsuario"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
     
@@ -54,7 +54,7 @@
                 <th>Rol</th>
                 <th>Opciones</th>
             </tr>
-            <c:forEach items="${ usuarios }" var="pelicula">
+            <c:forEach items="${ usuarios.content }" var="usuario">
             	<tr>
             		<td>${ usuario.id }</td>
 	                <td>${ usuario.nombre }</td>
@@ -74,8 +74,8 @@
 	                </td>
 	                <td>AQUI VA EL ROL</td>
 	                <td>
-	                    <a href="${ urlEditarPelicula }/${ usuario.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
-	                    <a href="${ urlDeletePelicula }/${ usuario.id }" 
+	                    <a href="${ urlEditarUsuario }/${ usuario.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
+	                    <a href="${ urlDeleteUsuario }/${ usuario.id }" 
 	                    class="btn btn-danger btn-sm" role="button" title="Eliminar" 
 	                    onclick = "if (! confirm('Está segur@?')) { return false; }">Eliminar</a>
 	                </td>
@@ -83,6 +83,20 @@
             </c:forEach>           
         </table>
         <!-- paginador aqui -->
+        <nav aria-label="">
+	        <ul class="pager"> 
+	        	<c:if test="${ usuarios.number > 0 }">
+	        		<li><a href="${urlUsuarios}/index?page=${usuarios.number - 1 }">Anterior</a></li>
+	        	</c:if>
+	        	
+	        	<span>pagina: ${ usuarios.number + 1 }</span>
+	        	
+	        	<c:if test="${ usuarios.number < (pageSize - 1) }">
+	        		<li><a href="${urlUsuarios}/index?page=${usuarios.number + 1 }">Siguiente</a></li>
+	        	</c:if>
+	        	
+	        </ul>
+        </nav>
       </div>
           
       <hr class="featurette-divider">

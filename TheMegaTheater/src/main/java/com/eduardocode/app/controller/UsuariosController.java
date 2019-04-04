@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,10 +37,12 @@ public class UsuariosController {
 	private IPerfilesService perfilesService;
 	
 	@GetMapping("/index")
-	public String index(Model model) {
-		List<Usuario> usuarios = new LinkedList<Usuario>();
+	public String index(Model model, Pageable page) {
+		Page<Usuario> usuarios = usuariosService.getAll(page);
 		
+		// TODO: pasar los roles
 		model.addAttribute("usuarios", usuarios);
+		model.addAttribute("pageSize", usuarios.getTotalPages());
 		return "usuarios/listUsuarios";
 	}
 	

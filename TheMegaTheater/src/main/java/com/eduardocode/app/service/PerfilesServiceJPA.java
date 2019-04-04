@@ -21,7 +21,6 @@ public class PerfilesServiceJPA implements IPerfilesService {
 
 	@Override
 	public List<Perfil> getAll() {
-		// TODO Auto-generated method stub
 		return perfilesRepository.findAll();
 	}
 
