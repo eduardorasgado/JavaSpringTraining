@@ -18,8 +18,8 @@
     
     <spring:url value="/usuarios" var="urlUsuarios"></spring:url>
     <spring:url value="/usuarios/create" var="urlCreateUsuario"></spring:url>
-    <spring:url value="/" var="urlEditarUsuario"></spring:url>
-    <spring:url value="/" var="urlDeleteUsuario"></spring:url>
+    <spring:url value="/usuarios/edit" var="urlEditarUsuario"></spring:url>
+    <spring:url value="/usuarios/delete" var="urlDeleteUsuario"></spring:url>
     
     <link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
     

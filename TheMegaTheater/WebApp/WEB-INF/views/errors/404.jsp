@@ -1,3 +1,4 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +25,7 @@
             </div>
             <div class="card-body">
                 <img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
-                <h4>La p·gina solicitada no existe!</h4>                
+                <h4>La p√°gina solicitada no existe!</h4>                
                 <br>
                 <button class="btn btn-success" onclick="goBack()">REGRESAR</button>
             </div>
