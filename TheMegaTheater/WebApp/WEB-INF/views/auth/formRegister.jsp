@@ -27,7 +27,14 @@
 		<div class="container" role="main">
 		<br/>
 
-			<h3 class="blog-title"><span class="badge badge-success">Datos del Usuario</span></h3>  
+			<h3 class="blog-title"><span class="badge badge-success">Datos del Usuario</span></h3>
+			
+			<c:if test="${ error != null }">
+				<br>
+				<span class="alert alert-danger">${ error }</span>
+				<br>
+				<br>
+			</c:if>  
 
 			<form:form action="${ urlSaveUsuario }" method="post" modelAttribute="usuario">
 			
@@ -72,8 +79,15 @@
 					
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="password">Password</label>             
+							<label for="password">Contraseña</label>             
 							<form:input type="password" class="form-control" path="password" id="password" required="required"/>
+						</div>  
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="passwordProve">Repetir contraseña</label>             
+							<input type="password" class="form-control" name="passwordProve" id="passwordProve" required="required"/>
 						</div>  
 					</div>
 					

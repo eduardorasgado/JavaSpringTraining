@@ -60,13 +60,17 @@ public class UsuariosController {
 	@PostMapping("/save")
 	public String save(@ModelAttribute Usuario usuario, 
 			@RequestParam("perfil") String perfil,
+			@RequestParam("passwordProve") String passwordProve,
 			RedirectAttributes attributes) {
-		
-		System.out.println(usuario);
-		System.out.println(perfil);
 		
 		// guardar los objetos en la base de datos
 		String tempPass = usuario.getPassword(); // pass en texto plano
+		
+		if(!passwordProve.equals(tempPass)) {
+			// en caso de que las pass no coincidan
+			attributes.addFlashAttribute("error", "Las contrasenas no coinciden");
+			return "redirect:/usuarios/create";
+		}
 		String cryptPass = encoder.encode(tempPass); // encriptando la pass
 		
 		usuario.setPassword(cryptPass);
