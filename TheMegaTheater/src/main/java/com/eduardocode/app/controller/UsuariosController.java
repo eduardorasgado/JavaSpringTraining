@@ -42,15 +42,17 @@ public class UsuariosController {
 		Page<Usuario> usuarios = usuariosService.getAll(page);
 		
 		// TODO: pasar los roles
+		//List<Perfil> perfiles = perfilesService.getAll();
+		//TODO: pasar el atributo de perfil al formulario de registro de usuarios
 		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("pageSize", usuarios.getTotalPages());
+		//model.addAttribute("perfiles", perfiles);
+		
 		return "usuarios/listUsuarios";
 	}
 	
 	@GetMapping("/create")
-	public String create(@ModelAttribute Usuario usuario, Model model) {
-		//
-		 
+	public String create(@ModelAttribute Usuario usuario) {
 		return "auth/formRegister";
 	}
 	

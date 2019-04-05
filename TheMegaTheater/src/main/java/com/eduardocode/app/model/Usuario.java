@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,12 @@ public class Usuario {
 	private int status;
 	private String password;
 	private Date created_at;
+	
+	// el campo usuario que es el nombre del objeto mapeado 
+	// que tenemos en el objeto perfil
+	@OneToOne(mappedBy="usuario")
+	private Perfil perfil;
+	
 	
 	public Usuario() {
 		this.created_at = new Date();
