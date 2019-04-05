@@ -53,7 +53,7 @@ public class PeliculasController {
 	}
 	
 	@GetMapping("/create")
-	public String create(@ModelAttribute Pelicula pelicula, Model model) {
+	public String create(@ModelAttribute Pelicula pelicula) {
 		// el metodo create debe tener un modelo de clase pelicula
 		// ya que en la vista que regresa este metodo se usa
 		// un form con for tag library de spring
@@ -79,8 +79,7 @@ public class PeliculasController {
 			HttpServletRequest request,
 			// con BindingResult podemos obtener posibles errores en el
 			// data binding
-			BindingResult result,
-			Model model) {
+			BindingResult result) {
 		
 		// manejando los errores con el binding result
 		if(result.hasErrors()) {
@@ -113,9 +112,6 @@ public class PeliculasController {
 		
 		// guardando en la db
 		peliculasService.insert(pelicula);
-		
-		System.out.println("Una pelicula se ha guardado:");
-		System.out.println(pelicula);
 		
 		attributes.addFlashAttribute("message", "La pelicula ha sido guardada con exito");
 		

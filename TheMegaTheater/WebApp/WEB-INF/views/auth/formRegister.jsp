@@ -14,7 +14,7 @@
 		<title>Creacion de Usuarios</title>
 		
 		<spring:url value="/resources" var="urlPublic"></spring:url>
-		<spring:url value="/usuarios/save" var="urlSaveUsuario"></spring:url>
+		<spring:url value="/usuarios/create" var="urlSaveUsuario"></spring:url>
 		
 		<link href="${ urlPublic }/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -34,7 +34,21 @@
 				<span class="alert alert-danger">${ error }</span>
 				<br>
 				<br>
-			</c:if>  
+			</c:if>
+			
+			<spring:hasBindErrors name="usuario">
+			  	<!-- aqui va el contenido de lo que debe mostrarse, se puede iterar en el error -->
+			  	<div class="alert alert-danger" role="alert">
+			  		<p>Se han encontrado los siguientes errores:</p>
+			  		<ul>
+			  			<c:forEach items="${ errors.allErrors }" var="error">
+			  				<li>
+			  					<spring:message message="${ error }"></spring:message>
+			  				</li>
+			  			</c:forEach>
+			  		</ul>
+			  	</div>
+		    </spring:hasBindErrors>
 
 			<form:form action="${ urlSaveUsuario }" method="post" modelAttribute="usuario">
 			

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,27 +50,34 @@ public class UsuariosController {
 	@GetMapping("/create")
 	public String create(@ModelAttribute Usuario usuario, Model model) {
 		//
-		 List<String> perfiles = new LinkedList<>();
-		 perfiles.add("EDITOR");
-		 perfiles.add("GERENTE");
 		 
-		model.addAttribute("perfiles", perfiles);
 		return "auth/formRegister";
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/create")
 	public String save(@ModelAttribute Usuario usuario, 
 			@RequestParam("perfil") String perfil,
 			@RequestParam("passwordProve") String passwordProve,
-			RedirectAttributes attributes) {
+			RedirectAttributes attributes, 
+			BindingResult results,
+			Model model) {
+		
+		if(results.hasErrors()) {
+			
+			return "auth/formRegister";
+		}
 		
 		// guardar los objetos en la base de datos
 		String tempPass = usuario.getPassword(); // pass en texto plano
 		
 		if(!passwordProve.equals(tempPass)) {
 			// en caso de que las pass no coincidan
-			attributes.addFlashAttribute("error", "Las contrasenas no coinciden");
-			return "redirect:/usuarios/create";
+			//attributes.addFlashAttribute("error", "Las contrasenas no coinciden");
+			//return "redirect:/usuarios/create";
+			// no hacemos un redirect porque con ello no se renderizan los valores pasados
+			// de la instancia usuario
+			model.addAttribute("error", "Las contrasenas no coinciden");
+			return "auth/formRegister";
 		}
 		String cryptPass = encoder.encode(tempPass); // encriptando la pass
 		
@@ -88,6 +96,14 @@ public class UsuariosController {
 		return "redirect:/usuarios/index";
 	}
 	
+	@ModelAttribute("perfiles")
+	public List<String> includeProfiles() {
+		List<String> perfiles = new LinkedList<>();
+		 perfiles.add("EDITOR");
+		 perfiles.add("GERENTE");
+		 
+		return perfiles;
+	}
 	@GetMapping("/demo-bcript")
 	public String encriptar() {
 		//
