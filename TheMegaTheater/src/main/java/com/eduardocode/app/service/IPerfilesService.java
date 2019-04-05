@@ -8,4 +8,8 @@ public interface IPerfilesService {
 	List<Perfil> getAll();
 	
 	void insert(Perfil perfil);
+	
+	Perfil searchById(int idPerfil);
+	
+	void delete(int idPerfil);
 }
