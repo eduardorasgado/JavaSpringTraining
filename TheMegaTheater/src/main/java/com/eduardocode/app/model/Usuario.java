@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,7 +28,8 @@ public class Usuario {
 	
 	// el campo usuario que es el nombre del objeto mapeado 
 	// que tenemos en el objeto perfil
-	@OneToOne(mappedBy="usuario")
+	@OneToOne()
+	@JoinColumn(name="idPerfil")
 	private Perfil perfil;
 	
 	
@@ -101,7 +103,7 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id=" + id + ", username=" + username + ", nombre=" + nombre + ", apellidos=" + apellidos
 				+ ", email=" + email + ", telefono=" + telefono + ", status=" + status + ", password=" + password
-				+ ", created_at=" + created_at + "]";
+				+ ", created_at=" + created_at + ", perfil=" + perfil + "]";
 	}
 	
 }

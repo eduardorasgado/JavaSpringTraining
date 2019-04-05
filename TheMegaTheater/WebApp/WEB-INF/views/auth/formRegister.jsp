@@ -61,11 +61,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="perfil" class="">Perfil</label>              
-							<select id="perfil" name="perfil" class="form-control">
-								<c:forEach items="${ perfiles }" var="perfil">
-									<option value="${ perfil }">${ perfil }</option>
-								</c:forEach>
-							</select>
+							<form:select id="perfil" path="perfil.perfil" class="form-control" items="${ perfiles }"/>
 						</div> 
 					</div>
 				</div>	

@@ -41,12 +41,10 @@ public class UsuariosController {
 	public String index(Model model, Pageable page) {
 		Page<Usuario> usuarios = usuariosService.getAll(page);
 		
-		// TODO: pasar los roles
-		//List<Perfil> perfiles = perfilesService.getAll();
-		//TODO: pasar el atributo de perfil al formulario de registro de usuarios
+		// los roles se pasan debido a la relacion one to one entre
+		// usuario y perfil
 		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("pageSize", usuarios.getTotalPages());
-		//model.addAttribute("perfiles", perfiles);
 		
 		return "usuarios/listUsuarios";
 	}
@@ -58,7 +56,7 @@ public class UsuariosController {
 	
 	@PostMapping("/create")
 	public String save(@ModelAttribute Usuario usuario, 
-			@RequestParam("perfil") String perfil,
+			//@RequestParam("perfil") String perfil,
 			@RequestParam("passwordProve") String passwordProve,
 			RedirectAttributes attributes, 
 			BindingResult results,
@@ -69,6 +67,7 @@ public class UsuariosController {
 			return "auth/formRegister";
 		}
 		
+		// PASSWORD -------------
 		// guardar los objetos en la base de datos
 		String tempPass = usuario.getPassword(); // pass en texto plano
 		
@@ -82,17 +81,19 @@ public class UsuariosController {
 			return "auth/formRegister";
 		}
 		String cryptPass = encoder.encode(tempPass); // encriptando la pass
-		
 		usuario.setPassword(cryptPass);
 		
+		// PERFIL ------------------
+		// definimos el rol de acuerdo a la relacion usuario-perfil	
+		//System.out.println(usuario);
+		//System.out.println(tempPerfil);
+		Perfil tempPerfil = usuario.getPerfil();
+		tempPerfil.setUsername(usuario.getUsername());
+		usuario.setPerfil(tempPerfil);
+		
+		perfilesService.insert(usuario.getPerfil());
 		usuariosService.insert(usuario);
 		
-		// definimos el rol
-		Perfil tempPerfil = new Perfil();
-		tempPerfil.setUsername(usuario.getUsername());
-		tempPerfil.setPerfil(perfil);
-		
-		perfilesService.insert(tempPerfil);
 		
 		attributes.addFlashAttribute("message", "Se ha guardado el usuario exitosamente");
 		return "redirect:/usuarios/index";
