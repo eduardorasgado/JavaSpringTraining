@@ -89,6 +89,14 @@ public class Usuario {
 		this.created_at = created_at;
 	}
 
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", username=" + username + ", nombre=" + nombre + ", apellidos=" + apellidos

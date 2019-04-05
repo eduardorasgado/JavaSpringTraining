@@ -72,7 +72,7 @@
 		                	</c:otherwise>
 		                </c:choose>
 	                </td>
-	                <td>AQUI VA EL ROL</td>
+	                <td>${ usuario.perfil.perfil }</td>
 	                <td>
 	                    <a href="${ urlEditarUsuario }/${ usuario.id }" class="btn btn-success btn-sm" role="button" title="Edit" >Editar</a>
 	                    <a href="${ urlDeleteUsuario }/${ usuario.id }" 
