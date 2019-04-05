@@ -1,6 +1,7 @@
 package com.eduardocode.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,6 +32,21 @@ public class UsuariosServiceJPA implements IUsuariosService {
 	public Page<Usuario> getAll(Pageable page) {
 		Page<Usuario> usuarios = usuariosRepository.findAll(page);
 		return usuarios;
+	}
+
+	@Override
+	public Usuario searchById(int idUsuario) {
+		Optional<Usuario> usuarioContainer = usuariosRepository.findById(idUsuario);
+		if(usuarioContainer.isPresent()) {
+			return usuarioContainer.get();
+		}
+		return null;
+	}
+
+	@Override
+	public void delete(int idUsuario) {
+		usuariosRepository.deleteById(idUsuario);
+		
 	}
 
 }

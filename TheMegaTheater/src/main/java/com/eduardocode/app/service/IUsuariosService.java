@@ -13,4 +13,8 @@ public interface IUsuariosService{
 	Page<Usuario> getAll(Pageable page);
 	
 	void insert(Usuario usuario);
+	
+	Usuario searchById(int idUsuario);
+	
+	void delete(int idUsuario);
 }
