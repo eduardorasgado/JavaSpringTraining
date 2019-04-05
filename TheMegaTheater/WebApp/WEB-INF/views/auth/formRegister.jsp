@@ -31,6 +31,8 @@
 
 			<form:form action="${ urlSaveUsuario }" method="post" modelAttribute="usuario">
 			
+				<sec:csrfInput/>
+			
 				<form:hidden path="id"/>
 				
 				<div class="row">         

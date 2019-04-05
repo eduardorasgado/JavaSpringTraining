@@ -26,6 +26,7 @@ con namespaces: beans y security -->
 		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/admin/*" access="hasAnyAuthority('EDITOR', 'GERENTE')"/>
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')"/>
+		<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('GERENTE')"/>
 		
 		<!-- configurando la ruta donde se va a encontrar nuestro formulario personalizado, sera
 		en la ruta /admin/entrar marcado por login-page, 
