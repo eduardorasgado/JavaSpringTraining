@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Listado de Peliculas</title>
+    <title>Listado de Usuarios</title>
     
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/" var="urlRoot"></spring:url>
@@ -38,6 +38,10 @@
       
       <c:if test="${ message != null }">
       	<span class="alert alert-success">${ message }</span>
+      	<br/><br/>
+      </c:if>
+      <c:if test="${ error != null }">
+      	<span class="alert alert-danger">${ error }</span>
       	<br/><br/>
       </c:if>
 	
@@ -78,6 +82,7 @@
 	                    <a href="${ urlDeleteUsuario }/${ usuario.id }" 
 	                    class="btn btn-danger btn-sm" role="button" title="Eliminar" 
 	                    onclick = "if (! confirm('Está segur@?')) { return false; }">Eliminar</a>
+	                    <a href="" class="btn btn-warning btn-sm" role="button">Desactivar</a>
 	                </td>
 	            </tr>
             </c:forEach>           
