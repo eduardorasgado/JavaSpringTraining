@@ -53,14 +53,14 @@
 			<form:form action="${ urlSaveUsuario }" method="post" modelAttribute="usuario">
 			
 				<sec:csrfInput/>
-			
-				<form:hidden path="id"/>
-				<form:hidden path="perfil.id"/>
 				
+				<form:hidden path="id"/>
+				<form:hidden path="perfil.id"/>  
+			
 				<div class="row">         
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="perfil" class="">Perfil</label>              
+							<label for="perfil" class="">Perfil</label>
 							<form:select id="perfil" path="perfil.perfil" class="form-control" items="${ perfiles }"/>
 						</div> 
 					</div>
@@ -69,7 +69,7 @@
 				<div class="row"> 	
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label for="username">Username</label>             
+							<label for="username">Username</label>           
 							<form:input type="text" class="form-control" path="username" id="username" required="required"/>
 						</div>  
 					</div>

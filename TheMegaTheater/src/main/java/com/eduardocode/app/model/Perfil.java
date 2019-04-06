@@ -27,8 +27,12 @@ public class Perfil {
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
+	
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {

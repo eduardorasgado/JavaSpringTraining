@@ -102,8 +102,19 @@ public class UsuariosController {
 	
 	@GetMapping("/edit/{id}")
 	public String update(@PathVariable("id") int idUsuario,
+			RedirectAttributes attributes,
 			Model model) {
-		//Usuario usuario = 
+		Usuario usuario = usuariosService.searchById(idUsuario);
+		
+		if(usuario == null) {
+			// en caso de que el usuario no exista
+			attributes.addFlashAttribute("error", "El usuario que deseas editar no existe");
+			return "redirect:/usuarios/index";
+		}
+		// cambiamos la pass a un espacio en blanco porque
+		// de otra forma se envia la pass encriptada
+		usuario.setPassword("");
+		model.addAttribute("usuario", usuario);
 		return "auth/formRegister"; 
 	}
 	

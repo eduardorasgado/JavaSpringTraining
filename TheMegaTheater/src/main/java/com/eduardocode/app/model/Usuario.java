@@ -81,9 +81,6 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getId() {
-		return id;
-	}
 	public Date getCreated_at() {
 		return created_at;
 	}
@@ -97,6 +94,14 @@ public class Usuario {
 
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override
