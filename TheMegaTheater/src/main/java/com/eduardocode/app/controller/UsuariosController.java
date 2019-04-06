@@ -119,8 +119,22 @@ public class UsuariosController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") int idUsuario) {
+	public String delete(@PathVariable("id") int idUsuario,
+			RedirectAttributes attributes) {
 		// eliminar un usuario
+		Usuario user = usuariosService.searchById(idUsuario);
+		if(user == null) {
+			// si no existe el usuario
+			attributes.addFlashAttribute("error", "No se ha podido eliminar un usuario inexistente");
+			return "redirect:/usuarios/index";
+		}
+		
+		// eliminamos usuario y su correspondiente perfil
+		usuariosService.delete(idUsuario);
+		perfilesService.delete(user.getPerfil().getId());
+		
+		// eliminamos el usuario
+		attributes.addFlashAttribute("message", "Se ha eliminado el usuario con exito");
 		return "redirect:/usuarios/index";
 	}
 	
