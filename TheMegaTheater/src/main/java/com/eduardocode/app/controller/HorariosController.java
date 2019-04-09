@@ -111,6 +111,7 @@ public class HorariosController {
 			RedirectAttributes attributes) {
 		
 		//
+		horarioService.delete(idHorario);
 		
 		attributes.addFlashAttribute("message", "Se ha eliminado el horario");
 		return "redirect:/horarios/index";
